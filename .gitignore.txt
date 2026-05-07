@@ -1,3 +1,14 @@
+node_modules/
+dist/
+build/
+
+.env
+.env.*
+!.env.example
+
+uploads/
+backEnd/src/config/uploads/
+
 *.mp4
 *.mov
 *.avi
