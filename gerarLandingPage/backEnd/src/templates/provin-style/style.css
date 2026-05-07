@@ -1,0 +1,130 @@
+:root {
+  --primary-color: #0066ff; /* Azul Provin */
+  --text-dark: #1a1a1a;
+  --text-light: #64748b;
+  --bg-light: #ffffff;
+  --font-main: 'Inter', system-ui, -apple-system, sans-serif;
+}
+
+.provin-wrapper {
+  font-family: var(--font-main);
+  color: var(--text-dark);
+  line-height: 1.6;
+  background-color: var(--bg-light);
+}
+
+/* Navbar */
+.provin-nav {
+  padding: 20px 5%;
+  display: flex;
+  justify-content: center;
+  border-bottom: 1px solid #f1f5f9;
+}
+
+.nav-container {
+  width: 100%;
+  max-width: 1200px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.brand-name { font-weight: 800; font-size: 1.5rem; color: var(--primary-color); }
+
+.nav-cta {
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* Hero Section */
+.provin-hero {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px;
+  padding: 80px 5%;
+  max-width: 1200px;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.hero-content h1 {
+  font-size: 3.5rem;
+  line-height: 1.1;
+  margin: 20px 0;
+  font-weight: 800;
+}
+
+.highlight { color: var(--primary-color); }
+
+.hero-content p {
+  font-size: 1.2rem;
+  color: var(--text-light);
+  margin-bottom: 30px;
+}
+
+.hero-image-container img {
+  width: 100%;
+  border-radius: 20px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+.primary-btn {
+  background: var(--primary-color);
+  color: white;
+  padding: 18px 35px;
+  border-radius: 8px;
+  border: none;
+  font-size: 1.1rem;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.primary-btn:hover { transform: translateY(-3px); }
+
+/* Features Grid */
+.provin-features {
+  padding: 100px 5%;
+  background: #f8fafc;
+  text-align: center;
+}
+
+.section-header h2 { font-size: 2.5rem; margin-bottom: 15px; }
+
+.features-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 30px;
+  max-width: 1200px;
+  margin: 50px auto 0;
+}
+
+.feature-card {
+  background: white;
+  padding: 40px;
+  border-radius: 15px;
+  transition: box-shadow 0.3s;
+}
+
+.feature-card:hover { box-shadow: 0 15px 30px rgba(0,0,0,0.05); }
+
+.icon { font-size: 2.5rem; margin-bottom: 20px; }
+
+/* Footer */
+.provin-footer {
+  padding: 40px;
+  text-align: center;
+  border-top: 1px solid #eee;
+  color: var(--text-light);
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .provin-hero { grid-template-columns: 1fr; text-align: center; }
+  .hero-content h1 { font-size: 2.5rem; }
+}

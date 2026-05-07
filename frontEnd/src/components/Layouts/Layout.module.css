@@ -1,0 +1,565 @@
+/* =========================================
+ * Layout.module.css (VERSÃO INTEGRAL)
+ * ========================================= */
+
+/* --- 1. Variáveis e Reset Auxiliar --- */
+.layoutContainer {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: rgb(var(--color-background));
+  color: rgb(var(--color-text-dark));
+  font-family: var(--font-family-sans);
+}
+
+.container {
+  width: 100%;
+  max-width: var(--container-width);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--container-padding);
+  padding-right: var(--container-padding);
+}
+
+/* --- 2. Header --- */
+.header {
+  background-color: rgb(var(--color-header-bg) / 0.95);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid rgb(var(--color-border));
+  position: sticky;
+  top: 0;
+  z-index: 40;
+}
+
+.headerContent {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: var(--header-height);
+}
+
+/* --- 3. Logo --- */
+.logoLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+}
+
+.logoIconWrapper {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background-color: rgb(var(--color-primary));
+  color: rgb(var(--color-text-light));
+  flex-shrink: 0;
+}
+
+.logoIconText {
+  font-family: var(--font-family-heading);
+  font-size: 1.75rem;
+  font-weight: 700;
+  line-height: 1;
+}
+
+.logoTextWrapper {
+  display: none;
+}
+
+.logoText {
+  font-family: var(--font-family-heading);
+  font-size: 1.25rem;
+  font-weight: 600;
+  color: rgb(var(--color-primary));
+  margin: 0;
+  line-height: 1.2;
+}
+
+.logoSubtitle {
+  font-size: 0.7rem;
+  color: rgb(var(--color-text-medium));
+  margin: 0;
+}
+
+@media (min-width: 768px) {
+  .logoTextWrapper {
+    display: block;
+  }
+}
+
+/* --- 4. Navegação Desktop --- */
+.navDesktop {
+  display: none;
+}
+
+@media (min-width: 1024px) {
+  .navDesktop {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+}
+
+.navItem {
+  position: relative;
+  /* Garante que o container cubra a área */
+  padding-bottom: 10px;
+  margin-bottom: -10px;
+}
+
+.navLinkButton,
+.navLinkSimple {
+  font-weight: 500;
+  font-size: 0.95rem;
+  border-radius: 6px;
+  text-decoration: none;
+  transition: all 0.2s ease-in-out;
+  color: rgb(var(--color-text-dark));
+}
+
+.navLinkButton {
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+  font-family: inherit;
+  padding: 0;
+  text-align: left;
+  line-height: 1;
+}
+
+.navLinkSimple {
+  display: inline-block;
+  padding: 0.5rem 0.75rem;
+}
+
+.navLinkContent {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 0.75rem;
+}
+
+.navLinkIcon {
+  width: 16px;
+  height: 16px;
+  transition: transform 0.2s ease-in-out;
+  flex-shrink: 0;
+}
+
+.navLinkButton:hover,
+.navLinkSimple:hover {
+  background-color: rgb(var(--color-background-offset));
+  color: rgb(var(--color-primary));
+}
+
+/* --- 5. Área do Usuário (Desktop) --- */
+.dividerVertical {
+  width: 1px;
+  height: 24px;
+  background-color: rgb(var(--color-border));
+  margin: 0 0.5rem;
+}
+
+.avatarCircle {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(var(--color-primary) / 0.2);
+  flex-shrink: 0;
+}
+
+.avatarPlaceholder {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background-color: rgb(var(--color-background-offset));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.dropdownMenu {
+  display: none;
+  position: absolute;
+  top: 90%;
+  /* Ajustado para ficar um pouco mais perto do topo e facilitar a transição */
+  right: 0;
+  z-index: 50;
+
+  /* REMOVIDO: margin-top: 0.5rem; (Isso criava o buraco) */
+
+  padding-top: 15px;
+  /* Esse preenchimento cria a "ponte" física para o mouse */
+  min-width: 240px;
+  background-color: transparent;
+  /* O fundo do container deve ser transparente */
+  overflow: visible;
+  /* Importante para o preenchimento e sombra funcionarem */
+}
+
+.navItem:hover .dropdownMenu {
+  display: block;
+}
+
+
+/* Ajuste na Ponte Invisível */
+.dropdownMenu::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 20px;
+  /* Aumentamos para garantir que cubra todo o vão */
+  background: transparent;
+}
+
+.userHeaderDropdown {
+  padding: 1rem;
+  background-color: rgb(var(--color-background-offset));
+  border-bottom: 1px solid rgb(var(--color-border));
+}
+
+.userLabel {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  color: rgb(var(--color-text-medium));
+  margin-bottom: 0.25rem;
+}
+
+.userEmail {
+  font-size: 0.85rem;
+  font-weight: 500;
+  color: rgb(var(--color-text-dark));
+  word-break: break-all;
+}
+
+.dropdownContent {
+  max-height: 400px;
+  /* Evita que o menu ultrapasse a tela */
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  padding: 0.5rem;
+  /* Mova os estilos visuais para cá ou para o corpo do dropdown */
+  background-color: rgb(var(--color-background));
+  border-radius: 8px;
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgb(var(--color-border));
+}
+
+.dropdownLink {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 0.75rem 1rem;
+  color: rgb(var(--color-text-dark));
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  transition: all 0.2s;
+}
+
+.dropdownLink:hover {
+  background-color: rgb(var(--color-primary-light));
+  color: rgb(var(--color-primary));
+}
+
+.logoutButton {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 0.75rem 1rem;
+  margin-top: 0.25rem;
+  background: none;
+  border: none;
+  border-top: 1px solid rgb(var(--color-border));
+  color: #ef4444;
+  cursor: pointer;
+  font-family: inherit;
+  font-size: 0.9rem;
+  text-align: left;
+  transition: background 0.2s;
+}
+
+.logoutButton:hover {
+  background-color: #fef2f2;
+}
+
+/* --- 7. Mobile --- */
+.mobileMenuButton {
+  display: block;
+  padding: 0.5rem;
+  background-color: transparent;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  color: rgb(var(--color-primary));
+}
+
+@media (min-width: 1024px) {
+  .mobileMenuButton {
+    display: none;
+  }
+}
+
+.mobileMenuWrapper {
+  width: 100%;
+  background-color: rgb(var(--color-background));
+  border-top: 1px solid rgb(var(--color-border));
+}
+
+.mobileMenuContainer {
+  padding: 1rem;
+}
+
+.mobileUserHeader {
+  padding: 1rem;
+  background-color: rgb(var(--color-background-offset));
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+.mobileUserInfo {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin-bottom: 1rem;
+}
+
+.avatarMobile {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid rgb(var(--color-primary));
+}
+
+.mobileUserName {
+  font-weight: 700;
+  font-size: 1rem;
+  margin: 0;
+}
+
+.mobileQuickLinks {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.mobilePrimaryBtn,
+.mobileSecondaryBtn {
+  display: block;
+  text-align: center;
+  padding: 0.75rem;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.mobilePrimaryBtn {
+  background-color: rgb(var(--color-primary));
+  color: white;
+}
+
+.mobileSecondaryBtn {
+  border: 1px solid rgb(var(--color-primary));
+  color: rgb(var(--color-primary));
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.mobileNavLink {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  padding: 0.85rem 1rem;
+  font-size: 1rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: rgb(var(--color-text-dark));
+  font-family: inherit;
+}
+
+.rotate180 {
+  transform: rotate(180deg);
+}
+
+.mobileSubmenu {
+  padding-left: 1rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  overflow: hidden;
+}
+
+.mobileSubmenuLink {
+  padding: 0.75rem 1rem;
+  color: rgb(var(--color-text-medium));
+  text-decoration: none;
+  border-radius: 6px;
+  font-size: 0.95rem;
+}
+
+.mobileLogoutBtn {
+  margin-top: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 1rem;
+  width: 100%;
+  background-color: #fef2f2;
+  color: #ef4444;
+  border: 1px solid #fee2e2;
+  border-radius: 8px;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+/* --- 8. Main & Footer --- */
+main {
+  flex-grow: 1;
+}
+
+.mobileMenuOverlay {
+  position: fixed;
+  top: 70px;
+  /* Altura do seu header */
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: white;
+  z-index: 999;
+  overflow-y: auto;
+  padding: 20px;
+}
+
+.mobileNav {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.mobileLink {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 12px;
+  text-decoration: none;
+  color: #333;
+  font-weight: 500;
+  border-bottom: 1px solid #eee;
+  background: none;
+  border-top: none;
+  border-left: none;
+  border-right: none;
+  width: 100%;
+  text-align: left;
+}
+
+.mobileSubmenu {
+  padding-left: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.logoutColor {
+  color: #ef4444;
+}
+
+/* Esconder o menu desktop no mobile se necessário */
+@media (max-width: 768px) {
+  .navDesktop {
+    display: none;
+  }
+}
+
+.footer {
+  background-color: rgb(var(--color-footer-bg));
+  padding: 4rem 0 2rem;
+  margin-top: 4rem;
+  border-top: 1px solid rgb(var(--color-border));
+}
+
+.footerGrid {
+  display: grid;
+  gap: 2.5rem;
+}
+
+@media (min-width: 768px) {
+  .footerGrid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .footerGrid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+.footerTitle {
+  font-family: var(--font-family-heading);
+  font-size: 1.5rem;
+  font-weight: 700;
+  margin-bottom: 1.5rem;
+  color: rgb(var(--color-footer-title));
+}
+
+.footerSubtitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.25rem;
+  color: rgb(var(--color-footer-subtitle));
+}
+
+.footerText {
+  line-height: 1.6;
+  color: rgb(var(--color-footer-text));
+  font-size: 0.95rem;
+}
+
+.footerLinkList {
+  list-style: none;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.footerLink {
+  text-decoration: none;
+  color: rgb(var(--color-footer-link));
+  transition: all 0.2s;
+}
+
+.footerLink:hover {
+  color: rgb(var(--color-primary));
+  text-decoration: underline;
+}
+
+.footerCopyrightWrapper {
+  margin-top: 3rem;
+  padding-top: 2rem;
+  border-top: 1px solid rgb(var(--color-footer-border));
+  text-align: center;
+  color: rgb(var(--color-footer-text));
+  font-size: 0.875rem;
+}

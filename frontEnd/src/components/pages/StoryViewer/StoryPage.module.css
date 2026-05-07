@@ -1,0 +1,189 @@
+/* --- 1. VARIÁVEIS E BASE --- */
+:root {
+  --bg: #fbf6ee;
+  --paper: #fffaf2;
+  --ink: #3a2b22;
+  --muted: #7b6a5e;
+  --line: rgba(58, 43, 34, .14);
+  --gold: #b8917b;
+  --gold-soft: #d8b49b;
+  --shadow: 0 18px 50px rgba(58, 43, 34, .10);
+  --radius: 22px;
+}
+
+/* --- 2. ESTRUTURA DE TELA CHEIA --- */
+.pageOverlay {
+ position: fixed; /* Fixa na tela toda */
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  overflow-y: auto; /* Permite scroll interno */
+  background-color: #fbf6ee !important; /* A cor bege premium */
+  z-index: 9999; /* Fica na frente de QUALQUER outro componente */
+  display: block;
+}
+
+/* Efeito de Grid (Papel Milimetrado) */
+.pageOverlay::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: 
+    linear-gradient(rgba(58, 43, 34, 0.03) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(58, 43, 34, 0.03) 1px, transparent 1px);
+  background-size: 36px 36px;
+  mask-image: radial-gradient(circle at center, black 35%, transparent 85%);
+  opacity: .18;
+  z-index: 0;
+}
+
+.closeHeader {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  z-index: 100000;
+}
+
+.closeBtn {
+  color: var(--ink) !important;
+  background-color: rgba(255, 255, 255, 0.3) !important;
+  backdrop-filter: blur(8px);
+}
+
+.storyWrapper {
+  background-color: #fbf6ee;
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+  min-height: 100%;
+}
+
+/* --- 3. CABEÇALHO --- */
+.header {
+  text-align: center;
+  padding: 80px 20px 40px;
+}
+
+.category {
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.85rem;
+  color: #c41212;
+  font-weight: 700;
+  display: block;
+  margin-bottom: 10px;
+}
+
+.title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(2.5rem, 8vw, 4.5rem);
+  line-height: 1.1;
+  margin: 15px 0;
+  font-weight: 900;
+}
+
+.meta {
+  color: var(--muted);
+  font-size: 0.95rem;
+  font-style: italic;
+}
+
+/* --- 4. IMAGEM DE CAPA --- */
+.imageContainer {
+  width: 100%;
+  line-height: 0;
+  margin-bottom: 50px;
+}
+
+.coverImage {
+  width: 100%;
+  height: auto;
+  max-height: 75vh;
+  object-fit: cover;
+  box-shadow: var(--shadow);
+}
+
+/* --- 5. CONTEÚDO (O TEXTO) --- */
+.content {
+  padding: 0 10% 80px; /* Recuo lateral para leitura */
+  font-family: 'Merriweather', Georgia, serif;
+  font-size: 1.3rem;
+  line-height: 1.8;
+  color: var(--ink);
+  width: 100%;
+  max-width: 100%; /* Mantendo a largura total que você pediu */
+}
+
+/* Letra Capitular (Primeira letra do primeiro parágrafo) */
+.content > p:first-of-type::first-letter {
+  float: left;
+  font-size: 5rem;
+  line-height: 0.8;
+  font-weight: bold;
+  padding-right: 15px;
+  padding-top: 8px;
+  color: #c41212;
+  font-family: 'Playfair Display', serif;
+}
+
+.content :global(p) {
+  margin-bottom: 2rem;
+  text-align: justify;
+}
+
+.content :global(blockquote) {
+  border-left: 4px solid var(--gold);
+  margin: 40px 0;
+  padding-left: 25px;
+  font-style: italic;
+  color: var(--muted);
+}
+
+/* --- 6. RODAPÉ E AUXILIARES --- */
+.footer {
+  padding: 60px 20px;
+  text-align: center;
+  border-top: 1px solid var(--line);
+}
+
+.footerLine {
+  width: 60px;
+  height: 2px;
+  background: var(--gold);
+  margin: 0 auto 20px;
+}
+
+.fullscreenLoader {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background: var(--bg);
+}
+
+.spinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid var(--line);
+  border-top: 3px solid var(--gold);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* --- 7. RESPONSIVIDADE --- */
+@media (max-width: 768px) {
+  .content {
+    padding: 0 20px 60px;
+    font-size: 1.15rem;
+  }
+  .title { font-size: 2.2rem; }
+  .header { padding-top: 100px; }
+  .content > p:first-of-type::first-letter {
+    font-size: 3.8rem;
+  }
+}

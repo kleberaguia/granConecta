@@ -1,0 +1,544 @@
+    /* --- Estilos Globais e Variáveis --- */
+    :root {
+      --primary-color: #a30e0c;
+      /* Cor principal (ex: vermelho escuro) */
+      --dark-grey: #333;
+      --light-grey: #f4f4f4;
+      --background-color: #f9f9f9;
+      --white: #ffffff;
+      --border-radius: 8px;
+      --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      margin: 0;
+      background-color: var(--background-color);
+      color: var(--dark-grey);
+    }
+
+    /* --- Helpers --- */
+    .section-header {
+      text-align: center;
+      margin-bottom: 48px;
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 16px;
+    }
+
+    .section-header p {
+      font-size: 1.1rem;
+      color: #555;
+    }
+
+    .line-clamp-2 {
+      display: -webkit-box;
+      /* -webkit-line-clamp: 2; */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+    .line-clamp-3 {
+      display: -webkit-box;
+      /* -webkit-line-clamp: 3; */
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+    }
+
+
+    /* --- Seção Hero --- */
+    .hero-section {
+      position: relative;
+      /* Necessário para o overlay e conteúdo */
+      height: 100vh;
+      display: grid;
+      place-items: center;
+      overflow: hidden;
+    }
+
+    .hero-image {
+      position: absolute;
+      inset: 50;
+      /* (top: 0, left: 0, right: 0, bottom: 0) */
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      z-index: 1;
+    }
+
+    .hero-overlay {
+      position: absolute;
+      inset: 0;
+      background-color: rgba(255, 255, 255, 0.3);
+      /* Seu bg-white/30 */
+      z-index: 2;
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 3;
+      text-align: center;
+      padding: 16px;
+      max-width: 1000px;
+    }
+
+    .hero-content h1 {
+      font-size: 3.5rem;
+      font-weight: 800;
+      color: var(--dark-grey);
+      margin-bottom: 24px;
+    }
+
+    .hero-content p {
+      font-size: 1.5rem;
+      color: var(--dark-grey);
+      margin-bottom: 32px;
+    }
+
+    .hero-buttons {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 16px;
+      justify-content: center;
+    }
+
+    /* --- Componente Botão Simples --- */
+    .simple-button {
+      display: inline-block;
+      padding: 12px 24px;
+      border-radius: var(--border-radius);
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1rem;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+    }
+
+    .primary-button {
+      background-color: var(--primary-color);
+      color: var(--white);
+      border-color: var(--primary-color);
+    }
+
+    .primary-button:hover {
+      background-color: #8b0c0a;
+      /* Tom mais escuro */
+    }
+
+    .secondary-button {
+      background-color: transparent;
+      color: var(--primary-color);
+      border-color: var(--primary-color);
+    }
+
+    .secondary-button:hover {
+      background-color: var(--primary-color);
+      color: var(--white);
+    }
+
+    .full-width {
+      width: 100%;
+      box-sizing: border-box;
+      /* Para o padding não quebrar o layout */
+      text-align: center;
+      margin-top: 16px;
+    }
+
+
+    /* --- Seção de Informações (Cards) --- */
+    .info-section {
+      padding: 80px 16px;
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 24px;
+    }
+
+    /* --- Componente Card Simples --- */
+    .simple-card {
+      background-color: var(--white);
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+      transition: box-shadow 0.3s ease;
+      overflow: hidden;
+      /* Garante que o conteúdo não vaze */
+    }
+
+    .simple-card:hover {
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    }
+
+    .card-header {
+      text-align: center;
+      padding: 24px 24px 16px;
+      border-bottom: 1px solid var(--light-grey);
+    }
+
+    .card-header h3 {
+      font-size: 1.25rem;
+      margin: 0;
+    }
+
+    .card-content {
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .schedule-item {
+      display: flex;
+      justify-content: space-between;
+      font-size: 0.9rem;
+    }
+
+    .tithing-info {
+      background-color: var(--light-grey);
+      padding: 12px;
+      border-radius: 4px;
+      font-size: 0.8rem;
+    }
+
+    .tithing-info p {
+      margin: 4px 0;
+    }
+
+
+    /* --- Seção de Notícias e Eventos --- */
+    .news-events-section {
+      padding: 80px 16px;
+      background-color: var(--white);
+      max-width: 1600px;
+      margin: 0 auto;
+    }
+
+    .news-events-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 48px;
+    }
+
+    /* Estilos para a lista de notícias/eventos */
+    .list-container {
+      display: flex;
+      flex-direction: column;
+      gap: 24px;
+    }
+
+    .list-item {
+      display: flex;
+      gap: 16px;
+      background-color: var(--background-color);
+      padding: 12px;
+      border-radius: var(--border-radius);
+      box-shadow: var(--box-shadow);
+    }
+
+    .list-item img {
+      width: 96px;
+      height: 96px;
+      object-fit: cover;
+      border-radius: 4px;
+      flex-shrink: 0;
+      /* Impede que a imagem encolha */
+    }
+
+    .list-item-content {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .list-item-content h4 {
+      font-size: 1.1rem;
+      margin: 0 0 8px;
+    }
+
+    .list-item-content p {
+      font-size: 0.9rem;
+      color: #555;
+      margin: 0 0 8px;
+    }
+
+    .list-item-content small {
+      font-size: 0.8rem;
+      color: #777;
+      margin-top: auto;
+      /* Empurra a data para baixo */
+    }
+
+    /* --- Seção Call to Action (CTA) --- */
+    .cta-section {
+      padding: 80px 16px;
+      background-color: var(--light-grey);
+      text-align: center;
+    }
+
+    .cta-section h2 {
+      font-size: 2.5rem;
+      margin-bottom: 16px;
+    }
+
+    .cta-section p {
+      font-size: 1.2rem;
+      margin-bottom: 32px;
+      max-width: 600px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* --- Estilos do Ícone do Card --- */
+
+    .card-header .card-icon {
+      /* Tamanho (h-12 w-12) */
+      height: 48px;
+      width: 48px;
+
+      /* Cor (text-primary) - Ajuste a cor se o nome da sua variável for outro */
+      color: var(--primary-color, #8B1E3F);
+
+      /* Centralizar (mx-auto) */
+      margin-left: auto;
+      margin-right: auto;
+
+      /* Espaçamento (mb-4) */
+      margin-bottom: 16px;
+    }
+
+    .propaganda-overlay {
+      position: fixed;
+      top: 100px;
+      /* Logo abaixo do header */
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: 90%;
+      max-width: 500px;
+      animation: slideInDown 0.5s ease-out, fadeOut 0.5s ease-in 3.5s forwards;
+    }
+
+    .propaganda-card-premium {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 20px;
+      border-radius: 20px;
+      box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.3), 0 10px 10px -5px rgba(0, 0, 0, 0.2);
+      border: 2px solid rgba(255, 255, 255, 0.2);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .propaganda-badge {
+      background: #fbbf24;
+      color: #000;
+      font-size: 10px;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 50px;
+      display: inline-block;
+      margin-bottom: 10px;
+    }
+
+    .propaganda-content {
+      display: flex;
+      gap: 15px;
+      align-items: center;
+    }
+
+    .propaganda-img {
+      width: 80px;
+      height: 80px;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 2px solid white;
+    }
+
+    .propaganda-btn {
+      width: 100%;
+      margin-top: 15px;
+      padding: 10px;
+      border-radius: 10px;
+      border: none;
+      background: white;
+      color: #1e3a8a;
+      font-weight: bold;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .propaganda-btn:active {
+      transform: scale(0.95);
+    }
+
+    .propaganda-btn:hover {
+      background: #f0f0f0;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .propaganda-card-premium {
+      cursor: pointer;
+      /* Opcional: faz o card todo parecer clicável */
+    }
+
+    .propaganda-overlay {
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: 90%;
+      max-width: 450px;
+      /* Animação de entrada elástica e saída suave */
+      animation:
+        bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards,
+        fadeOut 0.5s ease-in 7.5s forwards;
+    }
+
+    .propaganda-card-premium {
+      background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+      color: white;
+      padding: 24px;
+      border-radius: 24px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      position: relative;
+      overflow: hidden;
+      /* Importante para o brilho não vazar */
+    }
+
+    /* ✨ Efeito de Brilho (Shimmer) que passa pelo card */
+    .propaganda-card-premium::after {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -60%;
+      width: 20%;
+      height: 200%;
+      background: rgba(255, 255, 255, 0.2);
+      transform: rotate(30deg);
+      animation: shimmer 3s infinite delay 1s;
+    }
+
+    /* Keyframes para a "gracinha" da entrada */
+    @keyframes bounceIn {
+      0% {
+        transform: translate(-50%, -200px) scale(0.7);
+        opacity: 0;
+      }
+
+      70% {
+        transform: translate(-50%, 20px) scale(1.05);
+        opacity: 1;
+      }
+
+      100% {
+        transform: translate(-50%, 0) scale(1);
+        opacity: 1;
+      }
+    }
+
+    @keyframes shimmer {
+      0% {
+        left: -60%;
+      }
+
+      100% {
+        left: 150%;
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        transform: translate(-50%, -20px);
+        visibility: hidden;
+      }
+    }
+
+    /* Deixando a imagem redondinha e com borda animada */
+    .propaganda-img {
+      width: 90px;
+      height: 90px;
+      border-radius: 50%;
+      /* Foto circular fica bem em propagandas */
+      object-fit: cover;
+      border: 3px solid #fbbf24;
+      /* Borda dourada para o destaque */
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
+    }
+
+    .propaganda-overlay {
+      position: fixed;
+      top: 100px;
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: 9999;
+      width: 90%;
+      max-width: 450px;
+      transition: all 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+      opacity: 0;
+      pointer-events: none;
+    }
+
+    .propaganda-overlay.show {
+      opacity: 1;
+      top: 100px;
+      /* Posição final */
+      pointer-events: all;
+      /* Reativa o bounce na entrada */
+      animation: bounceIn 0.8s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+    }
+
+    .propaganda-overlay.hide {
+      opacity: 0;
+      transform: translate(-50%, -150%) scale(0.8);
+      /* Sobe e diminui */
+      pointer-events: none;
+      transition: all 0.6s ease-in;
+    }
+
+    @keyframes slideInDown {
+      from {
+        transform: translate(-50%, -100px);
+        opacity: 0;
+      }
+
+      to {
+        transform: translate(-50%, 0);
+        opacity: 1;
+      }
+    }
+
+    @keyframes fadeOut {
+      to {
+        opacity: 0;
+        visibility: hidden;
+      }
+    }
+
+    /* --- Media Queries (Responsividade) --- */
+    @media (max-width: 900px) {
+      .news-events-grid {
+        grid-template-columns: 1fr;
+        /* Colunas empilhadas em telas menores */
+      }
+    }
+
+    @media (max-width: 768px) {
+      .hero-content h1 {
+        font-size: 2.5rem;
+      }
+
+      .hero-content p {
+        font-size: 1.2rem;
+      }
+    }

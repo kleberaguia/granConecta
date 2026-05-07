@@ -1,0 +1,279 @@
+
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Inter:wght@400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+:root {
+  /* Cores */
+  --color-primary: 0 74 153;           /* #004a99 */
+  --color-primary-light: 230 240 255;  /* #e6f0ff */
+  --color-secondary: 250 204 21;       /* #facc15 */
+  --color-background: 255 255 255;     /* #ffffff */
+  --color-background-offset: 249 250 251; /* #f9fafb */
+  --color-border: 226 232 240;        /* #e2e8f0 */
+
+  /* Cores de Texto */
+  --color-text: 45 55 72;             /* #2d3748 (substituindo --color-text-dark) */
+  --color-text-dark: 45 55 72;        /* #2d3748 */
+  --color-text-medium: 85 85 85;      /* #555 */
+  --color-text-light: 248 248 248;     /* #f8f8f8 */
+
+  /* Header & Footer (Valores padrão adicionados) */
+  --color-header-bg: 255 255 255;     /* #ffffff (Valor padrão que estava faltando) */
+  --color-footer-bg: 0 42 85;         /* #002a55 */
+
+  /* Fontes e Tamanhos (Sem mudança) */
+  --font-family-sans: 'Inter', system-ui, -apple-system, BlinkMacSystemFont,
+    'Segoe UI', Roboto, 'Helvetica Neue', Arial, 'Noto Sans', sans-serif;
+  --font-family-heading: 'Georgia', 'Times New Roman', Times, serif;
+  --header-height: 80px;
+  --container-width: 1200px;
+  --container-padding: 1rem;
+
+  --color-dropdown-text: 45 55 72;
+
+  --color-footer-title: 255 255 255;       /* Branco para o título */
+  --color-footer-subtitle: 255 255 255;    /* Branco para o subtítulo */
+  --color-footer-text: 248 248 248;        /* Branco-acinzentado (do seu --color-text-light) */
+  --color-footer-link: 248 248 248;        /* Branco-acinzentado para links */
+  --color-footer-link-hover: 250 204 21;   /* Dourado (do seu --color-secondary) */
+  --color-footer-icon: 250 204 21;         /* Dourado (do seu --color-secondary) */
+  --color-footer-border: 85 85 85;
+}
+
+/* * ===========================================
+ * TEMA NATAL (LIMPO E CORRIGIDO)
+ * ===========================================
+ * Bloco limpo, sem duplicatas.
+ */
+.tema-natal {
+  /* Fundos (Unificados) */
+  --color-header-bg: 60 0 0;          /* Vermelho escuro */
+  --color-footer-bg: 60 0 0;          /* Vermelho escuro */
+
+  /* Cores Principais (Sobrescritas) */
+  --color-primary: 255 44 44;         /* Vermelho vivo (p/ logo e links ativos) */
+  --color-primary-light: 255 200 200; /* Vermelho claro */
+  --color-text-secondary: 34 139 34;    /* Verde Natal */
+  --color-border: 200 0 0;            /* Vermelho médio */
+  
+  /* Textos (Sobrescritos) */
+  --color-text: 255 255 255;          /* Branco */
+  --color-text-dark: var(--color-text); /* <-- Isso deixa o menu branco */
+  --color-text-medium: var(--color-text); /* <-- Deixa textos médios brancos */
+
+  /* Variáveis Específicas do Footer */
+  --color-footer-title: 255 44 44;
+  --color-footer-subtitle: 34 139 34;
+  --color-footer-text: 255 255 255;
+  --color-footer-link: 34 139 34;
+  --color-footer-link-hover: 255 44 44;
+  --color-footer-icon: 255 44 44;
+  --color-footer-border: 200 0 0;
+}
+
+/* Tema da Páscoa (Fundo Roxo Claro) */
+.tema-pascoa {
+  --color-primary: 74 20 140;
+  /* Roxo Páscoa */
+  --color-primary-5: 243 229 245;
+  /* Roxo claro */
+  --color-header-bg: 243 229 245;
+  /* Roxo claro */
+
+  /* --- CORES DO FOOTER (TEMA PÁSCOA: CLARO) --- */
+  --color-footer-bg: 243 229 245;
+  /* Roxo claro */
+  --color-footer-title: 74 20 140;
+  /* Roxo Principal */
+  --color-footer-subtitle: 74 20 140;
+  /* Roxo Principal */
+  --color-footer-text: 82 56 100;
+  /* #523864 (Roxo Escuro) */
+  --color-footer-link: 82 56 100;
+  /* Roxo Escuro */
+  --color-footer-link-hover: 74 20 140;
+  /* Roxo Principal */
+  --color-footer-icon: 74 20 140;
+  /* Roxo Principal */
+  --color-footer-border: 225 190 231;
+  /* #E1BEE7 (Roxo + claro) */
+}
+
+/* Tema Mariano (Fundo Azul Claro) */
+.tema-mariano {
+  --color-primary: 0 77 153;
+  /* Azul Mariano */
+  --color-primary-5: 224 242 247;
+  /* Azul claro */
+  --color-header-bg: 224 242 247;
+  /* Azul claro */
+
+  /* --- CORES DO FOOTER (TEMA MARIANO: CLARO) --- */
+  --color-footer-bg: 224 242 247;
+  /* Azul claro */
+  --color-footer-title: 0 77 153;
+  /* Azul Principal */
+  --color-footer-subtitle: 0 77 153;
+  /* Azul Principal */
+  --color-footer-text: 52 73 94;
+  /* #34495E (Azul Escuro) */
+  --color-footer-link: 52 73 94;
+  /* Azul Escuro */
+  --color-footer-link-hover: 0 77 153;
+  /* Azul Principal */
+  --color-footer-icon: 0 77 153;
+  /* Azul Principal */
+  --color-footer-border: 179 229 252;
+  /* #B3E5FC (Azul + claro) */
+}
+
+.nav-link-animated {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary);
+  /* <-- MÁGICA! */
+
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+
+.nav-link-animated:hover::after {
+  transform: scaleX(1);
+}
+
+.nav-link-animated-active {
+  color: var(--color-primary);
+  /* <-- MÁGICA! */
+  font-weight: 600;
+}
+
+.nav-link-animated-active::after {
+  transform: scaleX(1);
+}
+
+/* Para o Card de Liturgia */
+.simple-card {
+  /* ... */
+  /* O '4px' e a cor vêm do JSON! */
+  border-left: var(--card-border-left, 0); 
+}
+
+/* Para a Seção de História */
+.generic-content-section p {
+  /* O 'Merriweather' e o '1.7' vêm do JSON! */
+  font-family: var(--section-font-family, 'Inter', sans-serif);
+  line-height: var(--section-line-height, 1.5);
+}
+
+/* Para a Imagem da Galeria */
+.gallery-item {
+  /* A '2px' e a cor vêm do JSON! */
+  border: var(--item-border, 1px solid #eee); 
+}
+
+.gallery-item figcaption {
+  /* A cor dourada vem do JSON! */
+  color: var(--item-caption-color, #333);
+}
+
+.simpleButton {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  cursor: pointer;
+  /* Borda transparente para evitar "salto" no hover */
+  border: 2px solid transparent; 
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+/* 2. Botão Primário */
+.primaryButton {
+  background-color: rgb(var(--color-primary));
+  color: rgb(var(--color-text-light)); /* Texto claro */
+  border-color: rgb(var(--color-primary));
+}
+
+/* 3. Botão Primário (Hover) <-- A CORREÇÃO QUE VOCÊ QUER */
+.primaryButton:hover {
+  background-color: rgb(var(--color-background)); /* Fundo branco */
+  color: rgb(var(--color-text-dark)); /* <-- O TEXTO ESCURO */
+  border-color: rgb(var(--color-primary));
+}
+
+/* 4. Botão Secundário */
+.secondaryButton {
+  background-color: transparent;
+  color: rgb(var(--color-primary));
+  border-color: rgb(var(--color-primary));
+}
+
+/* 5. Botão Secundário (Hover) */
+.secondaryButton:hover {
+  background-color: rgb(var(--color-primary));
+  color: rgb(var(--color-text-light));
+  border-color: rgb(var(--color-primary));
+}
+
+.line-clamp-2 {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+/* Define a base para a animação */
+.nav-link-animated {
+  position: relative;
+  text-decoration: none;
+  display: inline-block;
+}
+
+/* Cria a linha de sublinhado (inicialmente escondida) */
+.nav-link-animated::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; /* Posição da linha (ajuste conforme necessário) */
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: var(--color-primary, #D4AF37); /* Usa a cor primary (dourado) */
+  
+  /* Animação */
+  transform: scaleX(0); /* Começa com largura 0 */
+  transform-origin: left;
+  transition: transform 0.3s ease-out;
+}
+
+/* Mostra a linha no hover */
+.nav-link-animated:hover::after {
+  transform: scaleX(1); /* Anima para largura 100% */
+}
+
+
+.nav-link-animated-active {
+  color: var(--color-primary, #D4AF37); /* Deixa o texto do link dourado */
+  font-weight: 600;
+}
+
+.nav-link-animated-active::after {
+  transform: scaleX(1); /* Deixa a linha visível */
+}

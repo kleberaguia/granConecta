@@ -1,0 +1,999 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{NOME_MARCA}} — Cardápio Gourmet</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fraunces:wght@600;700&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --bg: #fff8f1;
+      --surface: #ffffff;
+      --surface-2: #fff1e4;
+      --text: #2f1d12;
+      --muted: #7b5b49;
+      --primary: #b6461f;
+      --primary-2: #e86d2f;
+      --accent: #ffcc7a;
+      --line: rgba(47, 29, 18, 0.12);
+      --shadow: 0 18px 45px rgba(104, 55, 24, 0.12);
+      --radius-xl: 28px;
+      --radius-lg: 20px;
+      --radius-md: 14px;
+      --container: 1180px;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      font-family: "Inter", sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(255, 204, 122, 0.35), transparent 26%),
+        radial-gradient(circle at bottom right, rgba(232, 109, 47, 0.12), transparent 28%),
+        var(--bg);
+      overflow-x: hidden;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    img {
+      display: block;
+      max-width: 100%;
+    }
+
+    .container {
+      width: min(var(--container), calc(100% - 32px));
+      margin: 0 auto;
+    }
+
+    .topbar {
+      position: sticky;
+      top: 0;
+      z-index: 50;
+      backdrop-filter: blur(14px);
+      background: rgba(255, 248, 241, 0.82);
+      border-bottom: 1px solid var(--line);
+    }
+
+    .topbar-inner {
+      min-height: 78px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      font-family: "Fraunces", serif;
+      font-size: 30px;
+      font-weight: 700;
+      color: var(--primary);
+    }
+
+    .brand-mark {
+      width: 14px;
+      height: 14px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary-2), var(--accent));
+      box-shadow: 0 0 18px rgba(232, 109, 47, 0.35);
+    }
+
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--muted);
+    }
+
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+
+    .nav-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 46px;
+      padding: 0 18px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      font-weight: 700;
+      box-shadow: 0 12px 28px rgba(182, 70, 31, 0.22);
+    }
+
+    .hero {
+      padding: 34px 0 18px;
+    }
+
+    .hero-box {
+      display: grid;
+      grid-template-columns: 1.05fr 0.95fr;
+      gap: 24px;
+      align-items: stretch;
+      background: linear-gradient(135deg, #fff6ec, #fffdf9);
+      border: 1px solid var(--line);
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      box-shadow: var(--shadow);
+    }
+
+    .hero-copy {
+      padding: 42px 38px;
+    }
+
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      min-height: 34px;
+      padding: 0 14px;
+      border-radius: 999px;
+      background: #fff0df;
+      color: var(--primary);
+      font-size: 12px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+
+    .hero-copy h1 {
+      margin: 0 0 14px;
+      font-family: "Fraunces", serif;
+      font-size: clamp(2.4rem, 4.8vw, 4.6rem);
+      line-height: 0.95;
+      letter-spacing: -0.03em;
+    }
+
+    .hero-copy h1 .accent {
+      color: var(--primary);
+    }
+
+    .hero-copy p {
+      margin: 0 0 22px;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.75;
+      max-width: 580px;
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .btn-primary,
+    .btn-secondary {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 50px;
+      padding: 0 20px;
+      border-radius: 999px;
+      font-weight: 700;
+      transition: transform .2s ease;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+    }
+
+    .btn-secondary {
+      border: 1px solid var(--line);
+      background: #fff;
+      color: var(--text);
+    }
+
+    .btn-primary:hover,
+    .btn-secondary:hover {
+      transform: translateY(-2px);
+    }
+
+    .hero-visual {
+      min-height: 460px;
+      position: relative;
+    }
+
+    .hero-visual img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .hero-float {
+      position: absolute;
+      right: 20px;
+      bottom: 20px;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.88);
+      backdrop-filter: blur(8px);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.08);
+    }
+
+    .hero-float strong {
+      display: block;
+      color: var(--primary);
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin-bottom: 6px;
+    }
+
+    .hero-float span {
+      font-weight: 800;
+      font-size: 20px;
+    }
+
+    .section {
+      padding: 26px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 16px;
+      margin-bottom: 18px;
+    }
+
+    .section-head h2 {
+      margin: 0;
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.8rem, 3vw, 2.8rem);
+    }
+
+    .section-head p {
+      margin: 0;
+      max-width: 520px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .promo-shell {
+      position: relative;
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--line);
+      background: var(--surface);
+      box-shadow: var(--shadow);
+    }
+
+    .promo-track {
+      display: flex;
+      transition: transform .45s ease;
+      will-change: transform;
+    }
+
+    .promo-slide {
+      min-width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      align-items: stretch;
+      background: linear-gradient(135deg, #fff4e8, #fffdf9);
+    }
+
+    .promo-copy {
+      padding: 34px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .promo-tag {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      min-height: 32px;
+      padding: 0 12px;
+      border-radius: 999px;
+      background: #ffe5c1;
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 800;
+      letter-spacing: .08em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .promo-copy h3 {
+      margin: 0 0 10px;
+      font-family: "Fraunces", serif;
+      font-size: clamp(1.8rem, 3vw, 3rem);
+      line-height: 1;
+    }
+
+    .promo-copy p {
+      margin: 0 0 18px;
+      color: var(--muted);
+      line-height: 1.7;
+    }
+
+    .promo-price {
+      margin-bottom: 18px;
+      font-family: "Fraunces", serif;
+      font-size: 34px;
+      color: var(--primary);
+      font-weight: 700;
+    }
+
+    .promo-image {
+      min-height: 360px;
+    }
+
+    .promo-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .promo-controls {
+      position: absolute;
+      left: 18px;
+      right: 18px;
+      bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      pointer-events: none;
+    }
+
+    .promo-arrows {
+      display: flex;
+      gap: 10px;
+      pointer-events: auto;
+    }
+
+    .promo-btn {
+      width: 42px;
+      height: 42px;
+      border: none;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      color: var(--text);
+      font-size: 18px;
+      cursor: pointer;
+      box-shadow: 0 10px 24px rgba(0,0,0,0.08);
+    }
+
+    .promo-dots {
+      display: flex;
+      gap: 8px;
+      pointer-events: auto;
+    }
+
+    .promo-dot {
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: rgba(47,29,18,.2);
+      border: none;
+      cursor: pointer;
+      padding: 0;
+    }
+
+    .promo-dot.active {
+      background: var(--primary);
+    }
+
+    .catalog-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+    }
+
+    .product-card {
+      background: var(--surface);
+      border: 1px solid var(--line);
+      border-radius: 24px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform .22s ease, box-shadow .22s ease;
+    }
+
+    .product-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 24px 50px rgba(104, 55, 24, 0.16);
+    }
+
+    .product-thumb {
+      position: relative;
+      height: 240px;
+      overflow: hidden;
+    }
+
+    .product-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .product-badge {
+      position: absolute;
+      top: 14px;
+      left: 14px;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.92);
+      color: var(--primary);
+      font-size: 11px;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+    }
+
+    .product-body {
+      padding: 18px;
+    }
+
+    .product-body h3 {
+      margin: 0 0 8px;
+      font-size: 20px;
+      font-weight: 800;
+    }
+
+    .product-body p {
+      margin: 0 0 14px;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.65;
+      min-height: 44px;
+    }
+
+    .product-footer {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .price {
+      font-family: "Fraunces", serif;
+      color: var(--primary);
+      font-size: 30px;
+      font-weight: 700;
+    }
+
+    .mini-btn {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 40px;
+      padding: 0 15px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, var(--primary), var(--primary-2));
+      color: #fff;
+      font-weight: 700;
+      font-size: 14px;
+    }
+
+    .footer {
+      margin-top: 18px;
+      border-top: 1px solid var(--line);
+      background: #fff3e7;
+    }
+
+    .footer-inner {
+      padding: 34px 0 40px;
+      display: grid;
+      grid-template-columns: 1.1fr .9fr .9fr;
+      gap: 22px;
+    }
+
+    .footer-brand h3 {
+      margin: 0 0 10px;
+      font-family: "Fraunces", serif;
+      font-size: 28px;
+      color: var(--primary);
+    }
+
+    .footer-brand p,
+    .footer-col p,
+    .footer-col a {
+      color: var(--muted);
+      line-height: 1.8;
+      font-size: 14px;
+    }
+
+    .footer-col h4 {
+      margin: 0 0 10px;
+      font-size: 14px;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--text);
+    }
+
+    .footer-bottom {
+      border-top: 1px solid var(--line);
+      padding: 16px 0 24px;
+      color: var(--muted);
+      font-size: 13px;
+      display: flex;
+      justify-content: space-between;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    @media (max-width: 1100px) {
+      .catalog-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .hero-box,
+      .promo-slide,
+      .footer-inner {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    @media (max-width: 720px) {
+      .topbar-inner {
+        min-height: auto;
+        padding: 16px 0;
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero-copy,
+      .promo-copy {
+        padding: 24px 20px;
+      }
+
+      .catalog-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-visual {
+        min-height: 360px;
+      }
+
+      .promo-image {
+        min-height: 240px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="topbar" id="topo">
+      <div class="container topbar-inner">
+        <a class="brand" href="#hero">
+          <span class="brand-mark"></span>
+          {{NOME_MARCA}}
+        </a>
+
+        <nav class="nav-links">
+          <a href="#hero">Início</a>
+          <a href="#promocoes">Promoções</a>
+          <a href="#lanches">Lanches</a>
+          <a href="#bebidas">Bebidas</a>
+          <a href="#sobremesas">Sobremesas</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <a class="nav-cta" href="#contato">{{CTA_PRINCIPAL}}</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="container hero-box">
+          <div class="hero-copy">
+            <div class="hero-badge">{{HERO_BADGE}}</div>
+            <h1>
+              {{HERO_TITULO_PARTE1}}
+              <span class="accent">{{HERO_TITULO_GRADIENTE}}</span>
+            </h1>
+            <p>{{HERO_SUBTITULO}}</p>
+
+            <div class="hero-actions">
+              <a class="btn-primary" href="#contato">{{CTA_PRINCIPAL}}</a>
+              <a class="btn-secondary" href="#lanches">Ver cardápio</a>
+            </div>
+
+            <div class="hero-meta">
+              <span>Artesanal</span>
+              <span>Entrega rápida</span>
+              <span>Combos exclusivos</span>
+            </div>
+          </div>
+
+          <div class="hero-visual">
+            <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200" alt="Lanche destaque" />
+            <div class="hero-float">
+              <strong>Destaque da semana</strong>
+              <span>Combo Signature</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="promocoes">
+        <div class="container">
+          <div class="section-head">
+            <h2>Promoções da casa</h2>
+            <p>Ofertas especiais para destacar combos, lançamentos e campanhas sazonais.</p>
+          </div>
+
+          <div class="promo-shell">
+            <div class="promo-track" id="promoTrack">
+
+              <article class="promo-slide">
+                <div class="promo-copy">
+                  <span class="promo-tag">Oferta especial</span>
+                  <h3>Combo Burger + Fritas + Refri</h3>
+                  <p>Uma combinação irresistível para quem quer sabor premium com preço promocional.</p>
+                  <div class="promo-price">R$ 29,90</div>
+                  <a class="btn-primary" href="#contato">Quero pedir</a>
+                </div>
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200" alt="Promoção 1" />
+                </div>
+              </article>
+
+              <article class="promo-slide">
+                <div class="promo-copy">
+                  <span class="promo-tag">Lançamento</span>
+                  <h3>Milkshake + Brownie no combo</h3>
+                  <p>Perfeito para vender sobremesas e elevar o ticket médio com uma oferta visual forte.</p>
+                  <div class="promo-price">R$ 24,90</div>
+                  <a class="btn-primary" href="#contato">Aproveitar</a>
+                </div>
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1572490122747-3968b75cc699?q=80&w=1200" alt="Promoção 2" />
+                </div>
+              </article>
+
+              <article class="promo-slide">
+                <div class="promo-copy">
+                  <span class="promo-tag">Happy hour</span>
+                  <h3>2 burgers por preço especial</h3>
+                  <p>Ideal para campanhas de fim de tarde, casal ou pedidos compartilhados.</p>
+                  <div class="promo-price">R$ 49,90</div>
+                  <a class="btn-primary" href="#contato">Pedir agora</a>
+                </div>
+                <div class="promo-image">
+                  <img src="https://images.unsplash.com/photo-1550547660-d9450f859349?q=80&w=1200" alt="Promoção 3" />
+                </div>
+              </article>
+
+            </div>
+
+            <div class="promo-controls">
+              <div class="promo-arrows">
+                <button class="promo-btn" id="prevPromo" aria-label="Anterior">‹</button>
+                <button class="promo-btn" id="nextPromo" aria-label="Próximo">›</button>
+              </div>
+
+              <div class="promo-dots" id="promoDots"></div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="lanches">
+        <div class="container">
+          <div class="section-head">
+            <h2>Lanches</h2>
+            <p>Os destaques principais do cardápio, com foco em venda visual e apresentação premium.</p>
+          </div>
+
+          <div class="catalog-grid">
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=900" alt="Lanche 1" />
+                <span class="product-badge">Best seller</span>
+              </div>
+              <div class="product-body">
+                <h3>Classic Gold Burger</h3>
+                <p>Pão brioche, blend especial, cheddar cremoso e molho da casa.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 34,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1550317138-10000687a72b?q=80&w=900" alt="Lanche 2" />
+                <span class="product-badge">Chef's pick</span>
+              </div>
+              <div class="product-body">
+                <h3>Smoked House</h3>
+                <p>Bacon crocante, cebola caramelizada e acabamento defumado.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 39,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1520072959219-c595dc870360?q=80&w=900" alt="Lanche 3" />
+                <span class="product-badge">Novo</span>
+              </div>
+              <div class="product-body">
+                <h3>Truffle Melt</h3>
+                <p>Queijo derretido, maionese trufada e sabor marcante.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 42,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1572802419224-296b0aeee0d9?q=80&w=900" alt="Lanche 4" />
+                <span class="product-badge">Signature</span>
+              </div>
+              <div class="product-body">
+                <h3>Signature Crispy</h3>
+                <p>Crocância, frescor e montagem visual de destaque.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 37,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="bebidas">
+        <div class="container">
+          <div class="section-head">
+            <h2>Bebidas</h2>
+            <p>Uma seção própria para refrigerantes, sucos, shakes e bebidas especiais.</p>
+          </div>
+
+          <div class="catalog-grid">
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1544145945-f90425340c7e?q=80&w=900" alt="Bebida 1" />
+                <span class="product-badge">Refrescante</span>
+              </div>
+              <div class="product-body">
+                <h3>Limonada da Casa</h3>
+                <p>Natural, equilibrada e perfeita para acompanhar combos especiais.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 9,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1622597467836-f3285f2131b8?q=80&w=900" alt="Bebida 2" />
+                <span class="product-badge">Premium</span>
+              </div>
+              <div class="product-body">
+                <h3>Milkshake Creamy</h3>
+                <p>Textura intensa, visual elegante e alta percepção de valor.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 16,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1513558161293-cdaf765ed2fd?q=80&w=900" alt="Bebida 3" />
+                <span class="product-badge">Clássico</span>
+              </div>
+              <div class="product-body">
+                <h3>Refrigerante Lata</h3>
+                <p>Ideal para destacar opções práticas e ampliar o ticket médio.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 7,00</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1497534446932-c925b458314e?q=80&w=900" alt="Bebida 4" />
+                <span class="product-badge">Natural</span>
+              </div>
+              <div class="product-body">
+                <h3>Suco Especial</h3>
+                <p>Uma escolha leve para complementar o menu com sofisticação.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 12,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="sobremesas">
+        <div class="container">
+          <div class="section-head">
+            <h2>Sobremesas</h2>
+            <p>Espaço para brownies, cookies, churros, milkshakes e outros itens de alto apelo visual.</p>
+          </div>
+
+          <div class="catalog-grid">
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1606313564200-e75d5e30476c?q=80&w=900" alt="Sobremesa 1" />
+                <span class="product-badge">Mais pedido</span>
+              </div>
+              <div class="product-body">
+                <h3>Brownie Cremoso</h3>
+                <p>Textura intensa e apresentação perfeita para destacar em vitrine.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 14,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1551024601-bec78aea704b?q=80&w=900" alt="Sobremesa 2" />
+                <span class="product-badge">Doce destaque</span>
+              </div>
+              <div class="product-body">
+                <h3>Cookie Recheado</h3>
+                <p>Visual marcante, alto desejo e excelente para campanhas promocionais.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 11,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1488477181946-6428a0291777?q=80&w=900" alt="Sobremesa 3" />
+                <span class="product-badge">Premium</span>
+              </div>
+              <div class="product-body">
+                <h3>Taça Gelada</h3>
+                <p>Ideal para reforçar uma linha de sobremesas sofisticadas.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 18,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+
+            <article class="product-card">
+              <div class="product-thumb">
+                <img src="https://images.unsplash.com/photo-1563805042-7684c019e1cb?q=80&w=900" alt="Sobremesa 4" />
+                <span class="product-badge">Novo</span>
+              </div>
+              <div class="product-body">
+                <h3>Donut Especial</h3>
+                <p>Opção visualmente forte para completar a vitrine doce.</p>
+                <div class="product-footer">
+                  <span class="price">R$ 13,90</span>
+                  <a class="mini-btn" href="#contato">Pedir</a>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="contato">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <h3>{{NOME_MARCA}}</h3>
+          <p>{{HERO_SUBTITULO}}</p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Navegação</h4>
+          <p><a href="#hero">Início</a></p>
+          <p><a href="#promocoes">Promoções</a></p>
+          <p><a href="#lanches">Lanches</a></p>
+        </div>
+
+        <div class="footer-col">
+          <h4>Contato</h4>
+          <p>{{CTA_LINK}}</p>
+          <p>ID: {{USUARIO_ID}}</p>
+        </div>
+      </div>
+
+      <div class="container footer-bottom">
+        <span>© 2026 {{NOME_MARCA}}</span>
+        <span>E-commerce gourmet de lanches</span>
+      </div>
+    </footer>
+  </div>
+
+  <script>
+    document.addEventListener("click", function (e) {
+      const link = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const target = document.querySelector(href);
+      if (target) {
+        e.preventDefault();
+        target.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
+
+    const promoTrack = document.getElementById("promoTrack");
+    const slides = Array.from(promoTrack.children);
+    const dotsWrap = document.getElementById("promoDots");
+    const prevBtn = document.getElementById("prevPromo");
+    const nextBtn = document.getElementById("nextPromo");
+
+    let currentIndex = 0;
+
+    function renderDots() {
+      dotsWrap.innerHTML = "";
+      slides.forEach((_, index) => {
+        const dot = document.createElement("button");
+        dot.className = "promo-dot" + (index === currentIndex ? " active" : "");
+        dot.addEventListener("click", () => goToSlide(index));
+        dotsWrap.appendChild(dot);
+      });
+    }
+
+    function goToSlide(index) {
+      currentIndex = (index + slides.length) % slides.length;
+      promoTrack.style.transform = "translateX(-" + (currentIndex * 100) + "%)";
+      renderDots();
+    }
+
+    prevBtn.addEventListener("click", () => goToSlide(currentIndex - 1));
+    nextBtn.addEventListener("click", () => goToSlide(currentIndex + 1));
+
+    renderDots();
+
+    setInterval(() => {
+      goToSlide(currentIndex + 1);
+    }, 5000);
+  </script>
+</body>
+
+</html>

@@ -1,0 +1,78 @@
+.bookContainer {
+  background-color: #f5f5f5; /* Cor da mesa/fundo */
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-family: 'Merriweather', 'Georgia', serif; /* Fonte clássica */
+}
+
+.book {
+  background-color: #fffbf0; /* Cor de papel envelhecido suave */
+  width: 100%;
+  max-width: 900px;
+  min-height: 600px;
+  box-shadow: 
+    0 20px 50px rgba(0,0,0,0.2), /* Sombra externa */
+    inset 0 0 60px rgba(0,0,0,0.05); /* Vinheta interna */
+  display: flex;
+  position: relative;
+  border-radius: 4px;
+}
+
+/* Efeito da lombada do livro no meio */
+.book::before {
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 0;
+  bottom: 0;
+  width: 2px;
+  background: linear-gradient(to right, rgba(0,0,0,0.05), rgba(0,0,0,0.2), rgba(0,0,0,0.05));
+  transform: translateX(-50%);
+}
+
+.pageLeft, .pageRight {
+  flex: 1;
+  padding: 40px;
+  font-size: 1.1rem;
+  line-height: 1.8;
+  color: #2c1e12;
+}
+
+.pageLeft {
+  border-right: 1px solid #e0e0e0;
+  padding-right: 50px;
+}
+
+.pageRight {
+  padding-left: 50px;
+}
+
+.chapterTitle {
+  font-family: 'Cinzel', serif; /* Fonte litúrgica */
+  font-size: 2rem;
+  color: #8b0000; /* Vermelho litúrgico */
+  text-align: center;
+  margin-bottom: 30px;
+  border-bottom: 2px solid #8b0000;
+  padding-bottom: 10px;
+}
+
+.firstLetter {
+  float: left;
+  font-size: 3.5rem;
+  line-height: 0.8;
+  padding-right: 10px;
+  padding-top: 5px;
+  font-family: 'Cinzel', serif;
+  color: #8b0000;
+}
+
+/* Responsividade para celular: Livro vira página única */
+@media (max-width: 768px) {
+  .book { flex-direction: column; }
+  .book::before { display: none; }
+  .pageLeft { border-right: none; border-bottom: 1px solid #eee; }
+}

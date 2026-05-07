@@ -1,0 +1,115 @@
+/* 1. VÍDEO E MÍDIA: RESOLVENDO O ENCAIXE */
+.hero-media-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Faz o vídeo preencher tudo sem distorcer */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.media-box {
+  position: absolute;
+  inset: 0;
+  background: #000;
+}
+
+/* 2. NAVBAR SIMULADA */
+.simulated-nav {
+  height: 60px;
+  display: flex;
+  align-items: center;
+  background: #fff;
+  border-bottom: 1px solid #eee;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: 0 20px;
+}
+
+.nav-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.logo { font-weight: 900; letter-spacing: -1px; }
+
+.nav-links { display: flex; gap: 20px; align-items: center; font-size: 14px; }
+.nav-btn { background: #000; color: #fff; border: none; padding: 8px 15px; border-radius: 5px; }
+
+/* 3. AJUSTES DE MODOS */
+.preview-window.desktop {
+  width: 95%;
+  height: 80vh;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+}
+
+/* No desktop, o Hero pode ser mais largo e elegante */
+.preview-window.desktop .hero-viewport {
+  height: 550px;
+}
+
+.preview-window.mobile {
+  width: 320px;
+  height: 650px;
+  border: 12px solid #1a1a1a;
+  border-radius: 40px;
+}
+
+/* 4. CONTROLES DE VISUALIZAÇÃO */
+.view-controls {
+  margin-bottom: 15px;
+  display: flex;
+  gap: 10px;
+}
+
+.view-controls button {
+  padding: 8px 20px;
+  border-radius: 20px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.view-controls button.active {
+  background: #000;
+  color: #fff;
+  border-color: #000;
+}
+
+/* Dentro do seu arquivo de estilo ou styled-component do Renderizador */
+
+.hero-viewport {
+  width: 100%;
+  height: 450px; /* Altura Mobile */
+  position: relative;
+  overflow: hidden;
+}
+
+.desktop .hero-viewport {
+  height: 550px; /* Altura Desktop */
+}
+
+/* O VÍDEO AGORA FICA PERFEITO */
+.hero-media-element {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* ISSO impede o vídeo de ficar com faixas pretas */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+/* Scroll interno do preview */
+.content-screen {
+  width: 100%;
+  height: 100%;
+  overflow-y: auto;
+  overflow-x: hidden;
+  background: #fff;
+}

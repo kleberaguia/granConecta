@@ -1,0 +1,44 @@
+/* WidgetDizimo.module.css (VERSÃO CORRIGIDA) */
+
+.widgetContainer {
+  /*
+   * A MÁGICA!
+   * 1. Ele NÃO define um 'background-color' (fica transparente).
+   * 2. Ele "herda" a cor do texto definida no mock do card.
+   * (No seu mock, é '--card-content-color: #E0E0E0', 
+   * ou o #FFFFFF que sugeri para melhor contraste)
+   */
+  color: var(--card-content-color, #333);
+}
+
+/* O <p>{textoDeApoio}</p> vai usar a cor acima automaticamente */
+
+
+/* Estilo para a caixa de PIX e Banco */
+.tithingInfo {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  border-radius: 8px;
+  
+  /* * Cria um fundo sutil, semi-transparente, 
+   * que escurece (ou clareia) o fundo roxo do card.
+   */
+  background-color: rgba(0, 0, 0, 0.2);
+}
+
+.tithingInfo p {
+  /* * Garante que o texto aqui dentro também use 
+   * a cor principal herdada (branca/cinza-claro).
+   */
+  color: inherit;
+  font-family: 'Lato', sans-serif;
+  font-size: 0.95rem;
+  line-height: 1.5;
+  margin: 0.5rem 0;
+}
+
+.tithingInfo strong {
+  /* Deixa o "PIX:" e "Banco:" com um leve destaque */
+  font-weight: 700;
+  opacity: 0.9;
+}

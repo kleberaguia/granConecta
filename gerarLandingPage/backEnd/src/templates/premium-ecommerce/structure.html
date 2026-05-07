@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{NOME_MARCA}} — Landing Page</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div class="luxury-container">
+    <nav class="luxury-nav">
+      <div class="logo">{{NOME_MARCA}}</div>
+      <div class="nav-links">CONHEÇA • SELEÇÃO • CONTATO</div>
+    </nav>
+
+    <header class="luxury-hero">
+      <div class="hero-overlay">
+        <span class="badge">{{HERO_BADGE}}</span>
+        <h1>{{HERO_TITULO_PARTE1}} <br> <span class="gold-text">{{HERO_TITULO_GRADIENTE}}</span></h1>
+        <p>{{HERO_SUBTITULO}}</p>
+        <button class="gold-button">{{CTA_PRINCIPAL}}</button>
+      </div>
+    </header>
+
+    <section class="luxury-grid">
+      <div class="grid-header">
+        <h2>{{RECURSOS_TITULO}}</h2>
+        <p>{{RECURSOS_SUBTITULO}}</p>
+      </div>
+
+      <div class="product-display">
+        <div class="product-card">
+          <div class="product-img"
+            style="background-image: url('https://images.unsplash.com/photo-1546241072-48010ad2862c?q=80&w=600')"></div>
+          <h3>Seleção Signature</h3>
+          <span>A partir de R$ 189,00</span>
+        </div>
+        <div class="product-card">
+          <div class="product-img"
+            style="background-image: url('https://images.unsplash.com/photo-1558030006-450675393462?q=80&w=600')"></div>
+          <h3>Cortes Nobres</h3>
+          <span>Qualidade Premium</span>
+        </div>
+        <div class="product-card">
+          <div class="product-img"
+            style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=600')"></div>
+          <h3>Experiência Grill</h3>
+          <span>Edição Limitada</span>
+        </div>
+      </div>
+    </section>
+
+    <footer class="luxury-footer">
+      <p>{{NOME_MARCA}} | {{USUARIO_ID}}</p>
+    </footer>
+  </div>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+
+</html>

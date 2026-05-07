@@ -1,0 +1,201 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@300;400;600&display=swap');
+
+:root {
+  --gold: #c5a059;
+  --dark: #0f0f0f;
+  --off-white: #fcfcfc;
+  --text-gray: #666;
+  --font-serif: 'Playfair Display', serif;
+  --font-sans: 'Montserrat', sans-serif;
+}
+
+.luxury-container {
+  font-family: var(--font-sans);
+  background-color: var(--off-white);
+  color: var(--dark);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+}
+
+/* Navbar Estilo Boutique */
+.luxury-nav {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  padding: 30px 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 100;
+  box-sizing: border-box;
+  color: white;
+  letter-spacing: 2px;
+}
+
+.luxury-nav .logo {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  font-weight: 700;
+  text-transform: uppercase;
+}
+
+.nav-links {
+  font-size: 0.8rem;
+  font-weight: 600;
+}
+
+/* Hero Section - Impacto Visual */
+.luxury-hero {
+ min-height: 80vh;
+  display: flex;
+  align-items: center; /* Vertical central */
+  justify-content: center; /* Padrão: centro */
+  padding: 60px;
+  transition: all 0.5s ease;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+}
+
+.hero-align-left { justify-content: flex-start; text-align: left; }
+.hero-align-center { justify-content: center; text-align: center; }
+.hero-align-right { justify-content: flex-end; text-align: right; }
+
+.hero-edit-mode:hover {
+  outline: 3px dashed #b8917b;
+  cursor: pointer;
+}
+
+.hero-overlay {
+  max-width: 650px;
+  z-index: 2;
+  transition: all 0.3s ease;
+  padding: 40px;
+  border-radius: 20px;
+}
+
+.badge {
+  font-size: 0.9rem;
+  letter-spacing: 3px;
+  color: var(--gold);
+  margin-bottom: 20px;
+  font-weight: 600;
+}
+
+.luxury-hero h1 {
+  font-family: var(--font-serif);
+  font-size: 4.5rem;
+  line-height: 1.1;
+  margin: 0 0 20px 0;
+  font-weight: 400;
+}
+
+.gold-text {
+  color: var(--gold);
+  font-style: italic;
+}
+
+.luxury-hero p {
+  font-size: 1.2rem;
+  max-width: 600px;
+  font-weight: 300;
+  margin-bottom: 40px;
+  opacity: 0.9;
+}
+
+.gold-button {
+  background: transparent;
+  color: white;
+  border: 1.5px solid var(--gold);
+  padding: 15px 45px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 2px;
+  cursor: pointer;
+  transition: all 0.4s ease;
+}
+
+.gold-button:hover {
+  background: var(--gold);
+  color: var(--dark);
+}
+
+/* Vitrine de Produtos - Grid Clean */
+.luxury-grid {
+  padding: 100px 5%;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.grid-header {
+  text-align: center;
+  margin-bottom: 80px;
+}
+
+.grid-header h2 {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  margin-bottom: 10px;
+}
+
+.grid-header p {
+  color: var(--text-gray);
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-size: 0.8rem;
+}
+
+.product-display {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 40px;
+}
+
+.product-card {
+  text-align: center;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.product-card:hover {
+  transform: translateY(-10px);
+}
+
+.product-img {
+  height: 450px;
+  background-size: cover;
+  background-position: center;
+  margin-bottom: 25px;
+  border-radius: 2px; /* Quase quadrado para ser clássico */
+}
+
+.product-card h3 {
+  font-family: var(--font-serif);
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+
+.product-card span {
+  color: var(--gold);
+  font-weight: 600;
+  font-size: 0.9rem;
+  letter-spacing: 1px;
+}
+
+/* Footer Minimalista */
+.luxury-footer {
+  padding: 60px 5%;
+  background: var(--dark);
+  color: #555;
+  text-align: center;
+  font-size: 0.8rem;
+  letter-spacing: 1px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .luxury-hero h1 { font-size: 2.8rem; }
+  .product-img { height: 350px; }
+  .luxury-nav .logo { font-size: 1.4rem; }
+}

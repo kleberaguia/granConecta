@@ -1,0 +1,154 @@
+:root {
+  --primary: {{PRIMARY_COLOR}};
+  --bg: {{BG_COLOR}};
+  --text: {{TEXT_COLOR}};
+  --radius: {{RADIUS}};
+}
+
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    background-color: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1,
+  h2,
+  h3 {
+    font-family: 'Plus Jakarta Sans', sans-serif;
+    font-weight: 800;
+    letter-spacing: -0.04em;
+  }
+
+  .container {
+    width: min(1200px, 90%);
+    margin: 0 auto;
+  }
+
+  /* Header Estilo Glassmorphism Apple */
+  header {
+    position: fixed;
+    top: 0;
+    width: 100%;
+    z-index: 1000;
+    background: rgba(10, 10, 12, 0.7);
+    backdrop-filter: blur(15px);
+    -webkit-backdrop-filter: blur(15px);
+    border-bottom: 1px solid var(--border);
+    padding: 15px 0;
+    transition: 0.3s;
+  }
+
+  .nav-inner {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+
+  .brand {
+    font-size: 20px;
+    font-weight: 800;
+    color: #fff;
+    text-decoration: none;
+  }
+
+  .menu {
+    display: flex;
+    gap: 30px;
+  }
+
+  .menu a {
+    text-decoration: none;
+    color: #fff;
+    font-size: 14px;
+    font-weight: 500;
+    opacity: 0.7;
+    transition: 0.2s;
+  }
+
+  .menu a:hover {
+    opacity: 1;
+    color: var(--primary);
+  }
+
+  /* Botão CTA Principal */
+  .btn-cta {
+    background: var(--primary);
+    color: #000;
+    padding: 12px 24px;
+    border-radius: 10px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    display: inline-block;
+    border: none;
+    cursor: pointer;
+  }
+
+  .btn-cta:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 20px rgba(0, 242, 254, 0.2);
+    filter: brightness(1.1);
+  }
+
+  /* Efeito de Texto em Gradiente */
+  .text-gradient {
+    background: linear-gradient(135deg, #fff 0%, var(--primary) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .reveal {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+    transition-delay: 0.1s;
+  }
+
+  /* Estado final: Visível e na posição correta */
+  .reveal.active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+
+  /* Delay opcional para itens em Grid (efeito cascata) */
+  .reveal-delay-1 {
+    transition-delay: 0.2s;
+  }
+
+  .reveal-delay-2 {
+    transition-delay: 0.3s;
+  }
+
+  .reveal-delay-3 {
+    transition-delay: 0.4s;
+  }
+
+  /* Margem para o conteúdo não ficar embaixo do header fixo */
+  main {
+    padding-top: 80px;
+  }
+
+  /* Responsividade */
+  @media (max-width: 768px) {
+    .menu {
+      display: none;
+    }
+
+    /* Adicionar menu hamburguer no futuro se necessário */
+    section {
+      padding: 60px 0;
+    }
+  }

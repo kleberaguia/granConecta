@@ -1,0 +1,355 @@
+.sectionRoot {
+    position: relative;
+    width: 100%;
+    padding: 3rem 1.5rem 4rem;
+    background: var(--section-bg, #050608);
+    color: #ffffff;
+    font-family: var(--section-font, 'Lato', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif);
+}
+
+.sectionInner {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.sectionHeader {
+    margin-bottom: 2rem;
+}
+
+.headingAsH1,
+.headingAsH2,
+.headingAsH3 {
+    margin: 0;
+    font-weight: 700;
+    letter-spacing: 0.03em;
+    color: var(--section-title-color, #ffffff);
+}
+
+.headingAsH1 {
+    font-size: 2.4rem;
+}
+
+.headingAsH2 {
+    font-size: 2rem;
+}
+
+.headingAsH3 {
+    font-size: 1.6rem;
+}
+
+.sectionSubtitle {
+    margin-top: 0.5rem;
+    font-size: 0.98rem;
+    color: var(--section-subtitle-color, #b0bec5);
+    max-width: 640px;
+}
+
+/* ROWS (fileiras Netflix) */
+
+.rowsWrapper {
+    display: flex;
+    flex-direction: column;
+    gap: 2.5rem;
+}
+
+.rowBlock {
+    position: relative;
+}
+
+.rowHeader {
+    margin-bottom: 0.8rem;
+}
+
+.rowTitle {
+    margin: 0;
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #ffffff;
+}
+
+.rowSubtitle {
+    margin: 0.25rem 0 0;
+    font-size: 0.9rem;
+    color: #cfd8dc;
+}
+
+/* Carrossel – versão scroll horizontal com 3 por vez */
+
+.rowCarouselWrapper {
+    position: relative;
+    overflow: hidden;
+}
+
+/* linha de cards rolável */
+.cardsStrip {
+    display: flex;
+    gap: 1rem;
+    overflow-x: auto;
+    padding: 0.25rem 0 0.5rem;
+    scroll-snap-type: x mandatory;
+    scroll-behavior: smooth;
+}
+
+/* scrollbar mais discreto */
+.cardsStrip::-webkit-scrollbar {
+    height: 6px;
+}
+
+.cardsStrip::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.cardsStrip::-webkit-scrollbar-thumb {
+    border-radius: 999px;
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Cartões */
+
+.card {
+    display: flex;
+    flex-direction: column;
+    background: var(--carousel-card-bg, rgba(8, 8, 10, 0.9));
+    border-radius: 16px;
+    overflow: hidden;
+    text-decoration: none;
+    border: 1px solid rgba(255, 215, 0, 0.08);
+    transition:
+        transform 0.25s ease,
+        box-shadow 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+    cursor: pointer;
+
+    /* aumenta bastante a altura mínima */
+    min-height: 320px;
+    width: 100%;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 18px 40px rgba(0, 0, 0, 0.6);
+    border-color: rgba(255, 215, 0, 0.4);
+    background: radial-gradient(circle at top left,
+            rgba(255, 215, 0, 0.08),
+            rgba(5, 6, 8, 0.95));
+}
+
+/* Imagem */
+
+.cardImageWrapper {
+    position: relative;
+    width: 100%;
+    aspect-ratio: 3 / 4;
+    /* era 16/9 → depois 4/3 → agora bem vertical */
+    overflow: hidden;
+}
+
+.cardImage {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transform: scale(1.02);
+    transition: transform 0.3s ease;
+}
+
+.card:hover .cardImage {
+    transform: scale(1.08);
+}
+
+.cardImageFallback {
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at top left, #ff9100, #1b1b1f);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 2.4rem;
+    font-weight: 700;
+    color: #121212;
+}
+
+/* Glow dourado suave na base da imagem */
+
+.cardGradientOverlay {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: linear-gradient(to top,
+            rgba(0, 0, 0, 0.7),
+            rgba(0, 0, 0, 0.0) 50%);
+}
+
+/* Conteúdo */
+
+.cardContent {
+    padding: 0.9rem 0.9rem 1rem;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.cardTitle {
+    margin: 0;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--carousel-card-title-color, #ffffff);
+}
+
+.cardDescription {
+    margin: 0;
+    font-size: 0.85rem;
+    line-height: 1.4;
+    color: var(--carousel-card-text-color, #cfd8dc);
+}
+
+.sectionHeaderRow {
+    display: flex;
+    justify-content: space-between;
+    /* Empurra o botão para a ponta direita */
+    align-items: center;
+    margin-bottom: 24px;
+    gap: 16px;
+}
+
+.viewAllButton {
+    /* Layout do Botão */
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    /* Estilo Visual */
+    padding: 8px 20px;
+    background: rgba(25, 118, 210, 0.08);
+    /* Azul bem clarinho de fundo */
+    color: #1976d2;
+    border: 1.5px solid rgba(25, 118, 210, 0.2);
+    border-radius: 50px;
+    /* Estilo pílula */
+
+    /* Tipografia */
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-decoration: none;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    white-space: nowrap;
+
+    /* Animação */
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.viewAllButton:hover {
+    background: #1976d2;
+    /* Fica sólido no hover */
+    color: #ffffff;
+    box-shadow: 0 4px 12px rgba(25, 118, 210, 0.3);
+    transform: translateY(-2px);
+    border-color: #1976d2;
+}
+
+.viewAllButton svg {
+    transition: transform 0.3s ease;
+}
+
+.viewAllButton:hover svg {
+    transform: translateX(4px);
+    /* A setinha dá um pulinho para a direita */
+}
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.grid {
+  display: grid;
+  /* MÁXIMO 4 POR LINHA: 1fr repetido 4 vezes */
+  grid-template-columns: repeat(4, 1fr); 
+  gap: 24px;
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1024px) {
+  .grid { grid-template-columns: repeat(3, 1fr); } /* 3 por linha em tablets */
+}
+
+@media (max-width: 768px) {
+  .grid { grid-template-columns: repeat(2, 1fr); } /* 2 por linha em celulares grandes */
+}
+
+@media (max-width: 480px) {
+  .grid { 
+    grid-template-columns: repeat(1, 1fr); /* 1 por linha no mobile */
+    gap: 16px;
+  }
+}
+
+.loadMoreWrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: 40px;
+}
+
+.loadMoreButton {
+  padding: 12px 32px;
+  background: #1976d2;
+  color: white;
+  border: none;
+  border-radius: 50px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.loadMoreButton:hover {
+  transform: scale(1.05);
+}
+
+/* Ajuste para mobile */
+@media (max-width: 600px) {
+    .sectionHeaderRow {
+        flex-direction: row;
+        /* Mantém na mesma linha se o título for curto */
+        align-items: center;
+    }
+
+    .viewAllButton {
+        padding: 6px 14px;
+        font-size: 0.75rem;
+    }
+}
+
+/* Responsivo */
+
+@media (max-width: 768px) {
+    .sectionRoot {
+        padding: 2.5rem 1rem 3rem;
+    }
+
+    .headingAsH1 {
+        font-size: 2rem;
+    }
+
+    .headingAsH2 {
+        font-size: 1.6rem;
+    }
+
+    .rowTitle {
+        font-size: 1.1rem;
+    }
+
+    /* em tablet: 2 cards visíveis */
+    .card {
+        flex: 0 0 45%;
+    }
+}
+
+@media (max-width: 480px) {
+
+    /* em mobile: 1 card grande por vez */
+    .card {
+        flex: 0 0 75%;
+    }
+}

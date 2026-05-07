@@ -1,0 +1,22 @@
+[
+  {
+    "_id": "a1",
+    "title": "Inscrições Abertas para a Catequese 2026",
+    "content": "Procure a secretaria paroquial durante a semana para mais informações."
+  },
+  {
+    "_id": "a2",
+    "title": "Bazar Beneficente da Pastoral Social",
+    "content": "Próximo fim de semana, no salão paroquial. Traga sua doação!"
+  },
+  {
+    "_id": "a3",
+    "title": "Grupo de Oração (RCC)",
+    "content": "Todas as quintas-feiras, às 19:30h, na capela."
+  },
+  {
+    "_id": "a4",
+    "title": "Adoração ao Santíssimo",
+    "content": "Toda primeira sexta-feira do mês, das 09h às 18h."
+  }
+]

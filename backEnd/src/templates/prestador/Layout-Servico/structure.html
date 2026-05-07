@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{NOME_MARCA}} — {{TIPO_SERVICO_NOME}}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=DM+Serif+Display&display=swap" rel="stylesheet">
+
+</head>
+
+<body>
+  <div class="site-shell">
+
+    <header class="topbar" id="topo">
+      <div class="container topbar-inner">
+        <a class="brand" href="#hero">
+          <span class="brand-mark">RF</span>
+          <span class="brand-copy">
+            <span class="brand-name editable-text" contenteditable="true">{{NOME_MARCA}}</span>
+            <span class="brand-sub editable-text" contenteditable="true">Profissionais verificados e atendimento rápido</span>
+          </span>
+        </a>
+
+        <nav class="nav-links">
+          <a href="#hero">Início</a>
+          <a href="#como-funciona">Como funciona</a>
+          <a href="#servicos">Serviços</a>
+          <a href="#avaliacoes">Avaliações</a>
+          <a href="#faq">FAQ</a>
+          <a href="#contato">Contato</a>
+        </nav>
+
+        <a class="nav-cta" href="javascript:void(0)" onclick="handleInteraction('CTA Header', 'Interesse em solicitar atendimento pelo cabeçalho')">
+          <span class="editable-text" contenteditable="true">{{CTA_PRINCIPAL}}</span>
+        </a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy">
+            <div class="eyebrow">
+              <span class="editable-text" contenteditable="true">Profissionais verificados</span>
+            </div>
+
+            <h1>
+              <span class="editable-text" contenteditable="true">Precisando de um</span>
+              <span class="accent editable-text" contenteditable="true">{{TIPO_SERVICO_NOME}}</span>
+            </h1>
+
+            <p>
+              <span class="editable-text" contenteditable="true">
+                Encontre profissionais experientes próximos de você, receba contato rápido e solicite seu orçamento sem complicação.
+              </span>
+            </p>
+
+            <div class="hero-actions">
+              <a class="btn-primary" href="javascript:void(0)" onclick="handleInteraction('Solicitar orçamento', 'Solicitação iniciada a partir do Hero')">
+                <span class="editable-text" contenteditable="true">{{CTA_PRINCIPAL}}</span>
+              </a>
+
+              <a class="btn-whatsapp" href="javascript:void(0)" onclick="handleInteraction('WhatsApp Hero', 'Contato iniciado via botão do Hero', true)">
+                <span class="editable-text" contenteditable="true">Falar no WhatsApp</span>
+              </a>
+
+              <a class="btn-secondary" href="#como-funciona">
+                <span class="editable-text" contenteditable="true">Como funciona</span>
+              </a>
+            </div>
+
+            <div class="hero-points">
+              <span class="editable-text" contenteditable="true">Atendimento em minutos</span>
+              <span class="editable-text" contenteditable="true">Orçamento sem compromisso</span>
+              <span class="editable-text" contenteditable="true">Suporte humanizado</span>
+            </div>
+          </div>
+
+          <div class="hero-card">
+            <div class="hero-media">
+              <div class="hero-badge-floating">
+                <span class="editable-text" contenteditable="true">Orçamento grátis</span>
+              </div>
+            </div>
+
+            <div class="stats-row">
+              <div class="stat-box">
+                <strong class="editable-text" contenteditable="true">4,9</strong>
+                <span class="editable-text" contenteditable="true">Nota média</span>
+              </div>
+              <div class="stat-box">
+                <strong class="editable-text" contenteditable="true">900+</strong>
+                <span class="editable-text" contenteditable="true">Avaliações</span>
+              </div>
+              <div class="stat-box">
+                <strong class="editable-text" contenteditable="true">24h</strong>
+                <span class="editable-text" contenteditable="true">Resposta rápida</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-soft" id="como-funciona">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker editable-text" contenteditable="true">Como funciona</div>
+            <h2><span class="editable-text" contenteditable="true">Um processo simples para contratar com mais segurança</span></h2>
+            <p><span class="editable-text" contenteditable="true">Explique o que precisa, receba retorno e escolha o melhor profissional para o seu serviço.</span></p>
+          </div>
+
+          <div class="steps-grid">
+            <article class="step-card">
+              <div class="step-number">1</div>
+              <h3><span class="editable-text" contenteditable="true">Solicite seu orçamento</span></h3>
+              <p><span class="editable-text" contenteditable="true">Conte brevemente o tipo de serviço, urgência e região de atendimento.</span></p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-number">2</div>
+              <h3><span class="editable-text" contenteditable="true">Receba contato</span></h3>
+              <p><span class="editable-text" contenteditable="true">Profissionais alinhados ao seu pedido entram em contato para entender melhor sua necessidade.</span></p>
+            </article>
+
+            <article class="step-card">
+              <div class="step-number">3</div>
+              <h3><span class="editable-text" contenteditable="true">Agende o serviço</span></h3>
+              <p><span class="editable-text" contenteditable="true">Escolha a melhor proposta e combine a execução com mais tranquilidade.</span></p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="servicos">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker editable-text" contenteditable="true">Serviços</div>
+            <h2><span class="editable-text" contenteditable="true">Atendimentos mais buscados</span></h2>
+            <p><span class="editable-text" contenteditable="true">Adapte esta seção para o profissional ou nicho que você quiser divulgar.</span></p>
+          </div>
+
+          <div class="services-grid">
+            <article class="service-card">
+              <div class="service-card-top">
+                <div>
+                  <h3><span class="editable-text" contenteditable="true">Serviço residencial</span></h3>
+                </div>
+                <div class="service-icon">01</div>
+              </div>
+              <p><span class="editable-text" contenteditable="true">Atendimento para pequenos reparos, ajustes e melhorias em casas e apartamentos.</span></p>
+              <ul class="service-list">
+                <li><span class="editable-text" contenteditable="true">Visita técnica</span></li>
+                <li><span class="editable-text" contenteditable="true">Execução organizada</span></li>
+                <li><span class="editable-text" contenteditable="true">Prazos alinhados</span></li>
+              </ul>
+              <a class="mini-btn" href="javascript:void(0)" onclick="handleInteraction('Serviço residencial', 'Interesse em serviço residencial')">
+                <span class="editable-text" contenteditable="true">Solicitar orçamento</span>
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-card-top">
+                <div>
+                  <h3><span class="editable-text" contenteditable="true">Serviço comercial</span></h3>
+                </div>
+                <div class="service-icon">02</div>
+              </div>
+              <p><span class="editable-text" contenteditable="true">Soluções práticas para comércios, escritórios, salas e ambientes de atendimento.</span></p>
+              <ul class="service-list">
+                <li><span class="editable-text" contenteditable="true">Atendimento profissional</span></li>
+                <li><span class="editable-text" contenteditable="true">Planejamento por etapa</span></li>
+                <li><span class="editable-text" contenteditable="true">Acabamento de qualidade</span></li>
+              </ul>
+              <a class="mini-btn" href="javascript:void(0)" onclick="handleInteraction('Serviço comercial', 'Interesse em serviço comercial')">
+                <span class="editable-text" contenteditable="true">Pedir proposta</span>
+              </a>
+            </article>
+
+            <article class="service-card">
+              <div class="service-card-top">
+                <div>
+                  <h3><span class="editable-text" contenteditable="true">Reformas e manutenção</span></h3>
+                </div>
+                <div class="service-icon">03</div>
+              </div>
+              <p><span class="editable-text" contenteditable="true">Serviços de apoio para ajustes, manutenção preventiva e demandas recorrentes.</span></p>
+              <ul class="service-list">
+                <li><span class="editable-text" contenteditable="true">Avaliação inicial</span></li>
+                <li><span class="editable-text" contenteditable="true">Atendimento sob medida</span></li>
+                <li><span class="editable-text" contenteditable="true">Suporte pós-serviço</span></li>
+              </ul>
+              <a class="mini-btn" href="javascript:void(0)" onclick="handleInteraction('Reformas e manutenção', 'Interesse em reformas e manutenção')">
+                <span class="editable-text" contenteditable="true">Quero atendimento</span>
+              </a>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-soft" id="avaliacoes">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker editable-text" contenteditable="true">Avaliações</div>
+            <h2><span class="editable-text" contenteditable="true">Confiança construída em cada atendimento</span></h2>
+            <p><span class="editable-text" contenteditable="true">Use esta área para reforçar reputação, qualidade de execução e experiência do cliente.</span></p>
+          </div>
+
+          <div class="score-wrap">
+            <div class="score-card">
+              <div class="big-score editable-text" contenteditable="true">4,9 / 5</div>
+              <div class="stars">★★★★★</div>
+              <p><span class="editable-text" contenteditable="true">Classificação média com base em avaliações reais de clientes atendidos.</span></p>
+            </div>
+
+            <div class="reviews-list">
+              <article class="review-card">
+                <p><span class="editable-text" contenteditable="true">“Atendimento muito profissional, pontual e com ótimo acabamento. Recomendo com segurança.”</span></p>
+                <div class="review-meta">
+                  <span><strong class="editable-text" contenteditable="true">Cliente:</strong> <span class="editable-text" contenteditable="true">Mariana Alves</span></span>
+                  <span><strong class="editable-text" contenteditable="true">Profissional:</strong> <span class="editable-text" contenteditable="true">{{NOME_MARCA}}</span></span>
+                  <span><strong class="editable-text" contenteditable="true">Avaliação:</strong> <span class="editable-text" contenteditable="true">5,0</span></span>
+                </div>
+              </article>
+
+              <article class="review-card">
+                <p><span class="editable-text" contenteditable="true">“O serviço foi organizado do início ao fim e a comunicação foi muito clara.”</span></p>
+                <div class="review-meta">
+                  <span><strong class="editable-text" contenteditable="true">Cliente:</strong> <span class="editable-text" contenteditable="true">João Felipe</span></span>
+                  <span><strong class="editable-text" contenteditable="true">Profissional:</strong> <span class="editable-text" contenteditable="true">{{NOME_MARCA}}</span></span>
+                  <span><strong class="editable-text" contenteditable="true">Avaliação:</strong> <span class="editable-text" contenteditable="true">4,9</span></span>
+                </div>
+              </article>
+
+              <article class="review-card">
+                <p><span class="editable-text" contenteditable="true">“Foi minha primeira vez contratando por uma página assim e a experiência foi ótima.”</span></p>
+                <div class="review-meta">
+                  <span><strong class="editable-text" contenteditable="true">Cliente:</strong> <span class="editable-text" contenteditable="true">Sabrina Costa</span></span>
+                  <span><strong class="editable-text" contenteditable="true">Profissional:</strong> <span class="editable-text" contenteditable="true">{{NOME_MARCA}}</span></span>
+                  <span><strong class="editable-text" contenteditable="true">Avaliação:</strong> <span class="editable-text" contenteditable="true">5,0</span></span>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <div class="section-kicker editable-text" contenteditable="true">Perguntas frequentes</div>
+            <h2><span class="editable-text" contenteditable="true">Dúvidas comuns antes de contratar</span></h2>
+            <p><span class="editable-text" contenteditable="true">Uma seção importante para reduzir objeções e deixar a experiência mais clara.</span></p>
+          </div>
+
+          <div class="faq-layout">
+            <div class="faq-highlight">
+              <h3><span class="editable-text" contenteditable="true">Mais clareza, mais confiança</span></h3>
+              <p><span class="editable-text" contenteditable="true">Explique como funciona o atendimento, pagamento, agenda e negociação para dar mais segurança ao cliente.</span></p>
+            </div>
+
+            <div class="faq-list">
+              <article class="faq-item">
+                <h4><span class="editable-text" contenteditable="true">Os profissionais são funcionários da empresa?</span></h4>
+                <p><span class="editable-text" contenteditable="true">Os atendimentos podem ser realizados por profissionais parceiros ou equipe própria, conforme seu modelo de operação.</span></p>
+              </article>
+
+              <article class="faq-item">
+                <h4><span class="editable-text" contenteditable="true">Como o orçamento é enviado?</span></h4>
+                <p><span class="editable-text" contenteditable="true">Após o contato inicial, o cliente recebe orientação, avaliação e proposta conforme a necessidade do serviço.</span></p>
+              </article>
+
+              <article class="faq-item">
+                <h4><span class="editable-text" contenteditable="true">Como funciona o pagamento?</span></h4>
+                <p><span class="editable-text" contenteditable="true">As condições podem ser alinhadas diretamente com o profissional ou empresa responsável pelo atendimento.</span></p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="parceiro">
+        <div class="container">
+          <div class="pro-cta">
+            <div>
+              <h2><span class="editable-text" contenteditable="true">Você é um {{TIPO_SERVICO_NOME}}?</span></h2>
+              <p><span class="editable-text" contenteditable="true">Divulgue seus serviços, fortaleça sua presença digital e receba novos pedidos todos os dias.</span></p>
+
+              <div class="hero-actions">
+                <a class="btn-primary" href="javascript:void(0)" onclick="handleInteraction('Anunciar serviços', 'Interesse em anunciar serviços na plataforma')">
+                  <span class="editable-text" contenteditable="true">Quero anunciar meus serviços</span>
+                </a>
+              </div>
+
+              <div class="pro-bullets">
+                <span class="editable-text" contenteditable="true">Mais visibilidade para sua especialidade</span>
+                <span class="editable-text" contenteditable="true">Recebimento de pedidos qualificados</span>
+                <span class="editable-text" contenteditable="true">Atendimento direto pelo celular</span>
+              </div>
+            </div>
+
+            <div class="pro-card">
+              <h3><span class="editable-text" contenteditable="true">Plano de presença profissional</span></h3>
+              <p><span class="editable-text" contenteditable="true">Use este espaço para apresentar benefícios, diferenciais e formas de cadastro.</span></p>
+              <a class="btn-secondary" href="javascript:void(0)" onclick="handleInteraction('Cadastro parceiro', 'Interesse em cadastro de parceiro')">
+                <span class="editable-text" contenteditable="true">Quero saber mais</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section-soft" id="app">
+        <div class="container app-grid">
+          <div class="app-card">
+            <div class="section-kicker editable-text" contenteditable="true">Aplicativo</div>
+            <h2><span class="editable-text" contenteditable="true">Tudo fica mais fácil com seu app ou atendimento digital</span></h2>
+            <p><span class="editable-text" contenteditable="true">Você pode adaptar esta área para baixar aplicativo, agendar visita, acompanhar atendimento ou comprar materiais.</span></p>
+
+            <ul class="app-list">
+              <li><span class="editable-text" contenteditable="true">Solicite orçamentos com praticidade</span></li>
+              <li><span class="editable-text" contenteditable="true">Acompanhe etapas do serviço</span></li>
+              <li><span class="editable-text" contenteditable="true">Tenha suporte mais rápido</span></li>
+            </ul>
+
+            <a class="download-btn" href="javascript:void(0)" onclick="handleInteraction('Baixar app', 'Interesse em baixar o aplicativo ou acessar a plataforma')">
+              <span class="editable-text" contenteditable="true">Baixar aplicativo</span>
+            </a>
+          </div>
+
+          <div class="app-mock">
+            <div class="app-mock-card">
+              <strong class="editable-text" contenteditable="true">Experiência prática e organizada</strong>
+              <span class="editable-text" contenteditable="true">Use esta área para reforçar facilidade, mobilidade e acompanhamento.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="estados">
+        <div class="container">
+          <div class="states-wrap">
+            <div class="section-head" style="margin-bottom: 0;">
+              <div class="section-kicker editable-text" contenteditable="true">Atendimento por região</div>
+              <h2><span class="editable-text" contenteditable="true">Serviços de {{TIPO_SERVICO_NOME}} por estado</span></h2>
+              <p><span class="editable-text" contenteditable="true">Troque os links abaixo pelas cidades, regiões ou estados que você atende.</span></p>
+            </div>
+
+            <div class="states-grid">
+              <a class="state-link" href="javascript:void(0)" onclick="handleInteraction('Atendimento São Paulo', 'Interesse em atendimento em São Paulo')">
+                <span class="editable-text" contenteditable="true">{{TIPO_SERVICO_NOME}} em São Paulo</span>
+              </a>
+              <a class="state-link" href="javascript:void(0)" onclick="handleInteraction('Atendimento Rio de Janeiro', 'Interesse em atendimento no Rio de Janeiro')">
+                <span class="editable-text" contenteditable="true">{{TIPO_SERVICO_NOME}} no Rio de Janeiro</span>
+              </a>
+              <a class="state-link" href="javascript:void(0)" onclick="handleInteraction('Atendimento Minas Gerais', 'Interesse em atendimento em Minas Gerais')">
+                <span class="editable-text" contenteditable="true">{{TIPO_SERVICO_NOME}} em Minas Gerais</span>
+              </a>
+              <a class="state-link" href="javascript:void(0)" onclick="handleInteraction('Atendimento Paraná', 'Interesse em atendimento no Paraná')">
+                <span class="editable-text" contenteditable="true">{{TIPO_SERVICO_NOME}} no Paraná</span>
+              </a>
+              <a class="state-link" href="javascript:void(0)" onclick="handleInteraction('Atendimento Bahia', 'Interesse em atendimento na Bahia')">
+                <span class="editable-text" contenteditable="true">{{TIPO_SERVICO_NOME}} na Bahia</span>
+              </a>
+              <a class="state-link" href="javascript:void(0)" onclick="handleInteraction('Atendimento Goiás', 'Interesse em atendimento em Goiás')">
+                <span class="editable-text" contenteditable="true">{{TIPO_SERVICO_NOME}} em Goiás</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section final-cta" id="contato">
+        <div class="container">
+          <div class="final-cta-box">
+            <div>
+              <h2><span class="editable-text" contenteditable="true">Solicite seu atendimento com rapidez</span></h2>
+              <p><span class="editable-text" contenteditable="true">Use os CTAs abaixo para levar o visitante ao formulário ou direto para o WhatsApp da empresa.</span></p>
+            </div>
+
+            <div class="final-cta-actions">
+              <a class="btn-primary" href="javascript:void(0)" onclick="handleInteraction('CTA Final', 'Solicitação final de orçamento')">
+                <span class="editable-text" contenteditable="true">{{CTA_PRINCIPAL}}</span>
+              </a>
+
+              <a class="btn-whatsapp" href="javascript:void(0)" onclick="handleInteraction('WhatsApp Final', 'Contato final via WhatsApp', true)">
+                <span class="editable-text" contenteditable="true">Chamar no WhatsApp</span>
+              </a>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer" id="rodape">
+      <div class="container">
+        <div class="footer-grid">
+          <div class="footer-brand">
+            <div class="brand" style="align-items:flex-start;">
+              <span class="brand-mark">RF</span>
+              <span class="brand-copy">
+                <span class="brand-name editable-text" contenteditable="true">{{NOME_MARCA}}</span>
+                <span class="brand-sub editable-text" contenteditable="true">Conectando clientes a bons profissionais</span>
+              </span>
+            </div>
+            <p><span class="editable-text" contenteditable="true">Apresente sua marca, sua proposta de valor e um resumo do atendimento prestado.</span></p>
+          </div>
+
+          <div>
+            <h4><span class="editable-text" contenteditable="true">Nossos serviços</span></h4>
+            <ul class="footer-links">
+              <li><a href="#servicos"><span class="editable-text" contenteditable="true">Profissionais</span></a></li>
+              <li><a href="#parceiro"><span class="editable-text" contenteditable="true">Seja parceiro</span></a></li>
+              <li><a href="#app"><span class="editable-text" contenteditable="true">Aplicativo</span></a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4><span class="editable-text" contenteditable="true">Recursos</span></h4>
+            <ul class="footer-links">
+              <li><a href="#faq"><span class="editable-text" contenteditable="true">Central de ajuda</span></a></li>
+              <li><a href="javascript:void(0)" onclick="handleInteraction('Termos', 'Interesse em termos ou suporte')"><span class="editable-text" contenteditable="true">Termos de uso</span></a></li>
+              <li><a href="javascript:void(0)" onclick="handleInteraction('Privacidade', 'Interesse em política de privacidade')"><span class="editable-text" contenteditable="true">Privacidade</span></a></li>
+            </ul>
+          </div>
+
+          <div>
+            <h4><span class="editable-text" contenteditable="true">Contato</span></h4>
+            <ul class="footer-links">
+              <li><a href="javascript:void(0)" onclick="handleInteraction('WhatsApp Rodapé', 'Contato via rodapé', true)"><span class="editable-text" contenteditable="true">WhatsApp</span></a></li>
+              <li><a href="javascript:void(0)" onclick="handleInteraction('Formulário Rodapé', 'Solicitação via formulário do rodapé')"><span class="editable-text" contenteditable="true">Solicitar atendimento</span></a></li>
+              <li><span class="editable-text" contenteditable="true">Atendimento em horário comercial</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="footer-bottom">
+          <span class="editable-text" contenteditable="true">© 2026 {{NOME_MARCA}}. Todos os direitos reservados.</span>
+          <span class="editable-text" contenteditable="true">Modelo inspirado em páginas de captação de profissionais.</span>
+        </div>
+      </div>
+    </footer>
+
+    <a class="floating-whatsapp" href="javascript:void(0)" onclick="handleInteraction('WhatsApp Flutuante', 'Clique no botão flutuante', true)">✆</a>
+  </div>
+
+  <script>
+    function handleInteraction(titulo, descricao, redirectWhatsapp = false) {
+      console.log("CTA:", { titulo, descricao, redirectWhatsapp });
+      if (window.parent && window.parent !== window) {
+        window.parent.postMessage({
+          type: "CTA_INTERACTION",
+          payload: { titulo, descricao, redirectWhatsapp }
+        }, "*");
+      } else {
+        alert(titulo + " — " + descricao);
+      }
+    }
+
+    document.addEventListener("click", function (e) {
+      const target = e.target;
+
+      if (target.classList && target.classList.contains("editable-text")) {
+        e.stopPropagation();
+        return;
+      }
+
+      const link = target.closest && target.closest('a[href^="#"]');
+      if (!link) return;
+
+      const editable = target.closest && target.closest(".editable-text");
+      if (editable) return;
+
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const section = document.querySelector(href);
+      if (section) {
+        e.preventDefault();
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
+
+    document.addEventListener("keydown", function (e) {
+      const target = e.target;
+
+      if (
+        target &&
+        target.classList &&
+        target.classList.contains("editable-text") &&
+        e.key === "Enter"
+      ) {
+        e.preventDefault();
+      }
+    });
+
+    document.addEventListener("paste", function (e) {
+      const target = e.target;
+
+      if (
+        target &&
+        target.classList &&
+        target.classList.contains("editable-text")
+      ) {
+        e.preventDefault();
+        const text = (e.clipboardData || window.clipboardData).getData("text");
+        document.execCommand("insertText", false, text);
+      }
+    });
+  </script>
+</body>
+</html>

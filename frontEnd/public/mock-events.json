@@ -1,0 +1,26 @@
+[
+  {
+    "_id": "e1",
+    "title": "Missa Solene de Corpus Christi",
+    "coverImage": "https://images.unsplash.com/photo-1620202952877-e892c55d045a?q=80&w=2070",
+    "description": "Celebração especial com procissão e bênção do Santíssimo. Traga 1kg de alimento não perecível.",
+    "eventDate": "2025-06-19T10:00:00Z",
+    "location": "Igreja Matriz e Ruas do Bairro"
+  },
+  {
+    "_id": "e2",
+    "title": "Bazar Beneficente da Pastoral Social",
+    "coverImage": "https://images.unsplash.com/photo-1591522810842-9f3b5f63116d?q=80&w=2070",
+    "description": "Venha colaborar com nossa pastoral e adquirir ótimos produtos. Toda a renda será revertida para as famílias assistidas.",
+    "eventDate": "2025-07-05T09:00:00Z",
+    "location": "Salão Paroquial"
+  },
+  {
+    "_id": "e3",
+    "title": "Festa da Padroeira (Nossa Senhora da Assunção)",
+    "coverImage": "https://images.unsplash.com/photo-1601132560370-986133f866c1?q=80&w=2070",
+    "description": "Novena e festividades em honra à nossa padroeira. Participe conosco deste momento de fé e alegria.",
+    "eventDate": "2025-08-06T19:30:00Z",
+    "location": "Igreja Matriz"
+  }
+]

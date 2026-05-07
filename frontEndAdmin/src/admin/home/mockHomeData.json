@@ -1,0 +1,343 @@
+[
+  {
+    "id": 1,
+    "ordem": 1,
+    "tipo_secao": "hero",
+    "fundo_tipo": "video",
+    "fundo_video_url": "/videos/granconecta-bg.mp4",
+    "fundo_imagem_url": "/img_granconecta_hero.jpg",
+    "fundo_cor": "#050608",
+    "titulo": "GranConecta",
+    "subtitulo": "Todos os serviços que você precisa dentro do Gran Reserva Paulista, em um só lugar.",
+    "link_botao1": "/servicos",
+    "texto_botao1": "Explorar serviços",
+    "link_botao2": "/sou-prestador",
+    "texto_botao2": "Sou prestador",
+    "classe_css": null,
+    "heading_style": "styleAsH1",
+    "style_overrides": {
+      "--hero-title-font": "'Merriweather', serif",
+      "--hero-text-font": "'Lato', sans-serif",
+      "--hero-overlay-color": "rgba(0, 0, 0, 0.55)",
+      "--hero-text-color": "#FFFFFF",
+      "--hero-title-color": "#FFD700",
+      "--primary-button-bg": "#FFD700",
+      "--primary-button-text": "#1B1B1B",
+      "--secondary-button-bg": "transparent",
+      "--secondary-button-text": "#FFFFFF",
+      "--secondary-button-border": "2px solid #FFFFFF"
+    }
+  },
+  {
+    "id": 2,
+    "ordem": 2,
+    "tipo_secao": "services_carousel",
+    "grupo": "dia-a-dia",
+    "titulo": "Serviços do dia a dia",
+    "subtitulo": "Encanador, eletricista, limpeza e muito mais para sua rotina.",
+    "view_all": {
+      "enabled": true,
+      "label": "Mostrar todos",
+      "href": "/explorar/dia-a-dia"
+    },
+    "classe_css": null,
+    "heading_style": "styleAsH2",
+    "style_overrides": {
+      "--section-bg": "#090909",
+      "--section-title-color": "#FFFFFF",
+      "--section-subtitle-color": "#B0BEC5",
+      "--section-font": "'Lato', sans-serif",
+      "--carousel-card-bg": "#121212",
+      "--carousel-card-title-color": "#FFFFFF",
+      "--carousel-card-text-color": "#CFD8DC"
+    },
+    "cards": [
+      {
+        "id": 201,
+        "slug": "encanador",
+        "icone": "Pipe",
+        "titulo": "Encanador",
+        "descricao_curta": "Consertos, vazamentos e emergências.",
+        "tipo_conteudo": "categoria_servico",
+        "imagem_url": "/img_encanador.png",
+        "href": "/servicos/encanador",
+        "texto_botao": "Ver prestadores",
+        "badge": "Muito solicitado",
+        "style_overrides": {
+          "--card-border-bottom": "3px solid #FFD700"
+        }
+      },
+      {
+        "id": 202,
+        "slug": "eletricista",
+        "icone": "Zap",
+        "titulo": "Eletricista",
+        "descricao_curta": "Instalações, reparos e manutenção.",
+        "tipo_conteudo": "categoria_servico",
+        "imagem_url": "/img_eletrecista.png",
+        "href": "/servicos/eletricista",
+        "texto_botao": "Ver prestadores",
+        "badge": "Atende hoje"
+      },
+      {
+        "id": 203,
+        "slug": "marido-de-aluguel",
+        "icone": "Tool",
+        "titulo": "Marido de aluguel",
+        "descricao_curta": "Pequenos reparos e ajustes em casa.",
+        "tipo_conteudo": "categoria_servico",
+        "imagem_url": "/img_maridoAluguel.png",
+        "href": "/servicos/marido-de-aluguel",
+        "texto_botao": "Ver prestadores"
+      },
+      {
+        "id": 204,
+        "slug": "limpeza",
+        "icone": "Broom",
+        "titulo": "Limpeza",
+        "descricao_curta": "Diaristas e limpeza pós-obra.",
+        "tipo_conteudo": "categoria_servico",
+        "href": "/servicos/limpeza",
+        "texto_botao": "Ver prestadores"
+      }
+    ]
+  },
+  {
+    "id": 3,
+    "ordem": 3,
+    "tipo_secao": "services_carousel",
+    "grupo": "pet",
+    "titulo": "Serviços Pet",
+    "subtitulo": "Tudo para o bem-estar do seu melhor amigo.",
+    "view_all": {
+      "enabled": true,
+      "label": "Mostrar todos",
+      "href": "/explorar/pet"
+    },
+    "classe_css": null,
+    "heading_style": "styleAsH2",
+    "style_overrides": {
+      "--section-bg": "#090909",
+      "--section-title-color": "#FFFFFF",
+      "--section-subtitle-color": "#B0BEC5",
+      "--carousel-card-bg": "#141414"
+    },
+    "cards": [
+      {
+        "id": 301,
+        "slug": "banho-e-tosa",
+        "icone": "Dog",
+        "titulo": "Banho e tosa",
+        "descricao_curta": "Atendimento em domicílio ou parceiro.",
+        "tipo_conteudo": "categoria_servico",
+        "href": "/servicos/banho-e-tosa",
+        "texto_botao": "Ver prestadores"
+      },
+      {
+        "id": 302,
+        "slug": "passeio-pet",
+        "icone": "Walking",
+        "titulo": "Passeio",
+        "descricao_curta": "Moradores passeadores e parceiros.",
+        "tipo_conteudo": "categoria_servico",
+        "href": "/servicos/passeio-pet",
+        "texto_botao": "Ver prestadores",
+        "badge": "Moradores"
+      },
+      {
+        "id": 303,
+        "slug": "pet-sitter",
+        "icone": "Home",
+        "titulo": "Pet sitter",
+        "descricao_curta": "Cuidados enquanto você está fora.",
+        "tipo_conteudo": "categoria_servico",
+        "href": "/servicos/pet-sitter",
+        "texto_botao": "Ver prestadores"
+      }
+    ]
+  },
+  {
+    "id": 4,
+    "ordem": 4,
+    "tipo_secao": "services_carousel",
+    "grupo": "saude-bem-estar",
+    "titulo": "Saúde & bem-estar",
+    "subtitulo": "Profissionais que atendem no condomínio.",
+    "view_all": {
+      "enabled": true,
+      "label": "Mostrar todos",
+      "href": "/explorar/saude-bem-estar"
+    },
+    "classe_css": null,
+    "heading_style": "styleAsH2",
+    "style_overrides": {
+      "--section-bg": "#090909",
+      "--section-title-color": "#FFFFFF",
+      "--section-subtitle-color": "#B0BEC5"
+    },
+    "cards": [
+      {
+        "id": 401,
+        "slug": "personal-trainer",
+        "icone": "Activity",
+        "titulo": "Personal trainer",
+        "descricao_curta": "Treinos personalizados nas áreas comuns.",
+        "tipo_conteudo": "categoria_servico",
+        "href": "/servicos/personal-trainer",
+        "texto_botao": "Ver prestadores"
+      },
+      {
+        "id": 402,
+        "slug": "fisioterapeuta",
+        "icone": "HeartPulse",
+        "titulo": "Fisioterapeuta",
+        "descricao_curta": "Atendimento domiciliar no condomínio.",
+        "tipo_conteudo": "categoria_servico",
+        "href": "/servicos/fisioterapeuta",
+        "texto_botao": "Ver prestadores"
+      },
+      {
+        "id": 403,
+        "slug": "massoterapeuta",
+        "icone": "Spa",
+        "titulo": "Massoterapeuta",
+        "descricao_curta": "Relaxamento sem sair de casa.",
+        "tipo_conteudo": "categoria_servico",
+        "href": "/servicos/massoterapeuta",
+        "texto_botao": "Ver prestadores"
+      }
+    ]
+  },
+  {
+    "id": 5,
+    "ordem": 5,
+    "tipo_secao": "services_carousel",
+    "grupo": "moradores",
+    "titulo": "Serviços prestados por moradores",
+    "subtitulo": "Valorize quem já faz parte da sua comunidade.",
+    "view_all": {
+      "enabled": true,
+      "label": "Mostrar todos",
+      "href": "/explorar/moradores"
+    },
+    "classe_css": null,
+    "heading_style": "styleAsH2",
+    "style_overrides": {
+      "--section-bg": "#090909",
+      "--section-title-color": "#FFFFFF",
+      "--section-subtitle-color": "#FFD700",
+      "--carousel-card-bg": "#181818",
+      "--carousel-card-badge-bg": "#FFD700",
+      "--carousel-card-badge-text": "#000000"
+    },
+    "cards": [
+      {
+        "id": 501,
+        "slug": "morador-manicure",
+        "icone": "Sparkles",
+        "titulo": "Manicure em casa",
+        "descricao_curta": "Atendimento realizado por moradora do condomínio.",
+        "tipo_conteudo": "morador_prestador",
+        "href": "/moradores/manicure-em-casa",
+        "texto_botao": "Ver perfil",
+        "badge": "Morador"
+      },
+      {
+        "id": 502,
+        "slug": "morador-aulas-reforco",
+        "icone": "GraduationCap",
+        "titulo": "Reforço escolar",
+        "descricao_curta": "Professor morador oferecendo aulas para crianças e adolescentes.",
+        "tipo_conteudo": "morador_prestador",
+        "href": "/moradores/reforco-escolar",
+        "texto_botao": "Ver perfil",
+        "badge": "Morador"
+      },
+      {
+        "id": 503,
+        "slug": "morador-doces",
+        "icone": "Cupcake",
+        "titulo": "Doces e sobremesas",
+        "descricao_curta": "Encomendas feitas por morador do condomínio.",
+        "tipo_conteudo": "morador_prestador",
+        "href": "/moradores/doces-sobremesas",
+        "texto_botao": "Ver perfil",
+        "badge": "Morador"
+      }
+    ]
+  },
+  {
+    "id": 6,
+    "ordem": 6,
+    "tipo_secao": "services_showcase_carousel",
+    "titulo": "Encontre o serviço ideal",
+    "subtitulo": "Escolha uma categoria e veja todos os profissionais disponíveis no Gran Reserva Paulista.",
+    "classe_css": null,
+    "heading_style": "styleAsH2",
+    "style_overrides": {
+      "--section-bg": "#050608",
+      "--section-title-color": "#FFFFFF",
+      "--section-subtitle-color": "#B0BEC5",
+      "--section-font": "'Lato', sans-serif",
+      "--carousel-card-bg": "transparent",
+      "--carousel-card-title-color": "#FFFFFF",
+      "--carousel-card-text-color": "#CFD8DC"
+    },
+    "linhas": [
+      {
+        "id": 1,
+        "titulo_linha": "Serviços do dia a dia",
+        "descricao_linha": "Reparos, manutenção e tudo que você precisa para sua casa.",
+        "servicos": [
+          { "id": 101, "slug": "pedreiro", "titulo": "Pedreiro", "descricao_curta": "Reformas, paredes, pisos e acabamentos.", "imagem_capa": "/img_pedreiro.png", "link": "/servicos/pedreiro" },
+          { "id": 102, "slug": "eletricista", "titulo": "Eletricista", "descricao_curta": "Instalações, reparos e emergências.", "imagem_capa": "/img_eletrecista.png", "link": "/servicos/eletricista" },
+          { "id": 103, "slug": "encanador", "titulo": "Encanador", "descricao_curta": "Vazamentos, troca de registros e mais.", "imagem_capa": "/img_encanador.png", "link": "/servicos/encanador" },
+          { "id": 104, "slug": "marido-de-aluguel", "titulo": "Marido de aluguel", "descricao_curta": "Montagem, pequenos ajustes e instalações.", "imagem_capa": "/img_maridoAluguel.png", "link": "/servicos/marido-de-aluguel" }
+        ]
+      },
+      {
+        "id": 2,
+        "titulo_linha": "Serviços Pet",
+        "descricao_linha": "Tudo para o bem-estar do seu melhor amigo.",
+        "servicos": [
+          { "id": 201, "slug": "banho-e-tosa", "titulo": "Banho e Tosa", "descricao_curta": "Atendimento em domicílio ou loja parceira.", "imagem_capa": "/banhoTosa.png", "link": "/servicos/banho-e-tosa" },
+          { "id": 202, "slug": "passeio-pet", "titulo": "Passeio Pet", "descricao_curta": "Passeios com moradores e cuidadores parceiros.", "imagem_capa": "/img_passeioPet.png", "link": "/servicos/passeio-pet" },
+          { "id": 203, "slug": "pet-sitter", "titulo": "Pet Sitter", "descricao_curta": "Cuidados enquanto você está fora.", "imagem_capa": "/petSitter.png", "link": "/servicos/pet-sitter" }
+        ]
+      },
+      {
+        "id": 3,
+        "titulo_linha": "Saúde & bem-estar",
+        "descricao_linha": "Profissionais que atendem dentro do condomínio.",
+        "servicos": [
+          { "id": 301, "slug": "personal-trainer", "titulo": "Personal Trainer", "descricao_curta": "Treinos personalizados nas áreas comuns.", "imagem_capa": "/capas-servicos/personal-trainer.jpg", "link": "/servicos/personal-trainer" },
+          { "id": 302, "slug": "fisioterapeuta", "titulo": "Fisioterapeuta", "descricao_curta": "Atendimento domiciliar no condomínio.", "imagem_capa": "/capas-servicos/fisioterapeuta.jpg", "link": "/servicos/fisioterapeuta" },
+          { "id": 303, "slug": "massoterapeuta", "titulo": "Massoterapeuta", "descricao_curta": "Relaxamento sem sair de casa.", "imagem_capa": "/capas-servicos/massoterapeuta.jpg", "link": "/servicos/massoterapeuta" }
+        ]
+      }
+    ]
+  },
+  {
+    "id": 7,
+    "ordem": 7,
+    "tipo_secao": "cta",
+    "titulo": "É morador e presta algum serviço?",
+    "subtitulo": "Cadastre-se no GranConecta e seja encontrado pelos seus vizinhos.",
+    "link_botao1": "/sou-prestador",
+    "texto_botao1": "Quero me cadastrar",
+    "link_botao2": "/contato",
+    "texto_botao2": "Falar com o suporte",
+    "classe_css": null,
+    "heading_style": "styleAsH1",
+    "style_overrides": {
+      "--section-bg": "#004D99",
+      "--section-title-color": "#FFFFFF",
+      "--section-subtitle-color": "#E0E0E0",
+      "--primary-button-bg": "#FFD700",
+      "--primary-button-text": "#1B1B1B",
+      "--secondary-button-bg": "transparent",
+      "--secondary-button-text": "#FFFFFF",
+      "--secondary-button-border": "2px solid #FFFFFF"
+    }
+  }
+]

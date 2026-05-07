@@ -1,0 +1,164 @@
+/* VitrinePage.module.css */
+
+.vitrinePage {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 4rem 2rem;
+}
+
+.pageHeader {
+  text-align: center;
+  margin-bottom: 4rem;
+}
+.pageHeader h1 {
+  font-family: 'Merriweather', serif;
+  font-size: 2.75rem;
+  color: #3E2723; /* Marrom Escuro */
+}
+.pageHeader p {
+  font-size: 1.2rem;
+  color: #5D4037;
+  margin-top: 0.5rem;
+}
+
+/* --- A Grade de Produtos --- */
+.productGrid {
+  display: grid;
+  /* Cria colunas responsivas:
+     - minmax(300px, 1fr): Cada coluna terá no MÍNIMO 300px
+       e no MÁXIMO 1 fração (dividindo o espaço igualmente)
+  */
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 2.5rem;
+}
+
+/* --- O Card do Produto --- */
+.productCard {
+  background: #FFFFFF;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  position: relative; /* Para o overlay de "Indisponível" */
+}
+.productCard:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.12);
+}
+
+.cardImageContainer {
+  width: 100%;
+  aspect-ratio: 1 / 1; /* Força um quadrado perfeito */
+  overflow: hidden;
+  background-color: #f4f4f4;
+}
+.cardImageContainer img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Garante que a imagem cubra o espaço */
+}
+
+.cardBody {
+  padding: 1.5rem;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1; /* Faz o corpo crescer */
+}
+
+.cardTitle {
+  font-family: 'Merriweather', serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: #3E2723;
+  margin: 0 0 0.5rem 0;
+}
+
+.cardDescription {
+  font-size: 0.95rem;
+  color: #5D4037;
+  line-height: 1.5;
+  flex-grow: 1; /* Empurra o preço e botão para baixo */
+  margin-bottom: 1rem;
+}
+
+.cardPrice {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: #004D99; /* Azul */
+  margin-bottom: 1rem;
+}
+.cardPriceSobConsulta {
+  font-size: 1.1rem;
+  font-weight: 600;
+  color: #5D4037;
+}
+
+.cardCtaButton {
+  /* Botão de E-commerce * 1/ 
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #FFFFFF;
+  background-color: #D4AF37; /* Dourado */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}
+.cardCtaButton:hover {
+  background-color: #C09B30; /* Dourado mais escuro */
+}
+/* Estilo do botão desabilitado */
+.cardCtaButton[disabled] {
+  background-color: #BDBDBD;
+  cursor: not-allowed;
+}
+
+/* --- Overlay de "Indisponível" --- */
+.cardOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(2px);
+  z-index: 2;
+}
+.cardOverlayText {
+  position: absolute;
+  top: 1.5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #757575;
+  color: white;
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 700;
+  z-index: 3;
+}
+
+.cardCtaButton {
+  display: block;
+  width: 100%;
+  text-align: center;
+  padding: 0.85rem 1rem;
+  font-family: 'Lato', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: #FFFFFF;
+  background-color: #D4AF37; /* Dourado */
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  text-decoration: none;
+  transition: background-color 0.3s ease;
+}

@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{NOME_MARCA}}</title>
+
+  <!-- Tailwind -->
+  <script src="https://cdn.tailwindcss.com"></script>
+
+  <!-- AOS animações -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      AOS.init({ duration: 1000, once: true });
+    });
+  </script>
+
+  <!-- Config dinâmica -->
+  {{MASTER_CSS}}
+
+  <!-- Fontes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;600;800&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <!-- 🔥 ESTILOS DO BUILDER -->
+  <style>
+    .group:hover .edit-overlay {
+      opacity: 1 !important;
+      transition: all 0.3s ease;
+    }
+
+    .editable:hover {
+      outline: 2px dashed #00f2fe;
+      cursor: pointer;
+    }
+  </style>
+
+</head>
+
+<body class="bg-gray-100 text-gray-800 font-inter">
+
+  <!-- HEADER DINÂMICO -->
+  {{HEADER_SECTION}}
+
+  <!-- CONTEÚDO -->
+  <main class="pt-24">
+
+    <!-- HERO (EDITÁVEL) -->
+    <div id="hero-section" class="editable">
+      {{HERO_SECTION}}
+    </div>
+
+    <!-- LOGOS -->
+    <div id="logos-section" class="editable">
+      {{LOGOS_PROVA_SOCIAL}}
+    </div>
+
+    <!-- FEATURES -->
+    <div id="features-section" class="editable">
+      {{FEATURES_SECTION}}
+    </div>
+
+    <!-- CONTEÚDO DINÂMICO -->
+    <div id="dynamic-section" class="editable">
+      {{DYNAMIC_CONTENT}}
+    </div>
+
+    <!-- GALERIA -->
+    <div id="gallery-section" class="editable">
+      {{GALLERY_SECTION}}
+    </div>
+
+    <!-- DEPOIMENTOS -->
+    <div id="testimonials-section" class="editable">
+      {{TESTIMONIALS_SECTION}}
+    </div>
+
+    <!-- FAQ -->
+    <div id="faq-section" class="editable">
+      {{FAQ_SECTION}}
+    </div>
+
+    <!-- CTA FINAL -->
+    <div id="cta-section" class="editable">
+      {{FINAL_CTA_SECTION}}
+    </div>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="py-10 text-center text-gray-500">
+    {{FOOTER_CONTENT}}
+  </footer>
+
+  <!-- 🚀 SCRIPT PRINCIPAL DO BUILDER -->
+  <script>
+
+    // 🔥 Recebe atualização do React/backend
+    window.addEventListener('message', function (event) {
+      if (event.data.type === 'UPDATE_SECTION') {
+
+        const oldEl = document.getElementById(event.data.sectionId);
+        if (!oldEl) return;
+
+        oldEl.style.opacity = '0';
+
+        setTimeout(() => {
+
+          const temp = document.createElement('div');
+          temp.innerHTML = event.data.html;
+
+          const newEl = temp.firstElementChild;
+
+          if (newEl) {
+            // Em vez de replaceWith, vamos limpar o conteúdo e inserir o novo
+            // Mantendo o ID original do container pai
+            oldEl.innerHTML = event.data.html;
+            // Se o componente trouxer um novo ID, remova-o para não duplicar
+            if (oldEl.firstElementChild) oldEl.firstElementChild.removeAttribute('id');
+          }
+
+          // 🔥 REATIVA scripts internos
+          document.querySelectorAll("script").forEach(oldScript => {
+            const newScript = document.createElement("script");
+            newScript.text = oldScript.text;
+            document.body.appendChild(newScript);
+            oldScript.remove();
+          });
+
+          if (window.AOS) AOS.refresh();
+
+        }, 300);
+      }
+    });
+
+    // 🔄 chama backend via React
+    function refreshSection(sectionId, componentName) {
+      window.parent.postMessage({
+        type: 'REFRESH_COMPONENT',
+        sectionId: sectionId,
+        componentName: componentName
+      }, '*');
+    }
+
+  </script>
+
+</body>
+
+</html>

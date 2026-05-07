@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{NOME_MARCA}} — {{TAGLINE}}</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Space+Mono&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="bg-grid"></div>
+
+  <header id="topo">
+    <div class="container nav-container">
+      <div class="brand">
+        <span class="logo-icon"></span>
+        {{NOME_MARCA}}
+      </div>
+
+      <nav class="menu" aria-label="Navegação desktop">
+        <a href="#top">Início</a>
+        <a href="#veiculos">Veículos</a>
+        <a href="#recursos">Diferenciais</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#rodape">Contato</a>
+      </nav>
+
+      <a class="btn-primary" href="{{CTA_LINK}}">
+        <span class="editable-text">{{CTA_PRINCIPAL}}</span>
+      </a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="hero-overlay-wrap">
+        <img class="hero-overlay-image hero-overlay-card"
+          src="https://images.unsplash.com/photo-1494976388531-d1058494cdd8?q=80" alt="Hero overlay"
+          style="display:none;" />
+      </div>
+
+      <div class="container hero-content">
+        <div class="badge">{{HERO_BADGE}}</div>
+
+        <h1>
+          {{HERO_TITULO_PARTE1}}
+          <span class="text-gradient">{{HERO_TITULO_GRADIENTE}}</span>
+        </h1>
+
+        <p>{{HERO_SUBTITULO}}</p>
+
+        <div class="hero-btns">
+          <a class="btn-primary" href="{{CTA_LINK}}">
+            <span class="editable-text">{{CTA_PRINCIPAL}}</span>
+          </a>
+          <a class="btn-secondary" href="#veiculos">
+            <span class="editable-text">Ver Veículos →</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="logos-section" id="logos">
+      <div class="container">
+        <p class="section-subtitle">{{LOGOS_TITULO}}</p>
+        <div class="logos-grid">
+          {{LOGOS_HTML}}
+        </div>
+      </div>
+    </section>
+
+    <!-- VITRINE DE VEÍCULOS -->
+    <section class="section" id="veiculos">
+      <div class="container">
+        <div class="section-header">
+          <h2 contenteditable="true">Veículos em Destaque</h2>
+          <p contenteditable="true">Confira alguns modelos selecionados com procedência, qualidade e ótimo custo-benefício.</p>
+        </div>
+
+        <div class="cars-grid">
+          <article class="car-card">
+            <div class="car-image-wrap">
+              <img src="https://images.unsplash.com/photo-1555215695-3004980ad54e?q=80"
+                alt="Carro 1" class="car-image">
+            </div>
+
+            <div class="car-body">
+              <h3 contenteditable="true">Honda Civic Touring 2022</h3>
+              <div class="car-price" contenteditable="true">R$ 149.900</div>
+              <p contenteditable="true">
+                Automático, baixa quilometragem, acabamento premium, revisões em dia e excelente estado de conservação.
+              </p>
+
+              <div class="car-meta">
+                <span contenteditable="true">Automático</span>
+                <span contenteditable="true">35.000 km</span>
+                <span contenteditable="true">Flex</span>
+              </div>
+
+              <a class="btn-primary car-contact-btn" href="{{CTA_LINK}}">
+                <span class="editable-text">Entrar em contato</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="car-card">
+            <div class="car-image-wrap">
+              <img src="https://images.unsplash.com/photo-1503376780353-7e6692767b70?q=80"
+                alt="Carro 2" class="car-image">
+            </div>
+
+            <div class="car-body">
+              <h3 contenteditable="true">Toyota Corolla XEi 2021</h3>
+              <div class="car-price" contenteditable="true">R$ 129.900</div>
+              <p contenteditable="true">
+                Sedan completo, confortável, econômico e ideal para quem busca segurança e confiabilidade no dia a dia.
+              </p>
+
+              <div class="car-meta">
+                <span contenteditable="true">Automático</span>
+                <span contenteditable="true">42.000 km</span>
+                <span contenteditable="true">Flex</span>
+              </div>
+
+              <a class="btn-primary car-contact-btn" href="{{CTA_LINK}}">
+                <span class="editable-text">Entrar em contato</span>
+              </a>
+            </div>
+          </article>
+
+          <article class="car-card">
+            <div class="car-image-wrap">
+              <img src="https://images.unsplash.com/photo-1544636331-e26879cd4d9b?q=80"
+                alt="Carro 3" class="car-image">
+            </div>
+
+            <div class="car-body">
+              <h3 contenteditable="true">Jeep Compass Longitude 2023</h3>
+              <div class="car-price" contenteditable="true">R$ 179.900</div>
+              <p contenteditable="true">
+                SUV sofisticado, excelente espaço interno, central multimídia completa e visual imponente.
+              </p>
+
+              <div class="car-meta">
+                <span contenteditable="true">Automático</span>
+                <span contenteditable="true">18.000 km</span>
+                <span contenteditable="true">Diesel</span>
+              </div>
+
+              <a class="btn-primary car-contact-btn" href="{{CTA_LINK}}">
+                <span class="editable-text">Entrar em contato</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recursos">
+      <div class="container">
+        <div class="section-header">
+          <h2>{{RECURSOS_TITULO}}</h2>
+          <p>{{RECURSOS_SUBTITULO}}</p>
+        </div>
+
+        <div class="features-grid">
+          {{RECURSOS_CARDS}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="resultados">
+      <div class="container">
+        <div class="results-grid">
+          {{RESULTADOS_NUMEROS}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta" id="cta-final">
+      <div class="container cta-box">
+        <h2>{{FINAL_CTA_TITULO}}</h2>
+        <p>{{FINAL_CTA_SUBTITULO}}</p>
+        <a class="btn-primary btn-large" href="{{CTA_LINK}}">
+          <span class="editable-text">{{CTA_PRINCIPAL}}</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer id="rodape">
+    <div class="container footer-container">
+      <div class="brand">
+        <span class="logo-icon"></span>
+        {{NOME_MARCA}}
+      </div>
+
+      <div class="footer-credits">
+        <span>© <span id="y"></span> — {{NOME_MARCA}}</span>
+        <span class="user-tag">Client ID: {{USUARIO_ID}}</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+
+    document.querySelectorAll(".editable-text").forEach((el) => {
+      el.setAttribute("contenteditable", "true");
+    });
+
+    document.querySelectorAll("h2, h3, p, .car-price, .car-meta span").forEach((el) => {
+      el.setAttribute("contenteditable", "true");
+    });
+
+    document.addEventListener("click", function (e) {
+      const link = e.target.closest && e.target.closest('a[href^="#"]');
+      if (!link) return;
+
+      const href = link.getAttribute("href");
+      if (!href || href === "#") return;
+
+      const targetSection = document.querySelector(href);
+      if (targetSection) {
+        e.preventDefault();
+        targetSection.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+    });
+  </script>
+</body>
+
+</html>
