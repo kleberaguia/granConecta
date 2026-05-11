@@ -68,14 +68,16 @@ export const AuthService = {
       { expiresIn: "7d" }
     );
 
-    // ✅ TRATAMENTO DO PERFIL PARA O FRONT-END
-    // Garantimos que o Front receba o array 'perfis' para não dar erro de .some()
     const perfilRaw = (usuario as any).perfil;
     const perfisApp = perfilRaw ? [{
       id: perfilRaw.id,
+
       status: perfilRaw.status_aprovacao,
       status_aprovacao: perfilRaw.status_aprovacao,
-      plano: perfilRaw.plano
+      plano: perfilRaw.plano,
+      payment_status: perfilRaw.payment_status || perfilRaw.status_aprovacao,
+      checkout_url: perfilRaw.checkout_url || null,
+      checkout_expira_em: perfilRaw.checkout_expira_em || null
     }] : [];
 
     return {
@@ -112,7 +114,6 @@ export const AuthService = {
   async register(data: any) {
     const { email, name, tipo, categoriaid, condominio_id } = data;
     const password = data.password || data.senha;
-    console.log('dataaaaaaaaaaaaaaaaaaaaa ', data)
     if (!email || !password) throw new Error("E-mail e senha são obrigatórios!");
 
     const authRepo = AppDataSource.getRepository(UsuarioAuth);
@@ -141,7 +142,6 @@ export const AuthService = {
       });
 
       const usuarioSalvo = await manager.save(novoUsuario);
-
       // 2. Criar Endereço
       const novoEndereco = manager.create(Endereco, {
         usuarioId: usuarioSalvo.id,
@@ -153,21 +153,27 @@ export const AuthService = {
       });
       await manager.save(novoEndereco);
 
+      console.log("tipo recebido:", tipo);
+      console.log("is_prestador recebido:", data.is_prestador);
+      console.log("isPrestador final:", isPrestador);
+      console.log("isEmpreendedor final:", isEmpreendedor);
+
       // 3. Criar Perfil de Prestador/Empreendedor
       if (isPrestador || isEmpreendedor) {
+
         const novoPerfil = manager.create(PerfilPrestador, {
           usuarioId: usuarioSalvo.id,
           nome_profissional: name,
-          tipo: tipo || "PRESTADOR",
+          tipo: "PRESTADOR",
           status_aprovacao: "PENDENTE",
           tipo_assinatura: data.tipo_assinatura || "MENSAL",
           plano: data.plano || "basico",
           categoriaid: categoriaid || null,
         });
+
+
         await manager.save(novoPerfil);
       }
-
-      // 4. Criar Loja (Apenas se for empreendedor)
       if (isEmpreendedor) {
         const novaLoja = manager.create(Store, {
           usuarioId: usuarioSalvo.id,
@@ -179,8 +185,6 @@ export const AuthService = {
         });
         await manager.save(novaLoja);
       }
-
-      // 5. Autenticação e Criptografia
       const passwordHash = await hash(password, 8);
       const novoAuth = manager.create(UsuarioAuth, {
         email,
@@ -190,8 +194,6 @@ export const AuthService = {
         codigoVerificacao,
       });
       await manager.save(novoAuth);
-
-      // Envio do código por e-mail
       EmailService.send(email, "Verificação GranConecta", `Seu código é: ${codigoVerificacao}`).catch(console.error);
 
       const token = sign({ usuarioId: usuarioSalvo.id }, JWT_SECRET, { expiresIn: "1d" });

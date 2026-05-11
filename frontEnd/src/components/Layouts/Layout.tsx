@@ -71,6 +71,8 @@ export default function Layout() {
   const podeGerenciarNegocio = (u?.is_empreendedor === 1 || u?.is_empreendedor === true) && !isBloqueado;
   const fotoUrl = u?.perfil?.foto_perfil_url || u?.foto_perfil_url || '';
 
+  console.log('uuuuuuuuuu ', u.perfil.categoriaidoPrincipal.name)
+
   const closeMenu = () => {
     setIsMenuOpen(false);
     setOpenSubmenu(null);
@@ -205,6 +207,7 @@ export default function Layout() {
                       <div className={style.userHeaderDropdown}>
                         <p className={style.userLabel}>Acesso {user.tipo}</p>
                         <p className={style.userEmail}>{user.email}</p>
+                          <p className={style.userEmail}>{u.perfil.categoriaidoPrincipal.name}</p>
                       </div>
 
                       <div className={style.dividerHorizontal} />

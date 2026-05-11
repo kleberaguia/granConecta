@@ -9,7 +9,7 @@ import {
   Stack,
   Card,
   CardMedia,
-  Fade, 
+  Fade,
   CircularProgress,
   Divider,
 } from "@mui/material";
@@ -24,6 +24,7 @@ type TipoServico = {
   id: string;
   slug: string;
   nome: string;
+  name?: string;
   descricao?: string;
   icone?: string;
 };
@@ -62,6 +63,9 @@ export default function ServiceShowcase() {
   const { categoryTag } = useParams<{ categoryTag?: string }>();
   const navigate = useNavigate();
 
+
+  console.log('categoryTag ', categoryTag)
+
   const [prestadores, setPrestadores] = useState<StorePrestador[]>([]);
   const [tipoServicoAtual, setTipoServicoAtual] = useState<TipoServico | null>(null);
   const [heroIndex, setHeroIndex] = useState(0);
@@ -73,25 +77,51 @@ export default function ServiceShowcase() {
       try {
         const tiposRes = await api.get("/tipos-combo");
         const tipos = Array.isArray(tiposRes.data) ? tiposRes.data : [];
-        const tipoEncontrado = categoryTag
-          ? tipos.find((item: TipoServico) => item.slug === categoryTag) || null
-          : null;
-        setTipoServicoAtual(tipoEncontrado);
 
+        // 1. Busca o tipo de serviço (por ID ou Slug)
+        const encontrado = categoryTag
+          ? tipos.find((item: any) =>
+            String(item.id) === String(categoryTag) ||
+            item.slug === categoryTag ||
+            item.name === categoryTag
+          ) || null
+          : null;
+
+        // 2. Normaliza e atualiza o estado (Uma única vez)
+        if (encontrado) {
+          const tipoNormalizado = {
+            ...encontrado,
+            nome: encontrado.nome || encontrado.name // Resolve o problema do name vs nome
+          };
+          setTipoServicoAtual(tipoNormalizado);
+          console.log('Tipo de Serviço Identificado:', tipoNormalizado);
+        } else {
+          setTipoServicoAtual(null);
+        }
+
+        // 3. Busca todas as lojas
         const res = await api.get("/lojas/publica/todas");
+        console.log('ressssssssss ', res)
+
         const data = Array.isArray(res.data) ? res.data : [];
 
         const somentePrestadores = data.filter(
           (item: StorePrestador) => String(item.tipo || "").toLowerCase() === "prestador"
         );
 
-        const urlCategorySlug = slugify(categoryTag || "");
-
+        // 4. Filtra por Categoria usando o ID (preferencial) ou Slug
         const filtradosPorCategoria = categoryTag
           ? somentePrestadores.filter((item: StorePrestador) => {
-              const itemSlug = getCategoriaSlug(item);
-              return itemSlug === urlCategorySlug;
-            })
+            // Se achamos a categoria oficial, comparamos pelo ID numérico (mais seguro)
+            if (encontrado) {
+              if (String(item.categoriaid) === String(encontrado.id)) return true;
+            }
+
+            // Fallback por slug caso o ID não bata ou a categoria não seja encontrada no tipos-combo
+            const itemSlug = getCategoriaSlug(item);
+            const urlCategorySlug = slugify(categoryTag || "");
+            return itemSlug === urlCategorySlug;
+          })
           : somentePrestadores;
 
         setPrestadores(filtradosPorCategoria);
@@ -124,15 +154,15 @@ export default function ServiceShowcase() {
 
   const getDisplayName = (item?: StorePrestador | null) => item?.name || "Profissional";
   const getDisplayDescription = (item?: StorePrestador | null) => item?.descricao_loja || "Conheça este profissional.";
-  
+
   const getDisplayCategory = (item?: StorePrestador | null) => {
-    return (typeof item?.categoria === 'string' ? item.categoria : item?.categoria?.name) || 
-           item?.categoria_tag || "Serviços Gerais";
+    return (typeof item?.categoria === 'string' ? item.categoria : item?.categoria?.name) ||
+      item?.categoria_tag || "Serviços Gerais";
   };
 
   const handleOpenPage = (item?: StorePrestador | null) => {
     if (!item?.slug) return;
-    window.open(`/pagina/${item.slug}`,'_blank');
+    window.open(`/pagina/${item.slug}`, '_blank');
   };
 
   if (loading) {
@@ -205,36 +235,36 @@ export default function ServiceShowcase() {
             <Grid2 container spacing={4}>
               {tiers.outros.map((p) => (
                 <Grid2 size={{ xs: 12, sm: 6, md: 3 }} key={p.id}>
-                  <Card 
-                    sx={{ 
-                      borderRadius: 5, 
-                      cursor: "pointer", 
+                  <Card
+                    sx={{
+                      borderRadius: 5,
+                      cursor: "pointer",
                       overflow: "hidden",
                       border: "1px solid #e2e8f0",
                       bgcolor: "white",
                       boxShadow: "0 4px 12px rgba(0,0,0,0.05)",
                       transition: "all 0.4s ease",
-                      "&:hover": { 
+                      "&:hover": {
                         transform: "translateY(-10px)",
                         boxShadow: "0 20px 25px -5px rgba(0,0,0,0.1)",
                         borderColor: "#D4AF37"
-                      } 
-                    }} 
+                      }
+                    }}
                     onClick={() => handleOpenPage(p)}
                   >
                     <Box sx={{ position: 'relative' }}>
-                      <CardMedia 
-                        component="img" 
-                        height="200" 
-                        image={resolveImageUrl(p.capa_url || p.logo_url)} 
+                      <CardMedia
+                        component="img"
+                        height="200"
+                        image={resolveImageUrl(p.capa_url || p.logo_url)}
                         sx={{ objectFit: "cover" }}
                       />
-                      <Avatar 
-                        src={resolveImageUrl(p.logo_url)} 
-                        sx={{ 
-                          position: 'absolute', bottom: -20, left: 20, 
+                      <Avatar
+                        src={resolveImageUrl(p.logo_url)}
+                        sx={{
+                          position: 'absolute', bottom: -20, left: 20,
                           width: 50, height: 50, border: '3px solid white', boxShadow: 2
-                        }} 
+                        }}
                       />
                     </Box>
 
@@ -250,10 +280,10 @@ export default function ServiceShowcase() {
                         </Box>
                       </Stack>
 
-                      <Typography 
-                        variant="body2" color="text.secondary" 
-                        sx={{ 
-                          mt: 1.5, display: '-webkit-box', WebkitLineClamp: 2, 
+                      <Typography
+                        variant="body2" color="text.secondary"
+                        sx={{
+                          mt: 1.5, display: '-webkit-box', WebkitLineClamp: 2,
                           WebkitBoxOrient: 'vertical', overflow: 'hidden', minHeight: '40px'
                         }}
                       >
@@ -262,10 +292,10 @@ export default function ServiceShowcase() {
 
                       <Divider sx={{ my: 2 }} />
 
-                      <Button 
-                        fullWidth variant="outlined" 
+                      <Button
+                        fullWidth variant="outlined"
                         endIcon={<ArrowForwardIosIcon sx={{ fontSize: '10px !important' }} />}
-                        sx={{ 
+                        sx={{
                           borderRadius: 2, textTransform: 'none', fontWeight: 700,
                           borderColor: '#e2e8f0', color: '#1e293b',
                           "&:hover": { bgcolor: '#f8fafc', borderColor: '#D4AF37' }

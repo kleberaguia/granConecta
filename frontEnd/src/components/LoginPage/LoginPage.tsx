@@ -46,71 +46,99 @@ export default function LoginPage({ tipo = 'MORADOR' }: LoginPageProps) {
       });
 
       const { token, user } = response.data;
-
-      // Verifica se o e-mail já foi verificado (2FA ou confirmação de conta)
       if (user.emailVerificado === true || user.emailVerificado === 1) {
-
-        // Efetua o login no contexto global (salva token e user no localStorage)
         login(token, user);
 
         const queryParams = new URLSearchParams(window.location.search);
         const redirectPath = queryParams.get('redirect');
-
-        // Pequeno delay para garantir que o Context foi atualizado antes do navigate
         setTimeout(() => {
+
           if (redirectPath) {
             navigate(redirectPath);
             return;
           }
 
-          const tipoUser = user.tipo ? user.tipo.toUpperCase() : '';
+          const tipoUser = user.tipo
+            ? user.tipo.toUpperCase()
+            : '';
 
-          // 1. Rota para Administradores
+          // =========================================
+          // ADMIN
+          // =========================================
           if (tipoUser === 'ADMIN') {
             navigate('/admin/dashboard');
+            return;
           }
-          // 2. Lógica para Prestadores e Empreendedores
-          else if (user.is_empreendedor || tipoUser === 'PRESTADOR') {
 
-            // Pega os perfis de dentro do objeto user (conforme definido no AuthService)
+          // =========================================
+          // PRESTADOR / EMPREENDEDOR
+          // =========================================
+          if (
+            user.is_empreendedor ||
+            tipoUser === 'PRESTADOR'
+          ) {
             const perfis = user.perfis || [];
-
-            // Verifica aprovação no array de perfis
             const temPerfilAprovado = perfis.some(
               (p: any) =>
                 (p.status || "").toUpperCase() === 'APROVADO' ||
                 (p.status_aprovacao || "").toUpperCase() === 'APROVADO'
             );
-
-            // Verifica se está pendente de pagamento ou análise
-            const temPerfilPendente = perfis.some(
+            const perfilPagamentoPendente = perfis.find(
               (p: any) =>
-                (p.status || "").toUpperCase() === 'PENDENTE' ||
-                (p.status_aprovacao || "").toUpperCase() === 'PENDENTE'
+                (p.payment_status || "").toUpperCase()
+                === 'PENDENTE'
             );
-
-            // Condição de Liberação Total
-            if (temPerfilAprovado || (user.status_conta || "").toUpperCase() === 'APROVADO' || user.ativo === true || user.ativo === 1) {
+            if (
+              temPerfilAprovado ||
+              (user.status_conta || "").toUpperCase() === 'APROVADO' ||
+              user.ativo === true ||
+              user.ativo === 1
+            ) {
               toast.success("Login autorizado!");
               navigate('/');
+              return;
             }
-            // Condição de Restrição por Pagamento
-            else if (temPerfilPendente) {
-              toast.error("Assinatura pendente. Seu acesso está restrito.");
+            if (perfilPagamentoPendente) {
+              toast(
+                "Você possui um pagamento pendente.",
+                {
+                  icon: '💳',
+                }
+              );
+              if (
+                perfilPagamentoPendente.checkout_url
+              ) {
+                const expiracao = perfilPagamentoPendente.checkout_expira_em;
+                if (
+                  expiracao &&
+                  new Date(expiracao) > new Date()
+                ) {
+
+                  toast.success(
+                    "Retomando pagamento..."
+                  );
+                  window.location.href =
+                    perfilPagamentoPendente.checkout_url;
+                  return;
+                }
+              }
+              toast.error(
+                "Seu pagamento expirou."
+              );
               navigate('/pagamento-orientacoes');
+              return;
             }
-            // Condição de Perfil Novo ou sob Análise
-            else {
-              toast("Seu perfil está em análise.", {
+
+            toast(
+              "Seu perfil está em análise.",
+              {
                 icon: '⚠️',
-              });
-              navigate('/');
-            }
-          }
-          // 3. Rota para Moradores
-          else {
+              }
+            );
             navigate('/');
+            return;
           }
+          navigate('/');
         }, 100);
 
       } else {

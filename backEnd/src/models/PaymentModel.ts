@@ -12,12 +12,12 @@ import {
 import { Usuario } from "./UserModels";
 
 export enum PaymentStatus {
-  PENDING     = "PENDING",
-  PAID        = "PAID",
-  FAILED      = "FAILED",
-  CANCELED    = "CANCELED",
-  REFUNDED    = 'REFUNDED',
-  IN_PROCESS  = 'IN_PROCESS'
+  PENDING = "PENDING",
+  PAID = "PAID",
+  FAILED = "FAILED",
+  CANCELED = "CANCELED",
+  REFUNDED = 'REFUNDED',
+  IN_PROCESS = 'IN_PROCESS'
 }
 
 @Entity("payments")
@@ -60,4 +60,10 @@ export class Payment {
 
   @UpdateDateColumn()
   updatedAt!: Date;
+  @Column({ nullable: true })
+  mercado_pago_preference_id?: string;
+  @Column({ nullable: true })
+  mercado_pago_payment_id?: string;
+  @Column({ nullable: true })
+  mercado_pago_merchant_order_id?: string;
 }

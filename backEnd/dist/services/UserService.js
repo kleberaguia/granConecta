@@ -1,0 +1,306 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const data_source_1 = require("../config/data-source");
+const PerfilPrestadorModel_1 = require("../models/PerfilPrestadorModel");
+const UserModels_1 = require("../models/UserModels");
+const EnderecoModel_1 = require("../models/EnderecoModel");
+const enums_1 = require("../models/enums");
+const usuarioRepo = data_source_1.AppDataSource.getRepository(UserModels_1.Usuario);
+const perfilRepo = data_source_1.AppDataSource.getRepository(PerfilPrestadorModel_1.PerfilPrestador);
+const enderecoRepo = data_source_1.AppDataSource.getRepository(EnderecoModel_1.Endereco);
+const UserService = {
+    async getAll() {
+        return await usuarioRepo.find();
+    },
+    async getAllUsers() {
+        return await usuarioRepo.find({ relations: ['perfil'] });
+    },
+    async getPerfilUserById(usuarioId) {
+        const perfil = await perfilRepo.findOne({ where: { usuarioId } });
+        return perfil || null;
+    },
+    async getUserById(id) {
+        try {
+            console.log('Buscando usuário ID:', id);
+            // Definimos as relações
+            const relacoesComuns = [
+                "condominio",
+                "perfil",
+                "endereco",
+                "perfil.categoriaidoPrincipal" // ⚠️ Verifique se esse nome EXATO existe na Entity Perfil
+            ];
+            const user = await usuarioRepo.findOne({
+                where: { id },
+                relations: relacoesComuns
+            });
+            if (!user) {
+                console.log('Usuário não encontrado no banco');
+                return null;
+            }
+            return user;
+        }
+        catch (error) {
+            // Se der erro aqui, ele vai printar exatamente qual relação está errada
+            console.error('Erro dentro de getUserById:', error.message);
+            throw error; // Lança para o controller tratar como 500
+        }
+    },
+    async listarPendentes() {
+        return await usuarioRepo.find({
+            where: { status_conta: enums_1.UserStatus.PENDENTE },
+            relations: ["perfil"],
+            select: {
+                id: true,
+                name: true,
+                tipo: true,
+                status_conta: true,
+                perfil: {
+                    id: true,
+                    nome_profissional: true,
+                }
+            }
+        });
+    },
+    async deleteUser(id) {
+        const user = await usuarioRepo.findOne({ where: { id } });
+        if (!user)
+            throw new Error("Usuário não encontrado");
+        return await usuarioRepo.remove(user);
+    },
+    async createUser(data) {
+        const queryRunner = data_source_1.AppDataSource.createQueryRunner();
+        await queryRunner.connect();
+        await queryRunner.startTransaction();
+        try {
+            // 1. Criação do Usuário
+            const usuario = queryRunner.manager.create(UserModels_1.Usuario, {
+                name: data.name || data.nome,
+                telefone: data.telefone,
+                tipo: 'PRESTADOR',
+                // Define se é interno baseado na origem enviada pelo front
+                is_interno: data.origem === 'EXTERNO' ? false : (data.is_interno ?? true),
+                documento: data.documento,
+                status_conta: enums_1.UserStatus.PENDENTE,
+                categoriaid: data.categoriaid || null,
+                condominio_id: data.condominio_id || null
+            });
+            const savedUser = await queryRunner.manager.save(usuario);
+            // 2. Criação do Endereço
+            const endereco = queryRunner.manager.create(EnderecoModel_1.Endereco, {
+                usuarioId: savedUser.id,
+                condominio_id: data.condominio_id || null,
+                bloco_torre: data.bloco || data.bloco_torre || null,
+                unidade_apto: data.unidade || data.unidade_apto || null,
+                // Prioriza endereço externo se vier do front
+                logradouro: data.endereco_externo || data.logradouro || null,
+                bairro: data.bairro || null,
+                cidade: data.cidade || null,
+                uf: data.uf || null,
+                numero: data.numero || null,
+                cep: data.cep || null
+            });
+            await queryRunner.manager.save(endereco);
+            // 3. Lógica para Perfil (Prestador ou Morador Empreendedor)
+            if (data.tipo === 'PRESTADOR' || data.is_empreendedor === true || data.is_empreendedor === 'true') {
+                await this.criarPerfilInternal(savedUser.id, data.name || data.nome, queryRunner.manager, data.categoriaid);
+            }
+            await queryRunner.commitTransaction();
+            return savedUser;
+        }
+        catch (err) {
+            await queryRunner.rollbackTransaction();
+            console.error("Erro no cadastro:", err);
+            throw err;
+        }
+        finally {
+            await queryRunner.release();
+        }
+    },
+    // Método interno para ser usado dentro de transações
+    async criarPerfilInternal(id, nome, manager, categoriaid) {
+        const perfilExistente = await manager.findOne(PerfilPrestadorModel_1.PerfilPrestador, { where: { usuarioId: id } });
+        if (!perfilExistente) {
+            const perfil = manager.create(PerfilPrestadorModel_1.PerfilPrestador, {
+                usuarioId: id,
+                nome_profissional: nome,
+                status_aprovacao: 'PENDENTE',
+                categoriaid: categoriaid || null
+            }); // O 'as any' resolve os erros de Overload e DeepPartial
+            return await manager.save(perfil);
+        }
+        if (categoriaid && !perfilExistente.categoriaid) {
+            perfilExistente.categoriaid = categoriaid;
+            return await manager.save(perfilExistente);
+        }
+        return perfilExistente;
+    },
+    async updateUser(id, dados) {
+        const user = await usuarioRepo.findOne({
+            where: { id },
+            relations: ['perfil', 'endereco']
+        });
+        if (!user)
+            return null;
+        // =========================
+        // 1. DADOS BÁSICOS
+        // =========================
+        if (dados.is_empreendedor !== undefined)
+            user.is_empreendedor = String(dados.is_empreendedor) === 'true';
+        if (dados.is_prestador !== undefined)
+            user.is_prestador = String(dados.is_prestador) === 'true';
+        if (dados.name)
+            user.name = dados.name;
+        if (dados.telefone)
+            user.telefone = dados.telefone;
+        if (dados.documento !== undefined)
+            user.documento = dados.documento;
+        if (dados.condominio_id)
+            user.condominio_id = dados.condominio_id;
+        if (dados.categoriaid !== undefined)
+            user.categoriaid = dados.categoriaid;
+        // 🔥 FOTO DO USUÁRIO (MORADOR / GLOBAL)
+        if (dados.foto_perfil_url) {
+            user.foto_perfil_url = dados.foto_perfil_url;
+        }
+        // =========================
+        // 2. PERFIL PROFISSIONAL
+        // =========================
+        const virouProfissional = user.is_prestador || user.is_empreendedor;
+        if (virouProfissional) {
+            let perfilExistente = user.perfil ||
+                await perfilRepo.findOne({ where: { usuarioId: id } });
+            if (perfilExistente) {
+                const dadosParaAtualizar = {};
+                // ⚠️ aqui é foto PROFISSIONAL (opcional manter separado)
+                if (dados.foto_perfil_url) {
+                    dadosParaAtualizar.foto_perfil_url = dados.foto_perfil_url;
+                }
+                if (dados.categoriaid) {
+                    dadosParaAtualizar.categoriaid = dados.categoriaid;
+                }
+                if (Object.keys(dadosParaAtualizar).length > 0) {
+                    await perfilRepo.update({ usuarioId: id }, dadosParaAtualizar);
+                    Object.assign(perfilExistente, dadosParaAtualizar);
+                    user.perfil = perfilExistente;
+                }
+            }
+            else {
+                // 👇 cria perfil apenas se virou profissional
+                await this.criarPerfil(id, user.name);
+            }
+        }
+        // =========================
+        // 3. ENDEREÇO
+        // =========================
+        const bloco = dados.bloco || dados.bloco_torre;
+        const unidade = dados.unidade || dados.unidade_apto;
+        if (bloco || unidade || dados.endereco_externo) {
+            if (user.endereco) {
+                if (bloco)
+                    user.endereco.bloco_torre = bloco;
+                if (unidade)
+                    user.endereco.unidade_apto = unidade;
+                if (dados.endereco_externo)
+                    user.endereco.logradouro = dados.endereco_externo;
+                await enderecoRepo.save(user.endereco);
+            }
+        }
+        // =========================
+        // 4. UPDATE FINAL (PERFORMANCE)
+        // =========================
+        const updateData = {
+            is_empreendedor: user.is_empreendedor,
+            is_prestador: user.is_prestador,
+            name: user.name,
+            telefone: user.telefone ?? null,
+            documento: user.documento ?? null,
+            condominio_id: user.condominio_id,
+            categoriaid: user.categoriaid,
+        };
+        // 👇 só adiciona se existir (evita sobrescrever)
+        if (user.foto_perfil_url) {
+            updateData.foto_perfil_url = user.foto_perfil_url;
+        }
+        Object.keys(updateData).forEach(key => updateData[key] === undefined && delete updateData[key]);
+        await usuarioRepo.update(id, updateData);
+        return user;
+    },
+    async criarPerfil(id, nome) {
+        const queryRunner = data_source_1.AppDataSource.createQueryRunner();
+        await queryRunner.connect();
+        await queryRunner.startTransaction();
+        try {
+            const res = await this.criarPerfilInternal(id, nome, queryRunner.manager);
+            await queryRunner.commitTransaction();
+            return res;
+        }
+        catch (err) {
+            await queryRunner.rollbackTransaction();
+            throw err;
+        }
+        finally {
+            await queryRunner.release();
+        }
+    },
+    async atualizarPerfilProfissional(usuarioId, data, file) {
+        // 1. Busca o perfil ou cria um novo caso não exista (uso de 'as any' para evitar erro de cast do TS)
+        let perfil = await perfilRepo.findOne({ where: { usuarioId } });
+        if (!perfil) {
+            // Fazemos o cast para 'unknown' primeiro e depois para 'PerfilPrestador'
+            // Isso remove o erro de "overlap" (sobreposição) de tipos.
+            perfil = perfilRepo.create({
+                usuarioId,
+                nome_profissional: data.nome_profissional || 'Pendente'
+            });
+        }
+        // 2. Tratamento de upload de foto
+        if (file) {
+            data.foto_perfil_url = `/uploads/images/${file.filename}`;
+        }
+        // 3. Atualização dos campos básicos
+        if (data.nome_profissional)
+            perfil.nome_profissional = data.nome_profissional;
+        if (data.descricao_bio)
+            perfil.descricao_bio = data.descricao_bio;
+        if (data.foto_perfil_url)
+            perfil.foto_perfil_url = data.foto_perfil_url;
+        if (data.foto_hero_url)
+            perfil.foto_hero_url = data.foto_hero_url;
+        if (data.whatsapp_comercial)
+            perfil.whatsapp_comercial = data.whatsapp_comercial;
+        // --- NOVO: Atualização da Especialidade (Sincronia com o novo sistema) ---
+        if (data.categoriaid) {
+            perfil.categoriaid = data.categoriaid;
+        }
+        // 4. Tratamento de serviços (JSON)
+        if (data.servicos_oferecidos) {
+            perfil.servicos_json = Array.isArray(data.servicos_oferecidos)
+                ? data.servicos_oferecidos
+                : data.servicos_oferecidos.split(',').map((s) => s.trim());
+        }
+        // 5. Status e Salvamento
+        // Definimos como PENDENTE para que a moderação revise a alteração
+        perfil.status = enums_1.UserStatus.PENDENTE;
+        const perfilSalvo = await perfilRepo.save(perfil);
+        // ✅ Dica Extra: Se o perfil mudar a especialidade, é bom espelhar no Usuário também
+        if (data.categoriaid) {
+            await usuarioRepo.update(usuarioId, { categoriaid: data.categoriaid });
+        }
+        return perfilSalvo;
+    },
+    async registrarClique(usuarioId, tipo) {
+        const perfil = await perfilRepo.findOne({ where: { usuarioId } });
+        if (!perfil)
+            return;
+        perfil.visualizacoes = (Number(perfil.visualizacoes) || 0) + 1;
+        return await perfilRepo.save(perfil);
+    },
+    async moderarUsuario(id, status, _observacao) {
+        const usuario = await usuarioRepo.findOne({ where: { id } });
+        if (!usuario)
+            throw new Error("USUARIO_NAO_ENCONTRADO");
+        usuario.status_conta = status;
+        return await usuarioRepo.save(usuario);
+    }
+};
+exports.default = UserService;

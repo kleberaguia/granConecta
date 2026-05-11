@@ -99,6 +99,35 @@ export class PerfilPrestador {
     })
     status_aprovacao!: string;
 
+    @Column({
+        type: 'varchar',
+        length: 30,
+        default: 'PENDENTE'
+    })
+    payment_status!: 'PENDENTE' | 'PROCESSANDO' | 'PAGO' | 'EXPIRADO' | 'CANCELADO' | 'ATIVO';
+
+
+    @Column({
+        type: 'varchar',
+        length: 255,
+        nullable: true
+    })
+    checkout_session_id?: string;
+
+
+    @Column({
+        type: 'text',
+        nullable: true
+    })
+    checkout_url?: string;
+
+
+    @Column({
+        type: 'timestamp',
+        nullable: true
+    })
+    checkout_expira_em?: Date;
+
 
     @Column({ name: "categoriaid", nullable: true })
     categoriaid!: number;
@@ -114,12 +143,34 @@ export class PerfilPrestador {
     @Column({ type: "text", nullable: true })
     mini_bio?: string;
 
+    @Column({
+        type: "varchar",
+        length: 255,
+        nullable: true,
+        unique: true
+    })
+    subscription_id?: string;
 
+    @Column({
+        type: "varchar",
+        length: 50,
+        nullable: true,
+        default: "MERCADO_PAGO"
+    })
+    payment_gateway?: string;
 
-    // @Column({ nullable: true })
-    // servico_tipo_id?: string;
+    @Column({
+        type: "timestamp",
+        nullable: true
+    })
+    subscription_renews_at?: Date;
 
-    // Além dele, você já tem o 'status' que usa o Enum para o controle do sistema
+    @Column({
+        type: "timestamp",
+        nullable: true
+    })
+    subscription_cancelled_at?: Date;
+
 
 
 }

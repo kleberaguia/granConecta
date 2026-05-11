@@ -45,7 +45,7 @@ export default function PaymentInstructions() {
       id: 'BASICO',
       titulo: 'Básico',
       precoMensal: 1.50,
-      precoAnual: 10.00,
+      precoAnual: 1.00,
       vantagens: [
         'visibilidade',
         'categoria',
@@ -57,7 +57,7 @@ export default function PaymentInstructions() {
       id: 'INTERMEDIARIO',
       titulo: 'Profissional',
       precoMensal: 2.50,
-      precoAnual: 10.50,
+      precoAnual: 1.00,
       vantagens: [
         'visibilidade',
         'categoria',
@@ -73,7 +73,7 @@ export default function PaymentInstructions() {
       id: 'PREMIUM',
       titulo: 'Premium',
       precoMensal: 3.50,
-      precoAnual: 10.90,
+      precoAnual: 1.00,
       vantagens: [
         'visibilidade',
         'categoria',
@@ -93,89 +93,223 @@ export default function PaymentInstructions() {
   const brl = (v: number) =>
     `R$ ${v.toFixed(2).replace(".", ",")}`;
 
+  // const handleAssinarAgora = async (plano: any) => {
+  //   setLoading(true);
+
+  //   try {
+
+  //     // =========================================
+  //     // PEGA DADOS DO CADASTRO TEMPORÁRIO
+  //     // =========================================
+  //     const pendingRegister =
+  //       localStorage.getItem('pendingRegister');
+
+  //     if (!pendingRegister) {
+  //       toast.error('Dados do cadastro não encontrados');
+  //       setLoading(false);
+  //       return;
+  //     }
+
+  //     // =========================================
+  //     // CONVERTE PAYLOAD
+  //     // =========================================
+  //     const payload = JSON.parse(pendingRegister);
+
+  //     // =========================================
+  //     // ADICIONA PLANO ESCOLHIDO
+  //     // =========================================
+  //     payload.plano = plano.id;
+
+  //     // =========================================
+  //     // AGORA SIM CRIA O USUÁRIO
+  //     // =========================================
+  //     const responseRegister = await api.post(
+  //       '/auth/register',
+  //       payload
+  //     );
+
+  //     // =========================================
+  //     // REMOVE SOMENTE APÓS SUCESSO
+  //     // =========================================
+  //     localStorage.removeItem('pendingRegister');
+
+  //     // =========================================
+  //     // TOKEN
+  //     // =========================================
+  //     const token =
+  //       responseRegister.data?.token;
+
+  //     if (!token) {
+  //       toast.error('Erro ao gerar sessão');
+  //       return;
+  //     }
+
+  //     // =========================================
+  //     // SALVA TOKEN
+  //     // =========================================
+  //     localStorage.setItem('token', token);
+
+  //     api.defaults.headers.common[
+  //       'Authorization'
+  //     ] = `Bearer ${token}`;
+
+  //     // =========================================
+  //     // DECODE TOKEN
+  //     // =========================================
+  //     const payloadToken = JSON.parse(
+  //       window.atob(token.split('.')[1])
+  //     );
+
+  //     const userId =
+  //       payloadToken.usuarioId ||
+  //       payloadToken.id;
+
+  //     // =========================================
+  //     // DEFINE TIPO
+  //     // =========================================
+  //     const tipoUsuario = isEmpreendedor
+  //       ? 'EMPREENDEDOR'
+  //       : 'PRESTADOR';
+
+  //     // =========================================
+  //     // PAYLOAD CHECKOUT
+  //     // =========================================
+  //     const checkoutPayload = {
+  //       usuarioId: userId,
+  //       itens: [
+  //         {
+  //           plano: plano.id,
+  //           tipo: tipoUsuario,
+  //           valor: plano.precoAnual,
+  //           frequencia: 'ANUAL'
+  //         }
+  //       ]
+  //     };
+
+  //     const responseCheckout =
+  //       await api.post(
+  //         '/create-session',
+  //         checkoutPayload
+  //       );
+
+  //       // aqui pagamento é redirecionado
+  //     if (responseCheckout.data.checkoutUrl) {
+  //       window.location.href =
+  //         responseCheckout.data.checkoutUrl;
+  //     }
+
+  //   } catch (err: any) {
+  //     console.error(err);
+
+  //     toast.error(
+  //       err.response?.data?.error ||
+  //       'Erro ao processar pagamento.'
+  //     );
+  //   } finally {
+  //     setLoading(false);
+  //   }
+  // };
+
   const handleAssinarAgora = async (plano: any) => {
+
     setLoading(true);
 
     try {
 
-      // =========================================
-      // PEGA DADOS DO CADASTRO TEMPORÁRIO
-      // =========================================
-      const pendingRegister =
-        localStorage.getItem('pendingRegister');
-
-      if (!pendingRegister) {
-        toast.error('Dados do cadastro não encontrados');
-        setLoading(false);
-        return;
-      }
-
-      // =========================================
-      // CONVERTE PAYLOAD
-      // =========================================
-      const payload = JSON.parse(pendingRegister);
-
-      // =========================================
-      // ADICIONA PLANO ESCOLHIDO
-      // =========================================
-      payload.plano = plano.id;
-
-      // =========================================
-      // AGORA SIM CRIA O USUÁRIO
-      // =========================================
-      const responseRegister = await api.post(
-        '/auth/register',
-        payload
-      );
-
-      // =========================================
-      // REMOVE SOMENTE APÓS SUCESSO
-      // =========================================
-      localStorage.removeItem('pendingRegister');
-
-      // =========================================
-      // TOKEN
-      // =========================================
-      const token =
-        responseRegister.data?.token;
-
-      if (!token) {
-        toast.error('Erro ao gerar sessão');
-        return;
-      }
-
-      // =========================================
-      // SALVA TOKEN
-      // =========================================
-      localStorage.setItem('token', token);
-
-      api.defaults.headers.common[
-        'Authorization'
-      ] = `Bearer ${token}`;
-
-      // =========================================
-      // DECODE TOKEN
-      // =========================================
-      const payloadToken = JSON.parse(
-        window.atob(token.split('.')[1])
-      );
-
-      const userId =
-        payloadToken.usuarioId ||
-        payloadToken.id;
-
-      // =========================================
-      // DEFINE TIPO
-      // =========================================
+      const existingToken =
+        localStorage.getItem('token');
+      let userId = null;
       const tipoUsuario = isEmpreendedor
         ? 'EMPREENDEDOR'
         : 'PRESTADOR';
 
-      // =========================================
-      // PAYLOAD CHECKOUT
-      // =========================================
+
+      if (existingToken) {
+
+        api.defaults.headers.common[
+          'Authorization'
+        ] = `Bearer ${existingToken}`;
+
+        const payloadToken = JSON.parse(
+          window.atob(existingToken.split('.')[1])
+        );
+
+        userId =
+          payloadToken.usuarioId ||
+          payloadToken.id;
+
+        console.log(
+          '✅ Usuário já logado, reutilizando sessão'
+        );
+
+      } else {
+        const pendingRegister =
+          localStorage.getItem('pendingRegister');
+
+        if (!pendingRegister) {
+
+          toast.error(
+            'Dados do cadastro não encontrados'
+          );
+
+          setLoading(false);
+
+          return;
+        }
+        const payload =
+          JSON.parse(pendingRegister);
+        payload.plano = plano.id;
+
+        const responseRegister =
+          await api.post(
+            '/auth/register',
+            payload
+          );
+
+        localStorage.removeItem(
+          'pendingRegister'
+        );
+
+        const token =
+          responseRegister.data?.token;
+        if (!token) {
+
+          toast.error(
+            'Erro ao gerar sessão'
+          );
+
+          return;
+        }
+        localStorage.setItem(
+          'token',
+          token
+        );
+        api.defaults.headers.common[
+          'Authorization'
+        ] = `Bearer ${token}`;
+        const payloadToken = JSON.parse(
+          window.atob(token.split('.')[1])
+        );
+        userId =
+          payloadToken.usuarioId ||
+          payloadToken.id;
+        console.log(
+          '✅ Novo usuário criado com sucesso'
+        );
+      }
+
+      if (!userId) {
+
+        toast.error(
+          'Usuário não identificado'
+        );
+
+        return;
+      }
+
       const checkoutPayload = {
         usuarioId: userId,
+
         itens: [
           {
             plano: plano.id,
@@ -186,35 +320,56 @@ export default function PaymentInstructions() {
         ]
       };
 
-      // =========================================
-      // CRIA SESSÃO DE PAGAMENTO
-      // =========================================
       const responseCheckout =
         await api.post(
           '/create-session',
           checkoutPayload
         );
 
-      // =========================================
-      // REDIRECIONA PARA PAGAMENTO
-      // =========================================
-      if (responseCheckout.data.checkoutUrl) {
+      if (
+        responseCheckout.data.checkoutUrl
+      ) {
+
+        if (responseCheckout.data.reused) {
+
+          toast(
+            'Retomando pagamento pendente...',
+            {
+              icon: '💳'
+            }
+          );
+
+        } else {
+
+          toast.success(
+            'Checkout criado com sucesso!'
+          );
+        }
+
         window.location.href =
           responseCheckout.data.checkoutUrl;
+
+        return;
       }
 
+      toast.error(
+        'Não foi possível iniciar pagamento'
+      );
+
     } catch (err: any) {
+
       console.error(err);
 
       toast.error(
         err.response?.data?.error ||
         'Erro ao processar pagamento.'
       );
+
     } finally {
+
       setLoading(false);
     }
   };
-
   return (
     <Container maxWidth="lg" sx={{ py: 8 }}>
       <Box textAlign="center" mb={6}>

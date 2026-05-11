@@ -1,6 +1,6 @@
 import { Request, Response } from "express";
 import path from "path";
-import { promises as fs } from "fs";
+import { existsSync, promises as fs } from "fs";
 import AITemplateService from '../services/AI_TemplateService';
 import { AIService } from "../services/AIService";
 
@@ -23,6 +23,7 @@ import { SidebarComponent } from "../templates/components/SidebarComponent";
 import { generatePreset } from "../presets/layoutPresets";
 import { GalleryComponent } from "../templates/components/GalleryComponent";
 import { Category } from "../models/CategoryModels";
+
 
 const fotosPadraoGaleria = [
     "https://images.unsplash.com/photo-1600585154340-be6161a0c?q=80&w=800",
@@ -62,7 +63,11 @@ async function getTipoFinal(categoriaTipo: string | null, descricaoDoCliente?: s
 
 
 export class AI_TemplateController {
-    private readonly MASTER_PATH = path.join(process.cwd(), "src", "templates", "master");
+   // private readonly MASTER_PATH = path.join(process.cwd(), "src", "templates", "master");
+   private readonly MASTER_PATH = path.join(
+        process.cwd(), 
+        existsSync(path.join(process.cwd(), "dist")) ? "dist/templates/master" : "src/templates/master"
+    );
 
     private getFotosPorNicho(area: string): string[] {
         const nichos: Record<string, string[]> = {

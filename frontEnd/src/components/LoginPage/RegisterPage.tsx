@@ -226,20 +226,13 @@ export default function RegisterPage() {
     if (isOutraEspecialidade && novaEspecialidade) {
       try {
 
-        // Garantimos que pegamos o texto que o usuário digitou no campo "Nome da Categoria"
         const nomeDaEspecialidadeRaw = novaEspecialidade;
 
         const nomeLimpo = sanitizarTexto(nomeDaEspecialidadeRaw);
-
-        // 1. Gerar as iniciais da CATEGORIA (Ex: PSICOPEDAGOGIA -> PS)
-        // Fazemos o split para caso o nome seja composto (Ex: "Marido de Aluguel")
         const partes = nomeLimpo.split(' ');
-
         const iniciais = partes.length > 1
           ? (partes[0][0] + partes[1][0]).toUpperCase()
           : nomeLimpo.substring(0, 2).toUpperCase();
-
-        // 2. Gerar uma cor de fundo aleatória para o card da categoria
         const cores = [
           '#3b82f6',
           '#10b981',

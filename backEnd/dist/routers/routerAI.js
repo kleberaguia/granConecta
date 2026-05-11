@@ -1,0 +1,10 @@
+"use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
+const express_1 = require("express");
+const authMiddleware_1 = require("../middlewares/authMiddleware");
+const multerConfig_1 = require("../config/multerConfig");
+const ControllerIA_1 = require("../controller/ControllerIA");
+const routerAI = (0, express_1.Router)();
+const aiController = new ControllerIA_1.ControllerIA();
+routerAI.post("/ai/screenshot-to-code", authMiddleware_1.authMiddleware, multerConfig_1.processImage, multerConfig_1.upload.single("screenshot"), aiController.screenshotToCode);
+exports.default = routerAI;
