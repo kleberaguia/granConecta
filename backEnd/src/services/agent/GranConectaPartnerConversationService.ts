@@ -117,8 +117,16 @@ export default class GranConectaPartnerConversationService {
     if (/\b(mudar de assunto|nao quero anunciar|cancelar cadastro|desistir do cadastro|so quero contratar)\b/.test(text)) return null;
 
     // Recupera somente respostas dadas depois do início deste atendimento.
-    const lastMarkerOffset = [...history].reverse().findIndex(x => x.role === "assistant" && x.content.includes(marker));
-    const startIndex = lastMarkerOffset >= 0 ? history.length - 1 - lastMarkerOffset : -1;
+    // Mantém todas as respostas da sessão atual. Usar o último marcador
+    // descartava o nome ao perguntar e-mail, gerando um ciclo infinito.
+    // Uma resposta normal do assistente delimita o fim da sessão anterior.
+    let startIndex = -1;
+    for (let i = history.length - 1; i >= 0; i--) {
+      const entry = history[i];
+      if (entry.role !== "assistant") continue;
+      if (!entry.content.includes(marker)) break;
+      startIndex = i;
+    }
     // Ao iniciar, aproveita a descrição do negócio já dita na conversa.
     const scoped = startIndex >= 0 ? history.slice(startIndex + 1) : history;
     const entries = [...scoped, { role: "user", content: message }];
