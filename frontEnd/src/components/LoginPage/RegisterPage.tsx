@@ -72,7 +72,7 @@ export default function RegisterPage() {
     categoria: searchParams.get('categoria') || '',
     categoriaid: '',
     is_empreendedor: cadastroTipo === 'MORADOR' && cadastroEmpreendedor,
-    origem: cadastroTipo === 'MORADOR' && cadastroMora ? 'INTERNO' : 'EXTERNO',
+    origem: cadastroMora ? 'INTERNO' : 'EXTERNO',
     condominio_id: '',
     condominio_unidade_id: '',
     bloco: '',
