@@ -106,8 +106,9 @@ export default class GranConectaPartnerConversationService {
       /\b(eu sou churrasqueiro|sou (?:manicure|eletricista|pedreiro|confeiteir[oa])|eu vendo|tambem vendo|meu negocio|minha loja|quero anunciar|quero me cadastrar|cadastrar meu negocio)\b/.test(this.normalize(x.content)));
     const lastAssistantText = this.normalize(previousAssistant?.content || "");
     const signupFollowup = /\b(pode me ajudar a preencher|me ajuda a preencher|quero me cadastrar|quero cadastrar|pode fazer meu cadastro|vamos cadastrar|pode abrir meu cadastro)\b/.test(text);
-    const residentOnly = /\\b(sou (somente |apenas |so )?morador|apenas morador|somente morador|so morador)\\b/.test(text);
-    if (!active && residentOnly && !/\\b(vendo|anuncio|negocio|prestador|empreendedor)\\b/.test(text)) return null;
+    const residentOnly = /\b(sou (somente |apenas |so )?morador|apenas morador|somente morador|so morador)\b/.test(text);
+    const hasCommercialIntent = /\b(vendo|anuncio|negocio|prestador|empreendedor)\b/.test(text);
+    if (!active && residentOnly && !hasCommercialIntent) return null;
     const start =
       /\b(quero anunciar|cadastrar minha loja|cadastrar meu negocio|quero ser prestador|quero ser empreendedor|divulgar meu negocio|vender meus produtos)\b/.test(text) ||
       (partnerContext && (signupFollowup || /cadastro|divulgar seus produtos|se cadastrar/.test(lastAssistantText)));
