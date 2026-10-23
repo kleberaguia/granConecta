@@ -71,7 +71,7 @@ export default function RegisterPage() {
     password: '',
     categoria: searchParams.get('categoria') || '',
     categoriaid: '',
-    is_empreendedor: cadastroTipo === 'MORADOR' && cadastroEmpreendedor,
+    is_empreendedor: cadastroEmpreendedor || (cadastroTipo === 'PRESTADOR' && cadastroRamo === 'loja'),
     origem: cadastroMora ? 'INTERNO' : 'EXTERNO',
     condominio_id: '',
     condominio_unidade_id: '',
@@ -145,7 +145,7 @@ export default function RegisterPage() {
 
       setFormData(prev => ({
         ...prev,
-        is_empreendedor: false,
+        is_empreendedor: newType === 'PRESTADOR' ? novoTipoCategoria === 'loja' : false,
         categoriaid: '',
         categoria: '',
         origem: newType === 'MORADOR' ? 'INTERNO' : 'EXTERNO'
@@ -903,7 +903,12 @@ export default function RegisterPage() {
                   <ToggleButtonGroup
                     value={novoTipoCategoria}
                     exclusive
-                    onChange={(_e, val) => { if (val) setNovoTipoCategoria(val) }}
+                    onChange={(_e, val) => {
+                      if (!val) return;
+                      setNovoTipoCategoria(val);
+                      setDocumentosAceitos([]);
+                      setFormData(prev => ({ ...prev, is_empreendedor: val === 'loja', categoriaid: '', categoria: '' }));
+                    }}
                     size="small"
                     sx={{ bgcolor: '#333' }}
                   >
@@ -1016,7 +1021,7 @@ export default function RegisterPage() {
             onChange={setDocumentosAceitos}
             corDestaque={corDestaque}
             tipoUsuario={tipoUsuario}
-            isEmpreendedor={formData.is_empreendedor}
+            isEmpreendedor={tipoUsuario === 'PRESTADOR' ? novoTipoCategoria === 'loja' : formData.is_empreendedor}
           />
 
           <Button
