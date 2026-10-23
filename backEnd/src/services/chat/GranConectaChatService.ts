@@ -998,15 +998,22 @@ export class GranConectaChatService {
           chatInput.opportunityId,
         );
 
+      // O item escolhido pertence ao CommercialFlow. A oportunidade
+      // pode não ter catalog_item_id preenchido no handoff do DOT.
+      // Nunca trocar o item já selecionado por um valor divergente.
+      const resumeCatalogItemId =
+        String(resumeCommercialFlow?.catalogItemId || "").trim();
+
       const resumeCatalogItem =
-        resumeOpportunity?.catalog_item_id
+        resumeCatalogItemId &&
+        String(resumeCommercialFlow?.storeId || "") ===
+          String(chatInput.chatbotOwnerId) &&
+        (!resumeCommercialFlow?.opportunityId ||
+          String(resumeCommercialFlow.opportunityId) ===
+            String(chatInput.opportunityId))
           ? businessCatalogItems.find(
-            (item) =>
-              String(item.id) ===
-              String(
-                resumeOpportunity.catalog_item_id,
-              ),
-          ) || null
+              (item) => String(item.id) === resumeCatalogItemId,
+            ) || null
           : null;
 
       const canResumeCommercialFlow =
