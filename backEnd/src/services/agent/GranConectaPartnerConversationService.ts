@@ -96,7 +96,7 @@ export default class GranConectaPartnerConversationService {
     intent: PartnerIntent,
   ): { message: string; action?: { type: "OPEN_PARTNER_REGISTRATION"; payload: {
     nome: string; email: string; telefone: string; tipo: "MORADOR" | "PRESTADOR";
-    empreendedor: string; moraEmCondominio: string; ramo: "loja" | "servico"; categoria?: string;
+    empreendedor: string; moraEmCondominio: string; ramo: "loja" | "servico"; categoria?: string; cep?: string;
   } } } | null {
     const text = this.normalize(message);
     const marker = "[cadastro assistido dot]";
@@ -104,15 +104,15 @@ export default class GranConectaPartnerConversationService {
     const active = Boolean(previousAssistant?.content.includes(marker)) &&
       !/vou abrir a pagina de cadastro/i.test(this.normalize(previousAssistant?.content || ""));
     const partnerContext = history.some(x => x.role === "user" &&
-      /\b(eu sou churrasqueiro|sou (?:manicure|eletricista|pedreiro|confeiteir[oa])|eu vendo|tambem vendo|meu negocio|minha loja|quero anunciar|quero me cadastrar|cadastrar meu negocio)\b/.test(this.normalize(x.content)));
+      /\b(eu sou churrasqueiro|sou (?:manicure|eletricista|pedreiro|confeiteir[oa])|eu vendo|tambem vendo|meu negocio|minha loja|quero anunciar|quero me cadastrar|cadastrar meu negocio|ser um empreendedor|ser empreendedor|gostaria de ser um empreendedor)\b/.test(this.normalize(x.content)));
     const lastAssistantText = this.normalize(previousAssistant?.content || "");
     const signupFollowup = /\b(pode me ajudar a preencher|me ajuda a preencher|quero me cadastrar|quero cadastrar|pode fazer meu cadastro|vamos cadastrar|pode abrir meu cadastro)\b/.test(text);
     const residentOnly = /\b(sou (somente |apenas |so )?morador|apenas morador|somente morador|so morador)\b/.test(text);
     const hasCommercialIntent = /\b(vendo|anuncio|negocio|prestador|empreendedor)\b/.test(text);
     if (!active && residentOnly && !hasCommercialIntent) return null;
     const start =
-      /\b(quero anunciar|cadastrar minha loja|cadastrar meu negocio|quero ser prestador|quero ser empreendedor|divulgar meu negocio|vender meus produtos)\b/.test(text) ||
-      (partnerContext && (signupFollowup || /cadastro|divulgar seus produtos|se cadastrar/.test(lastAssistantText)));
+      /\b(quero anunciar|cadastrar minha loja|cadastrar meu negocio|quero ser prestador|quero ser empreendedor|gostaria de ser um empreendedor|ser um empreendedor|divulgar meu negocio|vender meus produtos)\b/.test(text) ||
+      (partnerContext && (signupFollowup || (/^(sim|claro|quero sim|pode ser|ok|certo)[.! ]*$/.test(text) && /cadastro|proximos passos|comecar/.test(lastAssistantText)) || /cadastro|divulgar seus produtos|se cadastrar/.test(lastAssistantText)));
     if (!active && !start) return null;
     if (/\b(mudar de assunto|nao quero anunciar|cancelar cadastro|desistir do cadastro|so quero contratar)\b/.test(text)) return null;
 
@@ -130,7 +130,7 @@ export default class GranConectaPartnerConversationService {
     // Ao iniciar, aproveita a descrição do negócio já dita na conversa.
     const scoped = startIndex >= 0 ? history.slice(startIndex + 1) : history;
     const entries = [...scoped, { role: "user", content: message }];
-    const answers: { activity?: string; name?: string; email?: string; phone?: string; residence?: boolean } = {};
+    const answers: { activity?: string; name?: string; email?: string; phone?: string; residence?: boolean; cep?: string } = {};
     let lastQuestion = "";
     const questionType = (v: string): string => {
       const t = this.normalize(v);
@@ -138,6 +138,7 @@ export default class GranConectaPartnerConversationService {
       if (t.includes("qual e seu nome completo")) return "name";
       if (t.includes("qual e seu e-mail")) return "email";
       if (t.includes("qual e seu whatsapp")) return "phone";
+      if (t.includes("qual e seu cep")) return "cep";
       if (t.includes("voce mora em um condominio")) return "residence";
       if (t.includes("posso abrir a pagina de cadastro")) return "confirm";
       return "";
@@ -153,6 +154,7 @@ export default class GranConectaPartnerConversationService {
       const norm = this.normalize(value);
       const email = value.match(/[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}/i)?.[0];
       const digits = value.replace(/\D/g, "");
+      if (lastQuestion === "cep" && /^\d{5}-?\d{3}$/.test(value.trim())) answers.cep = digits;
       if (email) answers.email = email;
       if (digits.length >= 10 && digits.length <= 13 && !email) answers.phone = digits;
       const explicitName = value.match(/(?:meu nome (?:e|é)|nome\s*:)\s*([^,;.\n]{3,90})/i)?.[1]?.trim();
@@ -179,6 +181,7 @@ export default class GranConectaPartnerConversationService {
     if (!answers.email) return ask("Qual é seu e-mail para preencher o cadastro?");
     if (!answers.phone) return ask("Qual é seu WhatsApp com DDD?");
     if (answers.residence === undefined) return ask("Você mora em um condomínio? Responda sim ou não, por favor.");
+    if (!answers.cep) return ask("Qual é seu CEP (8 dígitos) para preencher o endereço no cadastro? Não preciso do seu CPF.");
     const confirm = /^(sim|confirmo|pode abrir|abrir (?:meu |o )?cadastro|vamos cadastrar|pode continuar)[.! ]*$/.test(text);
     if (lastQuestion !== "confirm" || !confirm) {
       return ask(`Obrigado! Tenho seu nome, e-mail e WhatsApp, e você ${answers.residence ? "mora" : "não mora"} em condomínio. Posso abrir a página de cadastro com esses dados preenchidos? Responda "pode abrir" para confirmar.`);
@@ -192,7 +195,7 @@ export default class GranConectaPartnerConversationService {
       action: {
         type: "OPEN_PARTNER_REGISTRATION",
         payload: {
-          nome: answers.name, email: answers.email, telefone: answers.phone,
+          nome: answers.name, email: answers.email, telefone: answers.phone, cep: answers.cep,
           tipo, empreendedor: shop ? "1" : "0",
           moraEmCondominio: answers.residence ? "1" : "0", ramo,
           categoria: /bolo|confeit/.test(normalizedActivity) ? "Bolos" : undefined,
