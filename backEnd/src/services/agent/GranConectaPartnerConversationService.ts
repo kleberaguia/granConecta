@@ -101,7 +101,8 @@ export default class GranConectaPartnerConversationService {
     const text = this.normalize(message);
     const marker = "[cadastro assistido dot]";
     const previousAssistant = [...history].reverse().find(x => x.role === "assistant");
-    const active = history.some(x => x.role === "assistant" && x.content.includes(marker));
+    const active = Boolean(previousAssistant?.content.includes(marker)) &&
+      !/vou abrir a pagina de cadastro/i.test(this.normalize(previousAssistant?.content || ""));
     const partnerContext = history.some(x => x.role === "user" &&
       /\b(eu sou churrasqueiro|sou (?:manicure|eletricista|pedreiro|confeiteir[oa])|eu vendo|tambem vendo|meu negocio|minha loja|quero anunciar|quero me cadastrar|cadastrar meu negocio)\b/.test(this.normalize(x.content)));
     const lastAssistantText = this.normalize(previousAssistant?.content || "");
@@ -116,7 +117,8 @@ export default class GranConectaPartnerConversationService {
     if (/\b(mudar de assunto|nao quero anunciar|cancelar cadastro|desistir do cadastro|so quero contratar)\b/.test(text)) return null;
 
     // Recupera somente respostas dadas depois do início deste atendimento.
-    const startIndex = history.findIndex(x => x.role === "assistant" && x.content.includes(marker));
+    const lastMarkerOffset = [...history].reverse().findIndex(x => x.role === "assistant" && x.content.includes(marker));
+    const startIndex = lastMarkerOffset >= 0 ? history.length - 1 - lastMarkerOffset : -1;
     // Ao iniciar, aproveita a descrição do negócio já dita na conversa.
     const scoped = startIndex >= 0 ? history.slice(startIndex + 1) : history;
     const entries = [...scoped, { role: "user", content: message }];
