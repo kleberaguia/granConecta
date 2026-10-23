@@ -186,14 +186,14 @@ export default class GranConectaPartnerConversationService {
     const normalizedActivity = this.normalize(answers.activity);
     const shop = /bolo|doce|confeit|salgad|pao|massa|carne|loja|produto|roupa|artesan|venda|vendo|comerc/.test(normalizedActivity);
     const ramo: "loja" | "servico" = shop ? "loja" : "servico";
-    const tipo: "MORADOR" | "PRESTADOR" = answers.residence && shop ? "MORADOR" : "PRESTADOR";
+    const tipo: "PRESTADOR" = "PRESTADOR";
     return {
       message: "Perfeito! Vou abrir a página de cadastro com os dados que você informou. Lá você poderá revisar tudo, criar sua senha e aceitar os termos antes de prosseguir.",
       action: {
         type: "OPEN_PARTNER_REGISTRATION",
         payload: {
           nome: answers.name, email: answers.email, telefone: answers.phone,
-          tipo, empreendedor: answers.residence && shop ? "1" : "0",
+          tipo, empreendedor: shop ? "1" : "0",
           moraEmCondominio: answers.residence ? "1" : "0", ramo,
           categoria: /bolo|confeit/.test(normalizedActivity) ? "Bolos" : undefined,
         },
