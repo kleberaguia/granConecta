@@ -352,6 +352,18 @@ export class CommercialFlowStateService {
         );
       }
 
+      // Um fluxo existente não pode ser associado silenciosamente
+      // a outra oportunidade, mesmo dentro da mesma loja.
+      if (
+        opportunityId &&
+        flow.opportunityId &&
+        String(flow.opportunityId) !== opportunityId
+      ) {
+        throw new Error(
+          "COMMERCIAL_FLOW_OPPORTUNITY_DIVERGENTE",
+        );
+      }
+
       let changed = false;
 
       /**
