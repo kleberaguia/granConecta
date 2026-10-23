@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Luna Joias — Premium</title>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Great+Vibes&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <div class="top-bar">
+        <div class="container">
+            <span>📍 Av. Paulista, 1000 - São Paulo, SP</span>
+            <span>📞 (11) 99999-9999 | @lunajoias</span>
+        </div>
+    </div>
+
+    <header>
+        <div class="container">
+            <div class="nav">
+                <div class="brand">Luna Joias</div>
+                <div style="display: flex; gap: 20px; font-size: 14px;">
+                    <a href="#best" style="text-decoration:none; color:inherit;">Best-Sellers</a>
+                    <a href="#novidades" style="text-decoration:none; color:inherit;">Novidades</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section class="hero">
+            <div class="container">
+                <div class="hero-grid">
+                    <div class="hero-copy">
+                        <h1>Joias artesanais feitas à mão</h1>
+                        <p>Peças exclusivas feitas com amor e delicadeza — um toque elegante para o seu dia.</p>
+                        <div style="margin: 20px 0; display: flex; gap: 10px;">
+                            <span>IG • FB • WA</span>
+                        </div>
+                        <a href="https://wa.me/55..." class="btn">Falar com Consultora</a>
+                    </div>
+                    <div class="hero-img">
+                        <img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80" alt="Hero Joias">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="best">
+            <h2 class="section-title">Nossos Best-Sellers</h2>
+            <div class="grid-3">
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1523275335684-37898b6baf30?q=80" alt="Produto 1">
+                    <div class="card-body"><strong>Brincos Ouro</strong><br>R$ 320,00</div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?q=80" alt="Produto 2">
+                    <div class="card-body"><strong>Anel Delicato</strong><br>R$ 450,00</div>
+                </div>
+                <div class="card">
+                    <img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80" alt="Produto 3">
+                    <div class="card-body"><strong>Colar Infinito</strong><br>R$ 520,00</div>
+                </div>
+            </div>
+        </section>
+
+        <section class="container" id="novidades">
+            <h2 class="section-title">Novidades</h2>
+            <div class="grid-4">
+                <div class="card"><img src="https://images.unsplash.com/photo-1515562141207-7a88fb7ce338?q=80"></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1519681393784-d120267933ba?q=80"></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1602173574767-37ac01994b2a?q=80"></div>
+                <div class="card"><img src="https://images.unsplash.com/photo-1599643478518-a784e5dc4c8f?q=80"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer style="padding: 40px 0; text-align: center; color: var(--muted); font-size: 13px;">
+        <div class="container">
+            <hr style="border: 0; border-top: 1px solid var(--line); margin-bottom: 20px;">
+            © 2026 Luna Joias — CNPJ 00.000.000/0001-00
+        </div>
+    </footer>
+
+    <div class="modal-zoom" id="modalZoom">
+        <img src="" id="imgExpanded">
+    </div>
+
+    <script>
+        // Lógica de Zoom
+        const modal = document.getElementById('modalZoom');
+        const imgExpanded = document.getElementById('imgExpanded');
+
+        document.addEventListener('click', (e) => {
+            // Só ativa o zoom se NÃO estiver em modo de edição
+            if (e.target.tagName === 'IMG' && document.body.contentEditable !== 'true') {
+                imgExpanded.src = e.target.src;
+                modal.style.display = 'flex';
+            }
+        });
+
+        modal.onclick = () => modal.style.display = 'none';
+    </script>
+</body>
+</html>

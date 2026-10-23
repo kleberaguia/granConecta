@@ -1,0 +1,148 @@
+{
+  "id": "SERVICE_CONSTRUCTION_01",
+  "name": "Obras, Reformas & Marcenaria",
+  "pageKind": "servico",
+  "segmentFamily": "construction",
+  "objective": "Mostrar capacidade técnica, projetos concluídos e facilitar pedidos de orçamento.",
+  "selectionHints": {
+    "keywords": [
+      "obra",
+      "reforma",
+      "pedreiro",
+      "pintura",
+      "marcenaria",
+      "móveis planejados",
+      "elétrica",
+      "hidráulica",
+      "gesso",
+      "drywall"
+    ],
+    "businessTypes": [
+      "PRESTADOR"
+    ]
+  },
+  "layout": {
+    "maxWidth": 1240,
+    "sectionRhythm": "strong",
+    "density": "professional",
+    "radius": "medium",
+    "visualTone": "technical-premium"
+  },
+  "header": {
+    "layout": "logo-nav-cta",
+    "menu": [
+      "Início",
+      "Serviços",
+      "Portfólio",
+      "Depoimentos",
+      "Contato"
+    ],
+    "primaryCta": {
+      "label": "Pedir Orçamento Grátis",
+      "action": "request-service"
+    }
+  },
+  "hero": {
+    "layout": "project-split",
+    "contentWidth": "44%",
+    "mediaWidth": "56%",
+    "imageRole": "finished-project",
+    "headlineScale": "large-controlled",
+    "primaryCta": "Pedir Orçamento",
+    "secondaryCta": "Falar no WhatsApp",
+    "showTrustStrip": true
+  },
+  "sections": [
+    {
+      "id": "differentials",
+      "type": "trust-strip",
+      "layout": "four-inline-points",
+      "items": [
+        "Contrato e Garantia em Obra",
+        "Orçamento Transparente",
+        "Residencial e Comercial",
+        "Limpeza Pós-Obra"
+      ]
+    },
+    {
+      "id": "services",
+      "type": "services",
+      "layout": "technical-cards",
+      "columns": 4,
+      "cardStyle": "image-top-technical",
+      "showImage": true,
+      "showDescription": true,
+      "showPrice": "when-real",
+      "showCta": true
+    },
+    {
+      "id": "portfolio",
+      "type": "before-after-gallery",
+      "layout": "project-grid",
+      "showProjectMeta": true,
+      "metaFields": [
+        "Local",
+        "Tempo de execução",
+        "Tipo de serviço"
+      ],
+      "onlyIfReal": true
+    },
+    {
+      "id": "testimonials",
+      "type": "testimonials",
+      "layout": "review-cards",
+      "columns": 3,
+      "onlyIfReal": true
+    },
+    {
+      "id": "final-cta",
+      "type": "quote-banner",
+      "headline": "Sua obra sem dor de cabeça.",
+      "primaryCta": "Pedir visita técnica"
+    },
+    {
+      "id": "footer",
+      "type": "technical-footer",
+      "show": [
+        "contact",
+        "cnpj",
+        "regions",
+        "social"
+      ]
+    }
+  ],
+  "visualRules": {
+    "paletteDirection": [
+      "charcoal",
+      "warm-stone",
+      "off-white",
+      "brand-accent"
+    ],
+    "headingStyle": "strong-sans",
+    "bodyStyle": "clean-sans",
+    "imageTreatment": "real-project-photography",
+    "avoid": [
+      "giant-headlines",
+      "luxury-jewelry-look",
+      "pastel-childish",
+      "fake-metrics"
+    ]
+  },
+  "variationPolicy": {
+    "count": 5,
+    "allowedAxes": [
+      "hero-proportion",
+      "card-layout",
+      "portfolio-layout",
+      "palette",
+      "typography",
+      "surface-treatment",
+      "cta-treatment"
+    ],
+    "mustPreserve": [
+      "technical-tone",
+      "portfolio-priority",
+      "quote-conversion"
+    ]
+  }
+}

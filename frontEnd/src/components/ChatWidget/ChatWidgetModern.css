@@ -1,0 +1,60 @@
+/* GranConecta · Visual moderno do atendimento. Importar por último. */
+.chat-widget{--gc-ink:#12324b;--gc-blue:#075c98;--gc-sky:#00b8e7;--gc-border:#d9e9f3;--gc-font:Inter,"Segoe UI",Roboto,Arial,sans-serif;font-family:var(--gc-font)}
+.chat-widget.gc-chatbot-open{z-index:9998}
+.chat-widget .chat-widget__window{position:fixed;right:clamp(12px,2.5vw,36px);bottom:clamp(12px,3vh,30px);width:min(520px,calc(100vw - 24px));height:min(740px,calc(100dvh - 36px));max-width:none;max-height:none;display:flex;flex-direction:column;border-radius:22px;overflow:hidden;border:1px solid rgba(94,192,235,.45);background:#f6fbff;box-shadow:0 24px 70px rgba(2,31,64,.28),0 5px 18px rgba(0,80,128,.12)}
+.chat-widget .chat-widget__header{flex-shrink:0;min-height:76px;padding:14px 18px;background:linear-gradient(120deg,#063b70 0%,#087ab8 55%,#03b5e3 100%);color:white;border:0}
+.chat-widget .chat-widget__identity{display:flex;align-items:center;gap:12px;min-width:0}
+.chat-widget .chat-widget__avatar{width:44px;height:44px;flex:0 0 44px;border-radius:15px;background:linear-gradient(145deg,#e7fbff,#8ee6fa);color:#07618c;display:flex;align-items:center;justify-content:center;font-size:26px;box-shadow:inset 0 0 0 1px #fff8}
+.chat-widget .chat-widget__heading{min-width:0}
+.chat-widget .chat-widget__title{display:block;font-size:15px;font-weight:800;letter-spacing:-.02em;color:#fff;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.chat-widget .chat-widget__status{font-size:11px;color:#d9f9ff}
+.chat-widget .chat-widget__status-dot{background:#46f1c2}
+.chat-widget .chat-widget__header-actions{display:flex;align-items:center;gap:8px}
+.chat-widget .chat-widget__new-chat,.chat-widget .chat-widget__close{border-radius:11px;background:#ffffff20;color:#fff;border:1px solid #ffffff42;min-width:34px;min-height:34px;font-size:20px;cursor:pointer}
+.chat-widget .chat-widget__new-chat:hover,.chat-widget .chat-widget__close:hover{background:#ffffff38}
+.chat-widget .chat-widget__messages{flex:1 1 auto;min-height:0;overflow-y:auto;padding:22px 16px 18px;background:radial-gradient(circle at 15% 0%,#e6f8ff 0,transparent 40%),linear-gradient(180deg,#f7fcff,#edf6fc);display:flex;flex-direction:column;gap:18px}
+.chat-widget .chat-widget__message{display:flex;align-items:flex-end;gap:9px;width:100%;max-width:100%;padding:0;background:none;border:0;box-shadow:none;color:var(--gc-ink);font-size:13px;line-height:1.6;overflow:visible}
+.chat-widget .chat-widget__message--user{flex-direction:row-reverse}
+.chat-widget .gc-message-avatar{width:34px;height:34px;flex:0 0 34px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:13px;font-weight:800;box-shadow:0 2px 8px #075c981b}
+.chat-widget .gc-message-avatar--assistant{background:linear-gradient(140deg,#0a76b4,#05c5e9);color:#fff}
+.chat-widget .gc-message-avatar--user{background:#d7e6f3;color:#18577b}
+.chat-widget .gc-bot-mark{font-size:23px}
+.chat-widget .gc-message-content{min-width:0;max-width:calc(100% - 48px);display:flex;flex-direction:column;align-items:flex-start;gap:5px}
+.chat-widget .chat-widget__message--user .gc-message-content{align-items:flex-end}
+.chat-widget .gc-message-author{font-size:10px;letter-spacing:.02em;font-weight:750;color:#50728b;padding:0 4px}
+.chat-widget .gc-message-bubble{background:#fff;border:1px solid var(--gc-border);border-radius:17px 17px 17px 5px;padding:12px 14px;box-shadow:0 4px 14px rgba(21,74,112,.055);overflow-wrap:anywhere;white-space:pre-wrap;width:fit-content;max-width:100%}
+.chat-widget .chat-widget__message--user .gc-message-bubble{background:linear-gradient(135deg,#087ab9,#03b5df);color:white;border-color:transparent;border-radius:17px 17px 5px 17px}
+.chat-widget .chat-widget__message--error .gc-message-bubble{border-color:#ffb4b4;background:#fff3f3}
+.chat-widget .gc-rich-message{gap:8px}
+.chat-widget .gc-rich-paragraph{font-size:13px;line-height:1.65}
+.chat-widget .gc-rich-heading{font-size:14px;color:#075c98}
+.chat-widget .gc-rich-option{background:#f0f9fe;border-color:#d5eaf7;border-radius:12px;padding:10px}
+.chat-widget .gc-business-grid{grid-template-columns:repeat(auto-fit,minmax(165px,1fr));gap:10px}
+.chat-widget .gc-business-card{box-shadow:0 5px 15px #0b568217}
+.chat-widget .gc-business-card__body button{background:linear-gradient(110deg,#0879b9,#02b7df);border-radius:10px}
+.chat-widget .chat-widget__suggestions{padding:9px 15px;background:#f2faff;display:flex;gap:6px;flex-wrap:wrap}
+.chat-widget .chat-widget__suggestion{border-radius:999px;background:#e7f6ff;color:#09699d;border:1px solid #b9e6fa;padding:7px 10px;font-size:11px;font-weight:650}
+.chat-widget .chat-widget__form{flex-shrink:0;display:flex;gap:10px;align-items:center;padding:14px 15px;background:#fff;border-top:1px solid #dceaf5}
+.chat-widget .chat-widget__input{flex:1;min-width:0;min-height:44px;border:1px solid #cddfeb;border-radius:14px;background:#f6fbff;color:#12324b;padding:10px 14px;font:500 13px var(--gc-font);outline:none}
+.chat-widget .chat-widget__input:focus{border-color:#08a5d7;box-shadow:0 0 0 3px #02bce51f}
+.chat-widget .chat-widget__send{min-height:44px;border:0;border-radius:13px;background:linear-gradient(115deg,#0873b3,#02b9e4);color:#fff;font-weight:800;padding:0 17px;cursor:pointer}
+.chat-widget .chat-widget__send:disabled{opacity:.55;cursor:default}
+.chat-widget .chat-widget__message-link{color:#027db9;font-weight:700}
+@media(max-width:600px){
+ .chat-widget .chat-widget__window{left:0;right:0;bottom:0;top:0;width:100vw;height:100dvh;max-height:none;border-radius:0;border:0}
+ .chat-widget .chat-widget__header{padding:12px 14px;min-height:70px}
+ .chat-widget .chat-widget__messages{padding:16px 12px}
+ .chat-widget .chat-widget__message{font-size:13px}
+ .chat-widget .gc-message-avatar{width:30px;height:30px;flex-basis:30px}
+ .chat-widget .gc-message-content{max-width:calc(100% - 41px)}
+ .chat-widget .gc-message-bubble{padding:11px 12px}
+ .chat-widget .chat-widget__form{padding:10px 12px max(10px,env(safe-area-inset-bottom))}
+ .chat-widget .gc-business-grid{grid-template-columns:repeat(auto-fit,minmax(145px,1fr))}
+}
+@media(prefers-reduced-motion:reduce){.chat-widget *{scroll-behavior:auto!important;transition:none!important}}
+
+/* Ações de autenticação após escolha de um prestador */
+.chat-widget .gc-auth-actions{display:flex;flex-wrap:wrap;gap:8px;width:100%;margin-top:4px}
+.chat-widget .gc-auth-actions button{flex:1 1 145px;border:1px solid #0a92c5;background:linear-gradient(115deg,#0876b5,#02b7dc);color:#fff;border-radius:11px;padding:10px 12px;font:700 12px Inter,"Segoe UI",Arial,sans-serif;cursor:pointer}
+.chat-widget .gc-auth-actions button+button{background:#e8f7ff;color:#07618e;border-color:#b7e4f7}
+.chat-widget .gc-auth-actions button:focus-visible{outline:3px solid #70d7f3;outline-offset:2px}

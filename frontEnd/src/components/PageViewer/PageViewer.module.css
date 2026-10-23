@@ -1,0 +1,228 @@
+.overlayWrapper {
+  width: 100vw;
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+  margin: 0;
+  padding: 0;
+}
+
+.navbarFixed {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 14px 20px;
+  box-sizing: border-box;
+}
+
+.navLeft {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navRight {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.navLogo {
+  height: 52px;
+  max-width: 180px;
+  object-fit: contain;
+  display: block;
+  border-radius: 8px;
+  background: rgba(255, 255, 255, 0.92);
+  padding: 6px 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.navBrand {
+  display: inline-flex;
+  align-items: center;
+  min-height: 52px;
+  padding: 0 16px;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.92);
+  color: #111;
+  font-weight: 700;
+  font-size: 0.95rem;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.site-published-content {
+  /* ... suas regras atuais ... */
+  display: block;
+  overflow: hidden;
+}
+
+.mainFull {
+  width: 100vw;
+  min-height: 100vh;
+  margin: 0;
+  padding: 0;
+}
+
+.contentWidth {
+  width: 100vw;
+  max-width: 100vw;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.sectionText {
+  width: 100%;
+  padding: 24px 16px;
+  box-sizing: border-box;
+}
+
+.content {
+  width: 100%;
+  max-width: 1200px;
+  margin: 0 auto;
+  box-sizing: border-box;
+}
+
+.content img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+.carouselSwiper {
+  width: 100%;
+  max-width: 1200px;
+  margin: 24px auto;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #fff;
+}
+
+.carouselSwiper img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.galleryGrid {
+  width: 100%;
+  max-width: 1200px;
+  margin: 24px auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  padding: 0 16px;
+  box-sizing: border-box;
+}
+
+.galleryGrid img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+  border-radius: 14px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.galleryGrid img:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+}
+
+.lightbox {
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.88);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 32px;
+  box-sizing: border-box;
+}
+
+.lightbox img {
+  max-width: 90vw;
+  max-height: 82vh;
+  object-fit: contain;
+  border-radius: 12px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.35);
+}
+
+.closeBtn {
+  position: absolute !important;
+  top: 18px;
+  right: 18px;
+  z-index: 3;
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #111 !important;
+}
+
+.navBtns {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  pointer-events: none;
+}
+
+.navBtns button {
+  pointer-events: auto;
+  background: rgba(255, 255, 255, 0.92) !important;
+  color: #111 !important;
+}
+
+@media (max-width: 768px) {
+  .navbarFixed {
+    padding: 12px 14px;
+  }
+
+  .navLogo {
+    height: 44px;
+    max-width: 140px;
+  }
+
+  .navBrand {
+    min-height: 44px;
+    padding: 0 12px;
+    font-size: 0.9rem;
+  }
+
+  .sectionText {
+    padding: 18px 12px;
+  }
+
+  .galleryGrid {
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    padding: 0 12px;
+  }
+
+  .galleryGrid img {
+    height: 180px;
+  }
+
+  .lightbox {
+    padding: 20px;
+  }
+
+  .navBtns {
+    padding: 0 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .galleryGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .galleryGrid img {
+    height: 220px;
+  }
+}

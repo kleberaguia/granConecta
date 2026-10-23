@@ -1,0 +1,8 @@
+import { io } from "socket.io-client"; 
+/** * ============================================================ * CONFIGURAÇÃO DO SOCKET.IO * ============================================================ * * LOCAL: * localhost / 127.0.0.1 * -> http://localhost:3000 * * DEV: * dev.granconecta.net.br * dev.admin.granconecta.net.br * -> https://dev.api.granconecta.net.br * * PRODUÇÃO: * granconecta.net.br * www.granconecta.net.br * -> https://api.granconecta.net.br * * A URL do navegador determina automaticamente o ambiente. */
+ const hostname = window.location.hostname; 
+ const isLocal = hostname === 'localhost' || hostname === '127.0.0.1'; 
+ const isDev = hostname === 'dev.granconecta.net.br' || hostname === 'dev.admin.granconecta.net.br';
+ const isProduction = hostname === 'granconecta.net.br' || hostname === 'www.granconecta.net.br'; /** * Define a URL correta do Socket.IO. */ 
+ const SOCKET_URL = isLocal ? 'http://localhost:3000' : isDev ? 'https://dev.api.granconecta.net.br' : isProduction ? 'https://api.granconecta.net.br' : 'https://api.granconecta.net.br'; console.log('[Socket.IO] Hostname:', hostname); console.log('[Socket.IO] Ambiente:', { isLocal, isDev, isProduction, }); console.log('[Socket.IO] URL:', SOCKET_URL); /** * ============================================================ * SOCKET * ============================================================ */
+ export const socket = io(SOCKET_URL, { transports: ['websocket', 'polling'], });

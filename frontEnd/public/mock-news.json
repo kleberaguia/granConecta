@@ -1,0 +1,23 @@
+[
+  {
+    "_id": "n1",
+    "title": "Festa Junina da Paróquia Reúne Centenas de Fiéis",
+    "mainImage": "https://images.unsplash.com/photo-1583134372227-3121b6d0c648?q=80&w=2070",
+    "shortDescription": "Nossa tradicional festa junina foi um sucesso, com muita comida típica, dança e fraternidade.",
+    "publicationDate": "2025-06-25T10:00:00Z"
+  },
+  {
+    "_id": "n2",
+    "title": "Retiro de Casais Fortalece Vínculos Matrimoniais",
+    "mainImage": "https://images.unsplash.com/photo-1455389659143-2c391f764b8a?q=80&w=2070",
+    "shortDescription": "Casais da nossa comunidade participaram de um fim de semana de oração e reflexão profunda.",
+    "publicationDate": "2025-06-22T14:30:00Z"
+  },
+  {
+    "_id": "n3",
+    "title": "Inscrições Abertas para a Catequese 2026",
+    "mainImage": "https://images.unsplash.com/photo-1594411138249-5636173c26b5?q=80&w=1932",
+    "shortDescription": "Prepare seu filho para a jornada da Primeira Eucaristia. As inscrições já estão abertas na secretaria.",
+    "publicationDate": "2025-06-20T09:00:00Z"
+  }
+]

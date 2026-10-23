@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title><%= landing?.meta?.metaTitle || landing?.hero?.headline || "GranConecta" %></title>
+</head>
+
+<body>
+  <header>
+    <div class="container">
+      <div class="nav">
+        <div class="brand">
+          <span class="dot">G</span>
+          <span data-edit="text"><%= landing?.meta?.brandName || "GranConecta" %></span>
+        </div>
+        <nav class="menu">
+          <a href="#cards">Recursos</a>
+          <a href="#cta">Contato</a>
+        </nav>
+      </div>
+    </div>
+  </header>
+
+  <%
+    const heroBg = landing?.hero?.backgroundImageUrl || "";
+    const heroStyle = heroBg ? `background-image:url('${heroBg}')` : "";
+  %>
+
+  <section
+    class="hero"
+    id="top"
+    data-edit="bg"
+    <%- heroStyle ? `style="${heroStyle}"` : "" %>
+    data-bg-suggestion="<%= landing?.hero?.backgroundImageSuggestion || "" %>"
+  >
+    <div class="container">
+      <div class="hero-inner">
+        <div class="hero-copy">
+          <h1 data-edit="text"><%= landing?.hero?.headline || "Título" %></h1>
+          <p data-edit="text"><%= landing?.hero?.subheadline || "Subtítulo" %></p>
+          <a class="cta" href="#cta"><span data-edit="text"><%= landing?.hero?.ctaText || "Falar agora" %></span></a>
+        </div>
+
+        <div class="hero-right">
+          <div class="ghost"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cards" id="cards">
+    <div class="container">
+      <div class="cards-grid">
+
+        <% (landing.cards || []).slice(0,4).forEach(function(c){ %>
+          <article class="card">
+            <%
+              const cardImg = c?.imageUrl || "";
+              const fallbackImg =
+                "https://images.unsplash.com/photo-1528825871115-3581a5387919?auto=format&fit=crop&w=1200&q=80";
+            %>
+
+            <img
+              class="thumb"
+              data-edit="image"
+              src="<%= cardImg || fallbackImg %>"
+              alt=""
+              loading="lazy"
+              decoding="async"
+              data-img-suggestion="<%= c?.imageSuggestion || '' %>"
+            />
+
+            <div class="body">
+              <h3 data-edit="text"><%= c?.title || "Destaque" %></h3>
+              <p data-edit="text"><%= c?.description || "Descrição do card" %></p>
+            </div>
+          </article>
+        <% }) %>
+
+        <% if ((landing.cards || []).length < 4) { %>
+          <% for (let i = (landing.cards || []).length; i < 4; i++) { %>
+            <article class="card feature">
+              <div class="body">
+                <h3 data-edit="text">Destaque</h3>
+                <div class="big" data-edit="text">Completo, bonito e rápido</div>
+                <p data-edit="text">Template premium com edição fácil.</p>
+                <span class="pill" data-edit="text">Começar agora</span>
+              </div>
+            </article>
+          <% } %>
+        <% } %>
+      </div>
+    </div>
+  </section>
+
+  <section id="cta" class="cards">
+    <div class="container" style="padding-top: 10px;">
+      <div class="card feature">
+        <div class="body">
+          <h3 data-edit="text">Contato</h3>
+          <div class="big" data-edit="text">Pronto para vender?</div>
+          <p data-edit="text">Fale com a gente e comece ainda hoje.</p>
+          <a class="cta" href="#top"><span data-edit="text"><%= landing?.hero?.ctaText || "Voltar" %></span></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <div class="foot">
+        <span>© <%= new Date().getFullYear() %> - <span data-edit="text"><%= landing?.meta?.brandName || "GranConecta" %></span></span>
+        <div class="social">
+          <span class="icon">IG</span>
+          <span class="icon">FB</span>
+          <span class="icon">WA</span>
+        </div>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

@@ -1,0 +1,520 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+
+<title>{{NOME_MARCA}} — Serviços Profissionais</title>
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+
+:root{
+--bg:#f7f4ef;
+--surface:#ffffff;
+--text:#1f1a17;
+--muted:#6d635a;
+--primary:#b8917b;
+--primary-dark:#8e6f5f;
+--border:rgba(31,26,23,0.08);
+--shadow:0 18px 50px rgba(20,16,12,0.08);
+--radius-xl:28px;
+--container:1180px;
+}
+
+*{box-sizing:border-box}
+
+html{scroll-behavior:smooth}
+
+body{
+margin:0;
+font-family:"Inter",sans-serif;
+background:linear-gradient(to bottom,#f8f5f0,#f2ece4);
+color:var(--text);
+}
+
+img{
+max-width:100%;
+display:block;
+}
+
+.container{
+width:min(var(--container),calc(100% - 32px));
+margin:auto;
+}
+
+.section{
+padding:84px 0;
+}
+
+.section-title{
+font-family:"Playfair Display",serif;
+font-size:clamp(2rem,4vw,3rem);
+margin:0 0 14px;
+}
+
+.section-subtitle{
+color:var(--muted);
+max-width:700px;
+line-height:1.7;
+}
+
+.topbar{
+position:sticky;
+top:0;
+z-index:100;
+background:rgba(247,244,239,.9);
+backdrop-filter:blur(14px);
+border-bottom:1px solid rgba(0,0,0,.05);
+}
+
+.topbar-inner{
+min-height:80px;
+display:flex;
+align-items:center;
+justify-content:space-between;
+}
+
+.brand{
+display:flex;
+align-items:center;
+gap:12px;
+}
+
+.brand-mark{
+width:48px;
+height:48px;
+border-radius:14px;
+background:linear-gradient(135deg,var(--primary),#e7d2c3);
+}
+
+.brand-name{
+font-weight:800;
+}
+
+.nav{
+display:flex;
+gap:20px;
+color:var(--muted);
+font-weight:600;
+}
+
+.cta-button{
+display:inline-flex;
+align-items:center;
+justify-content:center;
+min-height:50px;
+padding:0 22px;
+border-radius:999px;
+background:linear-gradient(135deg,var(--primary),var(--primary-dark));
+color:#fff;
+font-weight:700;
+border:none;
+cursor:pointer;
+}
+
+.cta-button.secondary{
+background:transparent;
+border:1px solid rgba(0,0,0,.1);
+color:var(--text);
+}
+
+.hero{
+padding:40px 0;
+}
+
+.hero-wrap{
+display:grid;
+grid-template-columns:1.1fr .9fr;
+gap:30px;
+}
+
+.hero-content{
+position:relative;
+border-radius:28px;
+overflow:hidden;
+min-height:580px;
+display:flex;
+align-items:flex-end;
+color:#fff;
+}
+
+.hero-bg{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,rgba(21,17,13,.92),rgba(21,17,13,.68));
+}
+
+.hero-panel{
+position:relative;
+z-index:2;
+padding:48px;
+max-width:700px;
+}
+
+.hero-title{
+font-family:"Playfair Display",serif;
+font-size:clamp(2.5rem,6vw,4.5rem);
+line-height:1;
+}
+
+.hero-actions{
+display:flex;
+gap:14px;
+margin-top:20px;
+flex-wrap:wrap;
+}
+
+.hero-visual{
+border-radius:28px;
+background:#f4efe8;
+padding:24px;
+display:flex;
+flex-direction:column;
+gap:18px;
+}
+
+.visual-main{
+border-radius:24px;
+overflow:hidden;
+height:260px;
+}
+
+.visual-main img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.services-grid{
+margin-top:34px;
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
+}
+
+.service-card{
+background:#fff;
+border:1px solid var(--border);
+border-radius:24px;
+padding:28px;
+box-shadow:var(--shadow);
+}
+
+.portfolio-grid{
+display:grid;
+grid-template-columns:repeat(3,1fr);
+gap:22px;
+}
+
+.portfolio-card{
+background:#fff;
+border-radius:24px;
+overflow:hidden;
+border:1px solid var(--border);
+box-shadow:var(--shadow);
+cursor:pointer;
+}
+
+.portfolio-image{
+position:relative;
+height:270px;
+overflow:hidden;
+}
+
+.portfolio-image img{
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.cta-banner{
+position:relative;
+border-radius:30px;
+overflow:hidden;
+padding:46px;
+color:#fff;
+display:flex;
+justify-content:space-between;
+gap:20px;
+align-items:center;
+}
+
+.cta-bg{
+position:absolute;
+inset:0;
+width:100%;
+height:100%;
+object-fit:cover;
+}
+
+.cta-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,rgba(28,22,18,.92),rgba(28,22,18,.72));
+}
+
+.cta-content{
+position:relative;
+z-index:2;
+}
+
+.footer{
+padding:50px 0;
+}
+
+.footer-box{
+background:#fff;
+border-radius:28px;
+padding:30px;
+border:1px solid var(--border);
+}
+
+[contenteditable="true"]:focus{
+background:rgba(184,145,123,.15);
+outline:none;
+border-radius:6px;
+}
+
+@media(max-width:900px){
+
+.hero-wrap{
+grid-template-columns:1fr;
+}
+
+.services-grid{
+grid-template-columns:1fr;
+}
+
+.portfolio-grid{
+grid-template-columns:1fr;
+}
+
+.nav{
+display:none;
+}
+
+}
+
+</style>
+</head>
+
+<body>
+
+<header class="topbar">
+<div class="container topbar-inner">
+
+<a class="brand" href="#inicio">
+<div class="brand-mark"></div>
+<span class="brand-name" contenteditable="true">{{NOME_MARCA}}</span>
+</a>
+
+<nav class="nav">
+<a href="#servicos">Serviços</a>
+<a href="#portfolio">Portfólio</a>
+<a href="#depoimentos">Depoimentos</a>
+</nav>
+
+<div>
+<a class="cta-button secondary"
+onclick="handleInteraction('WhatsApp Topo','Contato topo',true)">
+<span contenteditable="true">WhatsApp</span>
+</a>
+</div>
+
+</div>
+</header>
+
+<main id="inicio">
+
+<section class="hero">
+
+<div class="container hero-wrap">
+
+<div class="hero-content">
+
+<img src="https://images.unsplash.com/photo-1521791136064-7986c2920216?q=80&w=1600"
+class="hero-bg"
+data-edit="image">
+
+<div class="hero-overlay"></div>
+
+<div class="hero-panel">
+
+<h1 class="hero-title" contenteditable="true">
+Profissionalismo para destacar seu serviço
+</h1>
+
+<p contenteditable="true">
+Uma página elegante para apresentar seus serviços e gerar confiança.
+</p>
+
+<div class="hero-actions">
+
+<button class="cta-button"
+onclick="handleInteraction('CTA Hero','Interesse no hero',false)">
+<span contenteditable="true">Solicitar orçamento</span>
+</button>
+
+</div>
+
+</div>
+</div>
+
+<div class="hero-visual">
+
+<div class="visual-main">
+<img src="https://images.unsplash.com/photo-1556740749-887f6717d7e4?q=80&w=1400"
+data-edit="image">
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="servicos" class="section">
+
+<div class="container">
+
+<h2 class="section-title" contenteditable="true">
+Serviços
+</h2>
+
+<div class="services-grid">
+
+<div class="service-card">
+<h3 contenteditable="true">Consultoria</h3>
+<p contenteditable="true">Atendimento estratégico para clientes.</p>
+</div>
+
+<div class="service-card">
+<h3 contenteditable="true">Projetos</h3>
+<p contenteditable="true">Execução completa com qualidade.</p>
+</div>
+
+<div class="service-card">
+<h3 contenteditable="true">Acompanhamento</h3>
+<p contenteditable="true">Suporte contínuo ao cliente.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section id="portfolio" class="section">
+
+<div class="container">
+
+<h2 class="section-title" contenteditable="true">
+Últimos trabalhos
+</h2>
+
+<div class="portfolio-grid">
+
+<div class="portfolio-card"
+onclick="handleInteraction('Projeto 1','Clique projeto',false)">
+
+<div class="portfolio-image">
+
+<img src="https://images.unsplash.com/photo-1497366754035-f200968a6e72?q=80&w=1400"
+data-edit="image">
+
+</div>
+
+<div style="padding:24px">
+
+<h3 contenteditable="true">Projeto exemplo</h3>
+<p contenteditable="true">Descrição do projeto realizado.</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<section class="section">
+
+<div class="container">
+
+<div class="cta-banner">
+
+<img src="https://images.unsplash.com/photo-1516321318423-f06f85e504b3?q=80&w=1600"
+class="cta-bg"
+data-edit="image">
+
+<div class="cta-overlay"></div>
+
+<div class="cta-content">
+
+<h3 contenteditable="true">Pronto para começar?</h3>
+
+<p contenteditable="true">
+Entre em contato para solicitar um orçamento.
+</p>
+
+<a class="cta-button"
+onclick="handleInteraction('CTA Final','Banner final',false)">
+<span contenteditable="true">Solicitar atendimento</span>
+</a>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<footer class="footer">
+
+<div class="container">
+
+<div class="footer-box">
+
+<h3 contenteditable="true">{{NOME_MARCA}}</h3>
+
+<p contenteditable="true">
+Todos os direitos reservados.
+</p>
+
+</div>
+
+</div>
+
+</footer>
+
+</main>
+
+<script>
+
+window.TEMPLATE_CONFIG={
+brand:"{{NOME_MARCA}}",
+whatsapp:"{{WHATSAPP}}",
+template:"service-premium-v2"
+}
+
+</script>
+
+</body>
+</html>

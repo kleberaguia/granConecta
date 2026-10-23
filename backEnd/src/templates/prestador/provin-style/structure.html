@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{NOME_MARCA}} — Landing Page</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;600;700&family=Great+Vibes&family=Inter:wght@400;500;600&display=swap"
+    rel="stylesheet">
+
+  <link rel="stylesheet" href="style.css">
+
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="provin-wrapper">
+
+    <nav class="provin-nav" id="topo">
+      <div class="nav-container">
+
+        <span class="brand-name">
+          <a href="#hero" style="text-decoration:none; color:inherit;">
+            {{NOME_MARCA}}
+          </a>
+        </span>
+
+        <button class="nav-cta" onclick="scrollToSection('contato')">
+          {{CTA_PRINCIPAL}}
+        </button>
+
+      </div>
+    </nav>
+
+
+    <header class="provin-hero" id="hero">
+
+      <div class="hero-content">
+
+        <div class="badge">{{HERO_BADGE}}</div>
+
+        <h1>
+          {{HERO_TITULO_PARTE1}}
+          <span class="highlight">{{HERO_TITULO_GRADIENTE}}</span>
+        </h1>
+
+        <p>{{HERO_SUBTITULO}}</p>
+
+        <div class="hero-actions">
+
+          <button class="primary-btn" onclick="scrollToSection('contato')">
+            {{CTA_PRINCIPAL}}
+          </button>
+
+          <span class="social-proof">
+            ✓ Confiado por centenas de clientes
+          </span>
+
+        </div>
+
+      </div>
+
+      <div class="hero-image-container">
+        <img src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800"
+          alt="Sucesso">
+      </div>
+
+    </header>
+
+
+
+    <section class="provin-features" id="recursos">
+
+      <div class="section-header">
+        <h2>{{RECURSOS_TITULO}}</h2>
+        <p>{{RECURSOS_SUBTITULO}}</p>
+      </div>
+
+      <div class="features-grid">
+
+        <div class="feature-card">
+          <div class="icon">🚀</div>
+          <h3>Agilidade</h3>
+          <p>Processos otimizados para resultados rápidos.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">🛡️</div>
+          <h3>Segurança</h3>
+          <p>Sua operação protegida com tecnologia de ponta.</p>
+        </div>
+
+        <div class="feature-card">
+          <div class="icon">📈</div>
+          <h3>Escalabilidade</h3>
+          <p>Pronto para crescer junto com o seu negócio.</p>
+        </div>
+
+      </div>
+
+    </section>
+
+
+
+    <footer class="provin-footer" id="contato">
+
+      <p>
+        &copy; 2026 {{NOME_MARCA}} - Todos os direitos reservados.
+      </p>
+
+      <small>
+        ID do Consultor: {{USUARIO_ID}}
+      </small>
+
+    </footer>
+
+  </div>
+
+
+
+  <script>
+
+    function scrollToSection(id) {
+
+      const section = document.getElementById(id);
+
+      if (section) {
+        section.scrollIntoView({
+          behavior: "smooth",
+          block: "start"
+        });
+      }
+
+    }
+
+  </script>
+
+</body>
+
+</html>

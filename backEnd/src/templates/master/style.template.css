@@ -1,0 +1,72 @@
+:root {
+  --primary: #DE1F5A;
+  --bg: #111111;
+  --text: #FFFFFF;
+  --radius: 12px;
+  --border: #DE1F5A;
+  --font-heading: 'Plus Jakarta Sans', sans-serif;
+  --font-body: 'Montserrat', sans-serif;
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* Tipografia */
+.heading {
+  font-family: var(--font-heading) !important;
+  font-weight: 800;
+  letter-spacing: -0.04em;
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+  line-height: 1.2 !important;
+}
+
+/* Layout Estrutural */
+.elementor-page { display: flex; flex-direction: column; width: 100%; }
+
+.elementor-container {
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  position: relative;
+  z-index: 0;
+}
+
+/* Overlay APENAS em containers com imagem */
+.elementor-container[style*="background-image"]::before {
+    content: '';
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0, 0, 0, 0.6);
+    z-index: -1;
+}
+
+/* Componentes */
+.btn {
+  background: var(--primary);
+  color: var(--text);
+  padding: 12px 24px;
+  border-radius: 50px;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  font-family: var(--font-body) !important;
+  font-weight: 700;
+  transition: 0.3s;
+}
+.btn:hover { transform: translateY(-2px); filter: brightness(1.1); }
+
+img, iframe, video { max-width: 100%; height: auto; display: block; }
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .elementor-container { padding-left: 20px !important; padding-right: 20px !important; }
+}

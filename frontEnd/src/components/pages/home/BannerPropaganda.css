@@ -1,0 +1,214 @@
+/* Container Principal - O Posicionamento */
+.propaganda-overlay {
+    position: fixed !important;
+    bottom: 25px !important;
+    left: 25px !important;
+    top: auto !important; /* Garante que não use o top: 100px */
+    z-index: 999999 !important;
+    width: 350px !important;
+    max-width: calc(100vw - 50px) !important;
+    
+    /* Estado Escondido (Totalmente fora da visão) */
+    opacity: 0 !important;
+    visibility: hidden !important; /* Garante que o navegador ignore o elemento */
+    transform: translateX(-500px) !important; /* Empurra bem para longe da borda */
+    
+    transition: all 0.6s cubic-bezier(0.4, 0, 0.2, 1) !important;
+    pointer-events: none !important;
+}
+
+/* Estado Visível */
+.propaganda-overlay.show {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: translateX(0) !important;
+    pointer-events: auto !important;
+}
+
+/* Estado de Saída (Animação de sumir) */
+.propaganda-overlay.hide {
+    opacity: 0 !important;
+    transform: translateX(-500px) !important; /* Sai completamente para a esquerda */
+    visibility: hidden !important;
+    transition: all 0.5s ease-in !important;
+}
+
+.propaganda-card-premium {
+    background: linear-gradient(135deg, #1e3a8a 0%, #3b82f6 100%);
+    color: white;
+    padding: 20px;
+    border-radius: 20px;
+    /* Adicionando uma sombra mais suave para não 'vazar' na borda ao sair */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* Garante que o conteúdo interno não quebre */
+.propaganda-content {
+    display: flex !important;
+    flex-direction: row !important;
+    gap: 12px;
+    align-items: center;
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: #fbbf24; /* Cor amarela para contraste */
+    animation: progress-animation 5s linear forwards;
+}
+
+@keyframes progress-animation {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+/* Conteúdo Interno Compacto */
+.propaganda-content {
+    display: flex;
+    gap: 15px;
+    align-items: center;
+    margin-top: 5px;
+}
+
+.propaganda-img {
+    width: 70px;
+    height: 70px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid white;
+    flex-shrink: 0;
+}
+
+.titulo-banner-premium {
+    font-size: 1.1rem !important;
+    font-weight: 800;
+    margin: 0 0 4px 0 !important;
+    background: none !important; /* Remove gradiente se estiver atrapalhando a leitura */
+    -webkit-text-fill-color: white !important;
+}
+
+.descricao-banner-premium {
+    font-size: 0.85rem;
+    opacity: 0.9;
+    margin: 0;
+    line-height: 1.3;
+}
+
+.propaganda-btn-premium {
+    width: 100%;
+    margin-top: 15px;
+    padding: 10px;
+    border-radius: 10px;
+    border: none;
+    background: white;
+    color: #1e3a8a;
+    font-weight: bold;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+/* Botão Fechar (X) */
+.close-x {
+    position: absolute;
+    top: 8px;
+    right: 12px;
+    background: transparent;
+    border: none;
+    color: white;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0.7;
+    z-index: 10;
+}
+
+.close-x:hover { opacity: 1; }
+
+/* Layout do Conteúdo Interno */
+.propaganda-header-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 12px;
+}
+
+.badge-categoria-premium {
+    background: rgba(255, 255, 255, 0.2);
+    padding: 4px 10px;
+    border-radius: 8px;
+    font-size: 0.7rem;
+    font-weight: 700;
+}
+
+.propaganda-content {
+    display: flex;
+    gap: 15px;
+    cursor: pointer;
+}
+
+.propaganda-text-large {
+    flex: 1;
+}
+
+.titulo-banner-premium {
+    font-size: 1.15rem;
+    font-weight: 800;
+    margin: 0 0 5px 0;
+    line-height: 1.2;
+}
+
+.descricao-banner-premium {
+    font-size: 0.85rem;
+    line-height: 1.4;
+    opacity: 0.9;
+    margin: 0;
+}
+
+/* Thumbnail da Imagem */
+.propaganda-img-container-mini img {
+    width: 70px;
+    height: 70px;
+    object-fit: cover;
+    border-radius: 12px;
+    border: 2px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Barra de Progresso */
+.progress-bar-container {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: rgba(255, 255, 255, 0.1);
+}
+
+.progress-bar-fill {
+    height: 100%;
+    background: #fff; /* Cor sólida para destacar bem no fundo colorido */
+    animation: progress-animation 5s linear forwards;
+}
+
+@keyframes progress-animation {
+    from { width: 0%; }
+    to { width: 100%; }
+}
+
+/* Botão de Ação */
+.propaganda-btn-premium {
+    width: 100%;
+    padding: 12px;
+    margin-top: 15px;
+    border-radius: 12px;
+    border: none;
+    background: #fff;
+    color: #1e40af;
+    font-weight: 800;
+    font-size: 0.9rem;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.propaganda-btn-premium:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}

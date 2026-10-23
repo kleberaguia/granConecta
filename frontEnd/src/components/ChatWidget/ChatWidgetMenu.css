@@ -1,0 +1,9 @@
+/* Cards de opções do DOT — carregado após ChatWidget.css */
+.gc-rich-message { display: flex; flex-direction: column; gap: 9px; white-space: normal; }
+.gc-rich-paragraph { margin: 0; line-height: 1.55; overflow-wrap: anywhere; }
+.gc-rich-heading { font-weight: 750; margin-top: 4px; font-size: 1.02em; }
+.gc-rich-options { display: flex; flex-direction: column; gap: 9px; margin: 5px 0; }
+.gc-rich-option { display: flex; align-items: flex-start; gap: 10px; padding: 12px; background: #f4f8fc; border: 1px solid #dbe8f5; border-radius: 12px; color: #24354a; }
+.gc-rich-option-number { flex: 0 0 27px; height: 27px; border-radius: 50%; display: inline-flex; align-items: center; justify-content: center; background: #0877bd; color: white; font-weight: 750; font-size: 12px; }
+.gc-rich-option-body { min-width: 0; line-height: 1.55; overflow-wrap: anywhere; }
+.gc-rich-option-title { display: block; margin-bottom: 3px; color: #153d62; }

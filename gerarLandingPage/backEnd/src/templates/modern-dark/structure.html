@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>{{NOME_MARCA}} — {{TAGLINE}}</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700;800&family=Space+Mono&display=swap" rel="stylesheet">
+  
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="bg-grid"></div>
+
+  <header>
+    <div class="container nav-container">
+      <div class="brand">
+        <span class="logo-icon"></span>
+        {{NOME_MARCA}}
+      </div>
+      <nav class="menu" aria-label="Navegação desktop">
+        <a href="#recursos">Recursos</a>
+        <a href="#resultados">Resultados</a>
+        <a href="#precos">Preços</a>
+      </nav>
+      <a class="btn-outline" href="{{CTA_LINK}}">{{CTA_HEADER}}</a>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero" id="top">
+      <div class="container hero-content">
+        <div class="badge">{{HERO_BADGE}}</div>
+        <h1>{{HERO_TITULO_PARTE1}} <span class="text-gradient">{{HERO_TITULO_GRADIENTE}}</span></h1>
+        <p>{{HERO_SUBTITULO}}</p>
+        
+        <div class="hero-btns">
+          <a class="btn-primary" href="{{CTA_LINK}}">{{CTA_PRINCIPAL}}</a>
+          <a class="btn-secondary" href="#recursos">Saber Mais →</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="logos-section">
+      <div class="container">
+        <p class="section-subtitle">{{LOGOS_TITULO}}</p>
+        <div class="logos-grid">
+          {{LOGOS_HTML}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="recursos">
+      <div class="container">
+        <div class="section-header">
+          <h2>{{RECURSOS_TITULO}}</h2>
+          <p>{{RECURSOS_SUBTITULO}}</p>
+        </div>
+        
+        <div class="features-grid">
+          {{RECURSOS_CARDS}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section results-section" id="resultados">
+      <div class="container">
+        <div class="results-grid">
+          {{RESULTADOS_NUMEROS}}
+        </div>
+      </div>
+    </section>
+
+    <section class="section final-cta">
+      <div class="container cta-box">
+        <h2>{{FINAL_CTA_TITULO}}</h2>
+        <p>{{FINAL_CTA_SUBTITULO}}</p>
+        <a class="btn-primary btn-large" href="{{CTA_LINK}}">{{CTA_PRINCIPAL}}</a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-container">
+      <div class="brand">
+        <span class="logo-icon"></span>
+        {{NOME_MARCA}}
+      </div>
+      <div class="footer-credits">
+        <span>© <span id="y"></span> — {{NOME_MARCA}}</span>
+        <span class="user-tag">Client ID: {{USUARIO_ID}}</span>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>

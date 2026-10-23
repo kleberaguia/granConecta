@@ -1,0 +1,292 @@
+/* HeroSection.module.css (Versão Carrossel) */
+
+.heroSection {
+  position: relative;
+  width: 100%;
+  height: 80vh;
+  /* Altura do viewport */
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--hero-text-color, #FFFFFF);
+  text-align: center;
+  overflow: hidden;
+  /* Importante! */
+}
+
+/* --- O Swiper (Container do Slider) --- */
+.heroSwiper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  /* Fica no fundo */
+}
+
+.heroImage {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* Cobre todo o espaço */
+  /* (Opcional) Efeito Ken Burns (zoom lento) */
+  animation: zoom 15s infinite alternate ease-in-out;
+}
+
+.heroOverlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  /* Puxa a cor do mock */
+  background: var(--hero-overlay-color, rgba(0, 0, 0, 0.5));
+  z-index: 2;
+  /* Fica acima do slider */
+}
+
+.heroContent {
+  position: relative;
+  z-index: 3;
+  /* Fica acima do overlay */
+  max-width: 900px;
+  padding: 1rem 2rem;
+}
+
+/* --- Títulos (do mock) --- */
+.titleAsH1 {
+  font-family: var(--hero-title-font, 'Merriweather', serif);
+  font-size: 3.8rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+  line-height: 1.1;
+  color: var(--hero-title-color, #FFFFFF);
+}
+
+.titleAsH2 {
+  font-family: var(--hero-title-font, 'Merriweather', serif);
+  font-size: 2.8rem;
+  /* ... (outros estilos) ... */
+}
+
+.heroContent p {
+  font-family: var(--hero-text-font, 'Lato', sans-serif);
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+  color: var(--hero-subtitle-color, rgba(255, 255, 255, 0.8));
+}
+
+.heroButtons {
+  display: flex;
+  gap: 1.5rem;
+  justify-content: center;
+}
+
+
+/* --- 1. O Contêiner "Pai" (O Pão de Baixo) --- */
+/*
+ * Esta é a parte mais importante!
+ * - 'display: grid' nos permite sobrepor os filhos.
+ * - 'position: relative' garante que o z-index funcione.
+ */
+.heroWrapper {
+  position: relative;
+  width: 100%;
+  height: 100vh;
+  /* Ou a altura que você quiser */
+  min-height: 600px;
+  overflow: hidden;
+  /* Garante que nada vaze */
+  display: flex;
+  align-items: center;
+  /* Centraliza o texto verticalmente */
+  justify-content: center;
+}
+
+.heroVideoWrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  /* Camada mais baixa */
+  pointer-events: none;
+  /* Impede que cliquem no vídeo para pausar */
+}
+
+.heroVideo {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  /* A MÁGICA: faz o vídeo agir como background-size: cover */
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* Garante centralização perfeita */
+}
+
+.heroSlider,
+.heroStaticImage {
+  position: absolute !important;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  background-size: cover;
+  background-position: center;
+}
+
+/* Estilos para o slider e a imagem estática */
+.heroStaticImage,
+.slideImage {
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+}
+
+/* --- 3. O Conteúdo (Texto e Botões) --- */
+/*
+ * Este é o "pão de cima".
+ * - 'grid-area: 1 / 1' coloca ele na MESMA célula do grid.
+ * - 'z-index: 10' o coloca na camada MAIS ALTA.
+ */
+.heroOverlay {
+  position: relative;
+  /* Necessário para o z-index funcionar */
+  z-index: 2;
+  /* Camada acima do vídeo */
+  width: 100%;
+  height: 100%;
+
+  /* Opcional: Um fundo escuro transparente para o texto branco ler melhor sobre o vídeo */
+  background: rgba(0, 0, 0, 0.4);
+
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+/* --- 4. Estilos do Conteúdo de Texto --- */
+
+.heroContent {
+  text-align: center;
+  color: #fff;
+  /* Texto branco */
+  max-width: 800px;
+  padding: 20px;
+}
+
+.heroTitle {
+  /* A cor do título vem do 'style_overrides' */
+  color: var(--hero-title-color, var(--hero-text-color, #FFFFFF));
+  font-family: var(--hero-title-font, 'Georgia', serif);
+  font-size: 3rem;
+  font-weight: 700;
+  margin-bottom: 1rem;
+}
+
+.heroSubtitle {
+  font-family: var(--hero-text-font, 'Lato', sans-serif);
+  font-size: 1.25rem;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+/* --- 5. Estilos dos Botões --- */
+/* (Eles usam os 'style_overrides' para cor e fundo) */
+
+.heroButtons {
+  display: flex;
+  flex-wrap: wrap;
+  /* Permite que os botões quebrem a linha no mobile */
+  justify-content: center;
+  gap: 1rem;
+}
+
+/* Estilo base do botão (compartilhado) */
+.heroButtonPrimary,
+.heroButtonSecondary {
+  text-decoration: none;
+  padding: 0.75rem 1.5rem;
+  font-size: 1rem;
+  font-weight: 600;
+  border-radius: 6px;
+  transition: all 0.2s ease-in-out;
+  cursor: pointer;
+}
+
+/* Botão Primário */
+.heroButtonPrimary {
+  background-color: var(--primary-button-bg, #FFD700);
+  color: var(--primary-button-text, #000000);
+  border: 2px solid var(--primary-button-bg, #FFD700);
+}
+
+.heroButtonPrimary:hover {
+  opacity: 0.8;
+}
+
+/* Botão Secundário */
+.heroButtonSecondary {
+  background-color: var(--secondary-button-bg, transparent);
+  color: var(--secondary-button-text, #FFFFFF);
+  border: var(--secondary-button-border, 2px solid #FFFFFF);
+}
+
+.heroButtonSecondary:hover {
+  background-color: var(--secondary-button-text, #FFFFFF);
+  color: rgb(var(--color-primary));
+  border-color: rgb(var(--color-primary));
+}
+
+/* (Opcional) Animação de Zoom */
+@keyframes zoom {
+  from {
+    transform: scale(1);
+  }
+
+  to {
+    transform: scale(1.1);
+  }
+}
+
+/* --- Estilo das Bolinhas de Navegação do Swiper --- */
+/* Isso faz as bolinhas ficarem douradas (do mock) ou brancas */
+:global(.swiper-pagination-bullet) {
+  background-color: var(--primary-button-text, #FFFFFF) !important;
+  opacity: 0.5;
+  width: 10px;
+  height: 10px;
+}
+
+:global(.swiper-pagination-bullet-active) {
+  background-color: var(--primary-button-bg, #FFD700) !important;
+  opacity: 1;
+}
+
+/* --- Responsividade (Sem mudança) --- */
+@media (max-width: 768px) {
+  .heroSection {
+    height: 70vh;
+  }
+
+  .titleAsH1 {
+    font-size: 2.5rem;
+  }
+
+  .heroContent p {
+    font-size: 1rem;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+    gap: 1rem;
+  }
+}

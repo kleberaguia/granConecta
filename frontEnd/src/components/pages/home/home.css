@@ -1,0 +1,775 @@
+.gc-home-page {
+  min-height: 100vh;
+  color: #f5fbff;
+  background:
+    radial-gradient(circle at 78% 8%, rgba(0, 217, 255, 0.18), transparent 31%),
+    radial-gradient(circle at 14% 34%, rgba(47, 128, 255, 0.11), transparent 28%),
+    linear-gradient(180deg, #061120 0%, #071a2b 52%, #061120 100%);
+  overflow-x: hidden;
+}
+
+.gc-hero-carousel.gc-hero-single {
+  position: relative;
+  width: min(100% - 32px, 1200px);
+  min-height: 620px;
+  margin: 0 auto;
+  padding: 58px 0 54px;
+  display: grid;
+  align-items: end;
+  isolation: isolate;
+}
+
+.gc-hero-media-full {
+  position: absolute;
+  inset: 38px 0 34px;
+  z-index: -2;
+  min-height: auto;
+  overflow: hidden;
+  border: 1px solid rgba(126, 211, 255, 0.24);
+  border-radius: 8px;
+  background: #0d2338;
+  box-shadow: 0 24px 70px rgba(0, 217, 255, 0.18);
+}
+
+.gc-hero-media-full video,
+.gc-hero-media-full img {
+  width: 100%;
+  height: 100%;
+  min-height: 520px;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gc-hero-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(90deg, rgba(4, 13, 24, 0.92) 0%, rgba(4, 13, 24, 0.7) 42%, rgba(4, 13, 24, 0.22) 100%),
+    linear-gradient(180deg, rgba(4, 13, 24, 0.08) 0%, rgba(4, 13, 24, 0.88) 100%);
+  pointer-events: none;
+}
+
+.gc-hero-content {
+  width: min(720px, 100%);
+  padding: 72px 34px 56px;
+}
+
+.gc-eyebrow {
+  min-height: 34px;
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0 12px;
+  border: 1px solid rgba(126, 211, 255, 0.22);
+  border-radius: 999px;
+  color: #bceeff;
+  background: rgba(0, 217, 255, 0.09);
+  font-size: 0.86rem;
+  font-weight: 800;
+}
+
+.gc-eyebrow::before {
+  content: "";
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #35d3a3;
+  box-shadow: 0 0 18px rgba(53, 211, 163, 0.72);
+}
+
+.gc-hero-content h1 {
+  max-width: 780px;
+  margin: 18px 0 16px;
+  font-size: clamp(2.55rem, 4.75vw, 4.95rem);
+  line-height: 0.96;
+  letter-spacing: 0;
+  color: #f5fbff;
+}
+
+.gc-hero-content p {
+  max-width: 660px;
+  margin: 0;
+  color: #d9edf7;
+  font-size: clamp(1rem, 1.4vw, 1.16rem);
+  line-height: 1.62;
+}
+
+.gc-hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 14px;
+  margin-top: 24px;
+}
+
+.gc-btn {
+  min-height: 44px;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  border-radius: 8px;
+  border: 1px solid transparent;
+  padding: 0 18px;
+  font: inherit;
+  font-weight: 900;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.gc-btn-primary {
+  color: #00111a;
+  background: #00d9ff;
+  box-shadow: 0 0 30px rgba(0, 217, 255, 0.28);
+}
+
+.gc-btn-secondary {
+  color: #f5fbff;
+  border-color: rgba(126, 211, 255, 0.24);
+  background: rgba(13, 35, 56, 0.72);
+}
+
+.gc-filter-tabs {
+  max-width: 520px;
+  margin-top: 24px;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 10px;
+}
+
+.gc-filter-tabs button {
+  min-height: 42px;
+  border: 1px solid rgba(126, 211, 255, 0.18);
+  border-radius: 8px;
+  color: #a8bfd3;
+  background: rgba(13, 35, 56, 0.72);
+  font: inherit;
+  font-weight: 900;
+  cursor: pointer;
+}
+
+.gc-filter-tabs button.is-active {
+  color: #00111a;
+  border-color: #00d9ff;
+  background: #00d9ff;
+}
+
+.gc-carousel-dots {
+  position: absolute;
+  left: 34px;
+  bottom: 56px;
+  display: flex;
+  gap: 8px;
+}
+
+.gc-carousel-dots button {
+  width: 34px;
+  height: 6px;
+  border: 0;
+  border-radius: 999px;
+  background: rgba(168, 191, 211, 0.32);
+  cursor: pointer;
+}
+
+.gc-carousel-dots button.is-active {
+  background: #00d9ff;
+}
+
+.gc-dynamic-sections {
+  width: min(100% - 32px, 1200px);
+  margin: 0 auto;
+}
+
+.gc-card-skin {
+  padding-top: 28px;
+}
+
+.gc-card-skin :is(section, .section, .home-section, .legacy-section) {
+  margin-block: 46px;
+}
+
+.gc-card-skin :is(h2, .section-title, .titulo-secao) {
+  color: #f5fbff;
+  letter-spacing: 0;
+}
+
+.gc-card-skin :is(.section-description, .descricao-secao, p) {
+  color: #a8bfd3;
+}
+
+.gc-card-skin :is(.cards, .cards-container, .section-grid, .grid, .lista, .items, .carousel, .scroll-container) {
+  gap: 16px;
+  scrollbar-color: rgba(0, 217, 255, 0.45) rgba(126, 211, 255, 0.08);
+}
+
+.gc-card-skin :is(.card, .item-card, .category-card, .categoria-card, .prestador-card, .loja-card, article) {
+  overflow: hidden;
+  border: 1px solid rgba(126, 211, 255, 0.18);
+  border-radius: 8px;
+  background: linear-gradient(180deg, rgba(13, 35, 56, 0.9), rgba(9, 26, 45, 0.78));
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.16);
+}
+
+.gc-card-skin :is(.card, .item-card, .category-card, .categoria-card, .prestador-card, .loja-card, article):hover {
+  border-color: rgba(0, 217, 255, 0.38);
+  box-shadow: 0 24px 58px rgba(0, 217, 255, 0.13);
+}
+
+.gc-card-skin :is(.card, .item-card, .category-card, .categoria-card, .prestador-card, .loja-card, article) img {
+  width: 100%;
+  aspect-ratio: 16 / 10;
+  display: block;
+  object-fit: cover;
+  object-position: center;
+}
+
+.gc-card-skin :is(.card, .item-card, .category-card, .categoria-card, .prestador-card, .loja-card, article) :is(h3, h4) {
+  color: #f5fbff;
+}
+
+.gc-card-skin :is(a[href*="/explorar"], button) {
+  border-radius: 8px;
+}
+
+.gc-empty-state {
+  margin: 40px 0;
+  padding: 34px;
+  border: 1px solid rgba(126, 211, 255, 0.18);
+  border-radius: 8px;
+  background: rgba(13, 35, 56, 0.58);
+}
+
+.gc-empty-state h2 {
+  margin: 0 0 10px;
+  color: #f5fbff;
+}
+
+.gc-empty-state p {
+  max-width: 620px;
+  color: #a8bfd3;
+  line-height: 1.6;
+}
+
+.gc-home-footer {
+  width: min(100% - 32px, 1200px);
+  margin: 64px auto 0;
+  padding: 42px 0;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 28px;
+  border-top: 1px solid rgba(126, 211, 255, 0.18);
+}
+
+.gc-home-footer h2 {
+  margin: 0 0 10px;
+  color: #f5fbff;
+  font-size: 1.7rem;
+}
+
+.gc-home-footer p {
+  max-width: 580px;
+  margin: 0;
+  color: #a8bfd3;
+  line-height: 1.65;
+}
+
+.gc-home-footer nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 12px;
+}
+
+.gc-home-footer a {
+  min-height: 40px;
+  display: inline-flex;
+  align-items: center;
+  padding: 0 14px;
+  border: 1px solid rgba(126, 211, 255, 0.18);
+  border-radius: 8px;
+  color: #d9edf7;
+  text-decoration: none;
+  font-weight: 800;
+}
+
+@media (max-width: 980px) {
+  .gc-hero-carousel.gc-hero-single {
+    min-height: 560px;
+  }
+
+  .gc-hero-content {
+    padding: 64px 24px 58px;
+  }
+}
+
+@media (max-width: 640px) {
+  .gc-hero-carousel.gc-hero-single,
+  .gc-dynamic-sections,
+  .gc-home-footer {
+    width: min(100% - 24px, 1200px);
+  }
+
+  .gc-hero-carousel.gc-hero-single {
+    min-height: auto;
+    padding: 24px 0 46px;
+  }
+
+  .gc-hero-media-full {
+    position: relative;
+    inset: auto;
+    min-height: auto;
+    order: -1;
+  }
+
+  .gc-hero-media-full video,
+  .gc-hero-media-full img {
+    min-height: 240px;
+    aspect-ratio: 16 / 10;
+  }
+
+  .gc-hero-overlay {
+    background: linear-gradient(180deg, rgba(4, 13, 24, 0.08), rgba(4, 13, 24, 0.42));
+  }
+
+  .gc-hero-content {
+    padding: 22px 0 0;
+  }
+
+  .gc-hero-content h1 {
+    font-size: clamp(2rem, 9.5vw, 3rem);
+    line-height: 1;
+  }
+
+  .gc-hero-actions,
+  .gc-filter-tabs {
+    display: grid;
+    grid-template-columns: 1fr;
+  }
+
+  .gc-btn {
+    width: 100%;
+  }
+
+  .gc-carousel-dots {
+    left: 0;
+    bottom: 18px;
+  }
+
+  .gc-home-footer {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .gc-home-footer nav {
+    width: 100%;
+    justify-content: flex-start;
+  }
+}
+
+/* =========================================================
+   GranConecta - diferenciacao visual por tipo de vitrine
+   Cole este bloco no final do CSS atual da Home.
+   Ele preserva o layout e acrescenta linhas neon delicadas.
+   ========================================================= */
+
+.gc-home-page {
+  --gc-accent: #00d9ff;
+  --gc-accent-rgb: 0, 217, 255;
+  --gc-accent-2: #1677ff;
+  --gc-accent-2-rgb: 22, 119, 255;
+  position: relative;
+  isolation: isolate;
+}
+
+.gc-home-page--lojas {
+  --gc-accent: #00d9ff;
+  --gc-accent-rgb: 0, 217, 255;
+  --gc-accent-2: #1677ff;
+  --gc-accent-2-rgb: 22, 119, 255;
+}
+
+.gc-home-page--prestadores {
+  --gc-accent: #35f6c4;
+  --gc-accent-rgb: 53, 246, 196;
+  --gc-accent-2: #00a3ff;
+  --gc-accent-2-rgb: 0, 163, 255;
+}
+
+.gc-home-page::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background:
+    linear-gradient(90deg, rgba(var(--gc-accent-rgb), 0.055) 1px, transparent 1px),
+    linear-gradient(180deg, rgba(var(--gc-accent-2-rgb), 0.045) 1px, transparent 1px);
+  background-size: 86px 86px;
+  mask-image: linear-gradient(180deg, transparent 0%, #000 18%, #000 78%, transparent 100%);
+  opacity: 0.58;
+}
+
+.gc-hero-carousel.gc-hero-single {
+  border-color: rgba(var(--gc-accent-rgb), 0.2);
+  box-shadow:
+    0 30px 90px rgba(0, 0, 0, 0.38),
+    0 0 0 1px rgba(var(--gc-accent-rgb), 0.08),
+    0 0 42px rgba(var(--gc-accent-rgb), 0.1);
+}
+
+.gc-hero-carousel.gc-hero-single::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 2;
+  pointer-events: none;
+  border-radius: inherit;
+  padding: 1px;
+  background:
+    linear-gradient(115deg,
+      rgba(var(--gc-accent-rgb), 0.8),
+      transparent 24%,
+      transparent 72%,
+      rgba(var(--gc-accent-2-rgb), 0.65)
+    );
+  -webkit-mask:
+    linear-gradient(#000 0 0) content-box,
+    linear-gradient(#000 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  opacity: 0.5;
+}
+
+.gc-hero-carousel.gc-hero-single::after {
+  content: "";
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 18px;
+  z-index: 3;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(var(--gc-accent-rgb), 0.9), transparent);
+  box-shadow: 0 0 18px rgba(var(--gc-accent-rgb), 0.72);
+  opacity: 0.72;
+}
+
+.gc-hero-content {
+  position: relative;
+  z-index: 4;
+}
+
+.gc-filter-tabs {
+  border-color: rgba(var(--gc-accent-rgb), 0.18);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.06),
+    0 0 24px rgba(var(--gc-accent-rgb), 0.08);
+}
+
+.gc-filter-tabs button.is-active {
+  border-color: rgba(var(--gc-accent-rgb), 0.9);
+  background: linear-gradient(135deg, var(--gc-accent), var(--gc-accent-2));
+  box-shadow:
+    0 12px 28px rgba(var(--gc-accent-rgb), 0.22),
+    0 0 0 1px rgba(255, 255, 255, 0.16) inset;
+}
+
+.gc-dynamic-sections {
+  position: relative;
+}
+
+.gc-dynamic-sections::before {
+  content: "";
+  position: absolute;
+  top: 6px;
+  left: 0;
+  right: 0;
+  height: 1px;
+  pointer-events: none;
+  background: linear-gradient(90deg, transparent, rgba(var(--gc-accent-rgb), 0.56), transparent);
+  box-shadow: 0 0 18px rgba(var(--gc-accent-rgb), 0.25);
+}
+
+.gc-card-skin :is(section, .section, .home-section, .legacy-section) {
+  position: relative;
+  padding-top: 18px;
+}
+
+.gc-card-skin :is(section, .section, .home-section, .legacy-section)::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: min(180px, 42vw);
+  height: 1px;
+  background: linear-gradient(90deg, rgba(var(--gc-accent-rgb), 0.85), transparent);
+  box-shadow: 0 0 16px rgba(var(--gc-accent-rgb), 0.45);
+  opacity: 0.8;
+}
+
+.gc-card-skin :is(.card, .item-card, .category-card, .categoria-card, .prestador-card, .loja-card, article) {
+  border-color: rgba(var(--gc-accent-rgb), 0.18);
+  box-shadow:
+    0 18px 42px rgba(0, 0, 0, 0.24),
+    inset 0 1px 0 rgba(255, 255, 255, 0.045);
+}
+
+.gc-card-skin :is(.card, .item-card, .category-card, .categoria-card, .prestador-card, .loja-card, article):hover {
+  border-color: rgba(var(--gc-accent-rgb), 0.48);
+  box-shadow:
+    0 24px 58px rgba(0, 0, 0, 0.32),
+    0 0 34px rgba(var(--gc-accent-rgb), 0.13),
+    inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+.gc-card-skin :is(a[href*="/explorar"], button) {
+  border-color: rgba(var(--gc-accent-rgb), 0.28);
+}
+
+.gc-card-skin :is(a[href*="/explorar"], button):hover {
+  border-color: rgba(var(--gc-accent-rgb), 0.62);
+  box-shadow: 0 0 24px rgba(var(--gc-accent-rgb), 0.16);
+}
+
+.gc-home-footer {
+  border-color: rgba(var(--gc-accent-rgb), 0.18);
+  box-shadow:
+    0 24px 70px rgba(0, 0, 0, 0.24),
+    0 0 34px rgba(var(--gc-accent-rgb), 0.08);
+}
+
+@media (max-width: 640px) {
+  .gc-home-page::before {
+    background-size: 58px 58px;
+    opacity: 0.38;
+  }
+
+  .gc-hero-carousel.gc-hero-single::after {
+    left: 16px;
+    right: 16px;
+    bottom: 14px;
+  }
+}
+
+
+/* Chamada comercial - Prestadores e Empreendedores */
+.gc-business-cta{width:min(100% - 32px,1200px);margin:72px auto 28px;padding:48px;position:relative;overflow:hidden;border:1px solid rgba(126,211,255,.22);border-radius:12px;background:radial-gradient(circle at 85% 10%,rgba(0,217,255,.12),transparent 32%),linear-gradient(145deg,rgba(13,35,56,.94),rgba(6,17,32,.96));box-shadow:0 28px 70px rgba(0,0,0,.28),0 0 38px rgba(0,217,255,.08)}
+.gc-business-cta::before{content:"";position:absolute;top:0;left:48px;width:min(220px,48vw);height:1px;background:linear-gradient(90deg,#00d9ff,transparent);box-shadow:0 0 18px rgba(0,217,255,.48)}
+.gc-business-cta-heading{max-width:760px;margin-bottom:30px}
+.gc-business-cta-heading h2{margin:18px 0 12px;color:#f5fbff;font-size:clamp(2rem,4vw,3.4rem);line-height:1.04}
+.gc-business-cta-heading p{margin:0;color:#a8bfd3;font-size:1.04rem;line-height:1.7}
+.gc-business-cta-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
+.gc-business-profile-card{min-width:0;padding:28px;border:1px solid rgba(126,211,255,.18);border-radius:10px;background:rgba(7,26,43,.76);box-shadow:inset 0 1px 0 rgba(255,255,255,.045)}
+.gc-business-profile-card:hover{border-color:rgba(0,217,255,.42);box-shadow:0 22px 48px rgba(0,0,0,.24),0 0 28px rgba(0,217,255,.09)}
+.gc-business-profile-label{display:inline-block;margin-bottom:12px;color:#35d3a3;font-size:.78rem;font-weight:900;letter-spacing:.04em;text-transform:uppercase}
+.gc-business-profile-card h3{margin:0 0 12px;color:#f5fbff;font-size:1.45rem}
+.gc-business-profile-card p{min-height:82px;margin:0 0 22px;color:#a8bfd3;line-height:1.65}
+@media(max-width:760px){.gc-business-cta{width:min(100% - 24px,1200px);margin-top:48px;padding:28px 20px}.gc-business-cta::before{left:20px}.gc-business-cta-grid{grid-template-columns:1fr}.gc-business-profile-card{padding:22px 18px}.gc-business-profile-card p{min-height:0}.gc-business-profile-card .gc-btn{width:100%}}
+
+/* =========================================================
+   GranConecta 2.0 - camada mobile-first / lançamento
+   ========================================================= */
+.gc-home-intro,
+.gc-ai-callout,
+.gc-community-discoveries {
+  width: min(100% - 32px, 1200px);
+  margin-inline: auto;
+}
+
+.gc-home-intro { padding: 34px 0 18px; }
+.gc-community-context {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  color: #d9edf7; font-size: .9rem;
+}
+.gc-community-kicker { color: #7ed3ff; font-weight: 800; }
+.gc-community-context strong { color: #fff; }
+.gc-community-note { color: #8fa9bc; }
+.gc-home-intro-copy { max-width: 780px; margin-top: 30px; }
+.gc-home-intro-copy h1 { margin: 14px 0 10px; color:#fff; font-size:clamp(2.35rem,5vw,4.6rem); line-height:1; }
+.gc-home-intro-copy p { margin:0; max-width:680px; color:#abc2d3; font-size:1.06rem; line-height:1.6; }
+
+.gc-main-search {
+  margin-top: 26px; min-height: 62px; padding: 7px 8px 7px 18px;
+  display:flex; align-items:center; gap:12px;
+  border:1px solid rgba(126,211,255,.22); border-radius:18px;
+  background:rgba(255,255,255,.96); box-shadow:0 18px 48px rgba(0,0,0,.2);
+}
+.gc-main-search > span { color:#456070; font-size:1.5rem; }
+.gc-main-search input { flex:1; min-width:0; border:0; outline:0; background:transparent; color:#102331; font:inherit; font-size:1rem; }
+.gc-main-search input::placeholder { color:#78909f; }
+.gc-main-search button { min-height:46px; padding:0 22px; border:0; border-radius:13px; background:#00d9ff; color:#00141d; font:inherit; font-weight:900; cursor:pointer; }
+
+.gc-quick-actions { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:12px; margin-top:16px; }
+.gc-quick-actions button {
+  min-height:78px; padding:12px; display:flex; align-items:center; justify-content:center; gap:9px;
+  border:1px solid rgba(126,211,255,.16); border-radius:16px; background:rgba(13,35,56,.74);
+  color:#e9f7ff; font:inherit; font-weight:800; cursor:pointer; transition:.2s ease;
+}
+.gc-quick-actions button:hover { transform:translateY(-2px); border-color:rgba(0,217,255,.42); background:rgba(16,45,70,.9); }
+.gc-quick-actions button span { font-size:1.2rem; }
+
+/* Hero mais compacto: vende a proposta sem ocupar a tela inteira. */
+.gc-hero-carousel.gc-hero-single { min-height:500px; padding:28px 0 34px; }
+.gc-hero-media-full { inset:18px 0 18px; border-radius:22px; }
+.gc-hero-media-full video,.gc-hero-media-full img { min-height:450px; }
+.gc-hero-content { padding:54px 38px 48px; }
+.gc-hero-content h1 { font-size:clamp(2.35rem,4.4vw,4.25rem); }
+.gc-carousel-dots { bottom:38px; }
+
+.gc-ai-callout {
+  margin-top:26px; padding:28px 30px; display:flex; align-items:center; justify-content:space-between; gap:24px;
+  border:1px solid rgba(53,246,196,.2); border-radius:20px;
+  background:linear-gradient(135deg,rgba(12,40,55,.95),rgba(7,26,43,.92));
+  box-shadow:0 20px 55px rgba(0,0,0,.22);
+}
+.gc-ai-callout h2 { margin:12px 0 8px; color:#fff; font-size:clamp(1.65rem,3vw,2.45rem); }
+.gc-ai-callout p { margin:0; color:#a8bfd3; line-height:1.6; }
+
+.gc-community-discoveries { margin-top:42px; }
+.gc-section-heading h2 { margin:12px 0 7px; color:#fff; font-size:clamp(1.65rem,3vw,2.5rem); }
+.gc-section-heading p { margin:0; color:#a8bfd3; }
+.gc-discovery-track { display:grid; grid-auto-flow:column; grid-auto-columns:minmax(280px,360px); gap:14px; overflow-x:auto; padding:18px 2px 12px; scroll-snap-type:x mandatory; scrollbar-width:thin; }
+.gc-discovery-card { scroll-snap-align:start; padding:0; overflow:hidden; text-align:left; border:1px solid rgba(126,211,255,.16); border-radius:18px; background:rgba(13,35,56,.78); color:#fff; cursor:pointer; }
+.gc-discovery-media { height:170px; overflow:hidden; background:#0d2338; }
+.gc-discovery-media img,.gc-discovery-media video { width:100%; height:100%; object-fit:cover; display:block; }
+.gc-discovery-copy { padding:16px; }
+.gc-discovery-copy span { color:#35d3a3; font-size:.75rem; font-weight:900; text-transform:uppercase; letter-spacing:.05em; }
+.gc-discovery-copy strong { display:block; margin-top:7px; font-size:1.05rem; }
+.gc-discovery-copy p { margin:7px 0 0; color:#a8bfd3; line-height:1.45; display:-webkit-box; -webkit-line-clamp:2; -webkit-box-orient:vertical; overflow:hidden; }
+
+@media (max-width: 640px) {
+  .gc-home-intro,.gc-ai-callout,.gc-community-discoveries { width:min(100% - 24px,1200px); }
+  .gc-home-intro { padding-top:20px; }
+  .gc-community-context { gap:6px 8px; }
+  .gc-community-note { width:100%; font-size:.8rem; }
+  .gc-home-intro-copy { margin-top:22px; }
+  .gc-home-intro-copy h1 { font-size:2.25rem; }
+  .gc-main-search { min-height:56px; border-radius:16px; padding-left:14px; }
+  .gc-main-search button { padding:0 15px; }
+  .gc-quick-actions { grid-template-columns:repeat(4,1fr); gap:8px; }
+  .gc-quick-actions button { min-height:72px; padding:9px 4px; flex-direction:column; gap:5px; font-size:.72rem; border-radius:14px; }
+  .gc-hero-carousel.gc-hero-single { padding-top:18px; }
+  .gc-hero-media-full { border-radius:18px; }
+  .gc-hero-media-full video,.gc-hero-media-full img { min-height:220px; aspect-ratio:16/10; }
+  .gc-hero-content { padding-top:18px; }
+  .gc-hero-content h1 { font-size:2rem; }
+  .gc-ai-callout { padding:22px 18px; flex-direction:column; align-items:stretch; }
+  .gc-ai-callout .gc-btn { width:100%; }
+  .gc-discovery-track { grid-auto-columns:82vw; }
+  .gc-business-cta { margin-top:46px; }
+}
+
+
+/* =========================================================
+   GranConecta 2.0 — MOBILE lançamento
+   Desktop permanece inalterado.
+   ========================================================= */
+@media (max-width:640px){
+.gc-home-intro,.gc-ai-callout,.gc-community-discoveries,.gc-hero-carousel.gc-hero-single,.gc-dynamic-sections,.gc-home-footer{width:calc(100% - 28px)}
+.gc-home-intro{padding:16px 0 8px}
+.gc-community-context{gap:4px 7px;font-size:.78rem;line-height:1.35}
+.gc-community-kicker{font-size:.78rem}
+.gc-community-context strong{font-size:.82rem}
+.gc-community-note{width:100%;margin-top:1px;font-size:.72rem;line-height:1.35}
+.gc-home-intro-copy{margin-top:14px}
+.gc-home-intro-copy .gc-eyebrow{min-height:28px;padding:0 10px;font-size:.72rem}
+.gc-home-intro-copy h1{max-width:330px;margin:12px 0 8px;font-size:clamp(2rem,10.2vw,2.65rem);line-height:.98;letter-spacing:-.025em}
+.gc-home-intro-copy p{max-width:360px;font-size:.91rem;line-height:1.42}
+.gc-main-search{min-height:52px;margin-top:17px;padding:5px 5px 5px 13px;gap:7px;border-radius:15px}
+.gc-main-search>span{flex:0 0 auto;font-size:1.15rem}
+.gc-main-search input{width:0;min-width:0;font-size:.88rem;text-overflow:ellipsis}
+.gc-main-search button{flex:0 0 auto;min-height:42px;padding:0 14px;border-radius:12px;font-size:.86rem}
+.gc-quick-actions{grid-template-columns:repeat(4,minmax(0,1fr));gap:7px;margin-top:11px}
+.gc-quick-actions button{min-width:0;min-height:66px;padding:7px 2px;gap:3px;border-radius:13px;flex-direction:column;font-size:.66rem;line-height:1.12;white-space:normal}
+.gc-quick-actions button span{font-size:1.05rem;line-height:1}
+.gc-hero-carousel.gc-hero-single{min-height:auto;margin-top:6px;padding:10px 0 24px;display:flex;flex-direction:column}
+.gc-hero-media-full{position:relative;inset:auto;width:100%;min-height:0;order:-1;border-radius:17px}
+.gc-hero-media-full video,.gc-hero-media-full img{width:100%;height:auto;min-height:0;aspect-ratio:16/8.7;object-fit:cover}
+.gc-hero-content{width:100%;padding:13px 2px 0}
+.gc-hero-content .gc-eyebrow{min-height:27px;font-size:.7rem}
+.gc-hero-content h1{margin:10px 0 7px;font-size:1.7rem;line-height:1.02}
+.gc-hero-content p{font-size:.88rem;line-height:1.42}
+.gc-hero-actions{grid-template-columns:1fr 1fr;gap:8px;margin-top:13px}
+.gc-btn{min-height:42px;padding:0 11px;font-size:.78rem;white-space:normal;text-align:center}
+.gc-filter-tabs{grid-template-columns:repeat(3,minmax(0,1fr));gap:6px;margin-top:10px}
+.gc-filter-tabs button{min-height:38px;padding:0 5px;font-size:.72rem}
+.gc-carousel-dots{position:static;margin-top:10px;justify-content:center}
+.gc-carousel-dots button{width:24px;height:5px}
+.gc-hero-carousel.gc-hero-single::after{display:none}
+.gc-card-skin{padding-top:12px}
+.gc-card-skin :is(section,.section,.home-section,.legacy-section){margin-block:28px;padding-top:13px}
+.gc-card-skin :is(h2,.section-title,.titulo-secao){font-size:1.42rem;line-height:1.1}
+.gc-card-skin :is(.section-description,.descricao-secao,p){font-size:.82rem;line-height:1.4}
+.gc-card-skin :is(.carousel,.scroll-container){scroll-snap-type:x mandatory;-webkit-overflow-scrolling:touch;padding-right:14px}
+.gc-card-skin :is(.carousel,.scroll-container)>:is(.card,.item-card,.category-card,.categoria-card,.prestador-card,.loja-card,article){flex:0 0 76vw;width:76vw;max-width:300px;scroll-snap-align:start}
+.gc-ai-callout{margin-top:16px;padding:18px 16px;gap:13px;border-radius:17px}
+.gc-ai-callout h2{margin:8px 0 5px;font-size:1.42rem}
+.gc-ai-callout p{font-size:.83rem;line-height:1.42}
+.gc-community-discoveries{margin-top:28px}
+.gc-section-heading h2{margin:8px 0 5px;font-size:1.42rem}
+.gc-section-heading p{font-size:.82rem;line-height:1.4}
+.gc-discovery-track{grid-auto-columns:78vw;gap:11px;padding-top:13px;scroll-padding-left:1px}
+.gc-discovery-media{height:145px}
+.gc-discovery-copy{padding:13px}
+.gc-business-cta{width:calc(100% - 28px);margin-top:34px;padding:22px 16px;border-radius:17px}
+.gc-business-cta-heading{margin-bottom:20px}
+.gc-business-cta-heading h2{margin:12px 0 8px;font-size:1.75rem}
+.gc-business-cta-heading p{font-size:.86rem;line-height:1.5}
+.gc-business-profile-card{padding:18px 15px;border-radius:14px}
+.gc-business-profile-card h3{font-size:1.15rem}
+.gc-business-profile-card p{margin-bottom:16px;font-size:.84rem;line-height:1.45}
+.gc-home-footer{margin-top:36px;padding:28px 0}
+}
+@media(max-width:370px){
+.gc-home-intro-copy h1{font-size:1.9rem}
+.gc-main-search button{padding-inline:11px;font-size:.8rem}
+.gc-quick-actions{gap:5px}
+.gc-quick-actions button{font-size:.61rem}
+}
+
+/* =========================================================
+   GranConecta — correção final da mídia do Hero no mobile
+   Mantém o desktop inalterado e evita imagem quebrada/sem área.
+   ========================================================= */
+@media (max-width: 640px) {
+  .gc-hero-carousel.gc-hero-single .gc-hero-media-full {
+    position: relative;
+    inset: auto;
+    order: -1;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    aspect-ratio: 16 / 8.7;
+    overflow: hidden;
+    flex: 0 0 auto;
+    background:
+      radial-gradient(circle at 78% 18%, rgba(0, 217, 255, 0.16), transparent 34%),
+      #0d2338;
+  }
+
+  .gc-hero-carousel.gc-hero-single .gc-hero-media-full > video,
+  .gc-hero-carousel.gc-hero-single .gc-hero-media-full > img {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    min-width: 100%;
+    min-height: 100%;
+    aspect-ratio: auto;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+  }
+
+  .gc-hero-carousel.gc-hero-single .gc-hero-media-full > img {
+    max-width: none;
+  }
+
+  .gc-hero-carousel.gc-hero-single .gc-hero-overlay {
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+  }
+}
+

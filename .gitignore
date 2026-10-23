@@ -1,0 +1,28 @@
+# Credenciais
+.env
+.env.*
+!.env.example
+
+# Dependências e compilação
+node_modules/
+dist/
+build/
+
+# Arquivos grandes e temporários
+*.zip
+*.rar
+backEnd/uploads/videos/
+cat >> .gitignore <<'EOF'
+
+# Backups e bancos de dados
+*.sql
+*.sql.gz
+*.dump
+
+# Arquivos enviados pelos usuarios
+backEnd/uploads/
+
+# Arquivos temporarios
+*.zip
+*.rar
+EOF

@@ -1,0 +1,60 @@
+[
+  {
+    "id": "prod_001",
+    "nome": "Terço de Madeira Imbuia",
+    "imagemUrl": "/terco.png",
+    "descricaoCurta": "Terço tradicional de madeira imbuia com crucifixo de metal.",
+    "preco": 35.50,
+    "disponivel": true,
+    "link_contato": "https://wa.me/SEUNUMERO?text=Tenho+interesse+no+Terço+de+Madeira"
+  },
+  {
+    "id": "prod_002",
+    "nome": "Imagem N.S. Assunção (20cm)",
+    "imagemUrl": "/img_assuncao_Estatua.png",
+    "descricaoCurta": "Bela imagem em resina da nossa padroeira. Perfeita para seu oratório.",
+    "preco": 89.90,
+    "disponivel": true,
+    "link_contato": "https://wa.me/SEUNUMERO?text=Tenho+interesse+na+Imagem+N.S.+Assunção"
+  },
+  {
+    "id": "prod_003",
+    "nome": "Vela Votiva 7 Dias (Branca)",
+    "imagemUrl": "https://images.unsplash.com/photo-1614228303495-610165c71b3e?q=80&w=1974",
+    "descricaoCurta": "Vela para promessas e orações, com duração de 7 dias.",
+    "preco": 12.00,
+    "disponivel": false,
+    "link_contato": null
+  },
+  {
+    "id": "prod_004",
+    "nome": "Medalha Milagrosa (Prata)",
+    "imagemUrl": "/medalhaMilagrosa.webp",
+    "descricaoCurta": "Medalha milagrosa de Nossa Senhora das Graças em prata 925.",
+    "preco": null,
+    "disponivel": true,
+    "link_contato": "https://wa.me/SEUNUMERO?text=Tenho+interesse+na+Medalha+Milagrosa"
+  },
+  {
+    "id": "prod_005",
+    "nome": "Catecismo da Igreja Católica",
+    "imagemUrl": "catecismo.webp",
+    "descricaoCurta": "Edição padrão do Catecismo, essencial para formação.",
+    "preco": 105.00,
+    "disponivel": true,
+    "link_contato": "https://wa.me/SEUNUMERO?text=Tenho+interesse+no+Catecismo"
+  },
+  {
+    "id": "prod_006",
+    "nome": "Velas do Advento",
+    "imagemUrl": "/velaAdvento.png",
+    "descricaoCurta": "Kit de Velas para o Advento.",
+    "preco": 96.00,
+    "disponivel": true,
+    "link_contato": "https://wa.me/SEUNUMERO?text=Tenho+interesse+no+Catecismo"
+  }
+
+
+
+  
+]

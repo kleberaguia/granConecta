@@ -1,0 +1,27 @@
+:root{
+  --primary:#f7b2d9;
+  --secondary:#2b2b2b;
+  --bg:#fff7fb;
+  --text:#1a1a1a;
+  --muted:#6b7280;
+
+  --card:#ffffff;
+  --line:#f0d7e6;
+  --shadow: 0 10px 30px rgba(0,0,0,.08);
+  --radius: 18px;
+
+  --hero-overlay: 0.35;
+  --btn-bg:#ffffff;
+  --btn-text:#111111;
+}
+
+/* detalhe decorativo sutil */
+.hero::after{
+  content:"";
+  position:absolute;
+  inset:0;
+  pointer-events:none;
+  background:
+    radial-gradient(circle at 20% 30%, rgba(255,255,255,.18), transparent 40%),
+    radial-gradient(circle at 80% 20%, rgba(255,255,255,.16), transparent 42%);
+}

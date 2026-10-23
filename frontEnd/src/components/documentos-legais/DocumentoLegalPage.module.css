@@ -1,0 +1,150 @@
+.page {
+  min-height: 100vh;
+  padding: 42px 16px 72px;
+  color: #0f172a;
+  background:
+    radial-gradient(circle at 70% 0%, rgba(0, 217, 255, 0.14), transparent 28%),
+    linear-gradient(180deg, #061120 0%, #071a2b 44%, #f8fafc 44%, #f8fafc 100%);
+}
+
+.hero {
+  width: min(100%, 880px);
+  margin: 0 auto 24px;
+  padding: 28px 0 8px;
+  text-align: center;
+  color: white;
+}
+
+.logoLink {
+  display: inline-flex;
+  justify-content: center;
+  margin-bottom: 14px;
+}
+
+.logoLink img {
+  width: 72px;
+  max-width: 30vw;
+  display: block;
+}
+
+.hero span {
+  display: inline-flex;
+  min-height: 30px;
+  align-items: center;
+  padding: 0 12px;
+  border: 1px solid rgba(0, 217, 255, 0.28);
+  border-radius: 999px;
+  color: #bceeff;
+  background: rgba(0, 217, 255, 0.08);
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.hero h1 {
+  margin: 16px 0 8px;
+  font-size: clamp(1.8rem, 4vw, 3.4rem);
+  line-height: 1.05;
+  letter-spacing: 0;
+}
+
+.hero p {
+  margin: 0;
+  color: #a8bfd3;
+}
+
+.card {
+  width: min(100%, 880px);
+  margin: 0 auto;
+  padding: clamp(20px, 4vw, 38px);
+  border: 1px solid #e2e8f0;
+  border-radius: 12px;
+  background: white;
+  box-shadow: 0 18px 50px rgba(15, 23, 42, 0.13);
+}
+
+.actions {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 10px;
+  margin-bottom: 24px;
+  padding-bottom: 18px;
+  border-bottom: 1px solid #e2e8f0;
+}
+
+.content {
+  font-family: "Helvetica Neue", Arial, sans-serif;
+}
+
+.documentTitle {
+  margin: 0 0 14px;
+  text-align: center;
+  color: #0f172a;
+  font-size: clamp(1.05rem, 2.6vw, 1.35rem);
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.documentMeta {
+  margin: 0 0 8px;
+  text-align: center;
+  color: #64748b;
+  font-size: 0.82rem;
+}
+
+.sectionTitle {
+  margin: 28px 0 10px;
+  padding-bottom: 8px;
+  color: #0f172a;
+  border-bottom: 1px solid #e5e7eb;
+  font-size: 1rem;
+  line-height: 1.35;
+  text-transform: uppercase;
+}
+
+.paragraph {
+  margin: 0 0 14px;
+  color: #334155;
+  font-size: 0.94rem;
+  line-height: 1.78;
+  text-align: justify;
+}
+
+.listItem {
+  margin: 0 0 8px 18px;
+  color: #334155;
+  font-size: 0.92rem;
+  line-height: 1.62;
+}
+
+.backLink {
+  min-height: 42px;
+  display: inline-flex;
+  align-items: center;
+  margin-top: 14px;
+  padding: 0 14px;
+  border-radius: 8px;
+  color: #00111a;
+  background: #00d9ff;
+  font-weight: 800;
+  text-decoration: none;
+}
+
+@media print {
+  .page {
+    padding: 0;
+    background: white;
+  }
+
+  .hero,
+  .actions {
+    display: none;
+  }
+
+  .card {
+    width: 100%;
+    padding: 0;
+    border: 0;
+    box-shadow: none;
+  }
+}

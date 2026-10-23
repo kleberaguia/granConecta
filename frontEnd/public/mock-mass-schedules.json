@@ -1,0 +1,32 @@
+[
+  {
+    "_id": "m1",
+    "dayOfWeek": "Domingo",
+    "massTime": "07:00"
+  },
+  {
+    "_id": "m2",
+    "dayOfWeek": "Domingo",
+    "massTime": "10:00"
+  },
+  {
+    "_id": "m3",
+    "dayOfWeek": "Domingo",
+    "massTime": "19:00"
+  },
+  {
+    "_id": "m4",
+    "dayOfWeek": "Terça-feira",
+    "massTime": "19:30"
+  },
+  {
+    "_id": "m5",
+    "dayOfWeek": "Quinta-feira",
+    "massTime": "19:30"
+  },
+  {
+    "_id": "m6",
+    "dayOfWeek": "Sábado",
+    "massTime": "18:00"
+  }
+]

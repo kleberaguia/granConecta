@@ -1,0 +1,41 @@
+/* GenericContentSection.css */
+
+.generic-content-section .content-wrapper {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  margin-top: 2rem;
+}
+
+.generic-content-section .text-content {
+  flex: 1; /* Ocupa metade do espaço */
+}
+
+.generic-content-section .image-content {
+  flex: 1; /* Ocupa a outra metade */
+}
+
+.generic-content-section .image-content img {
+  width: 100%;
+  height: auto;
+  border-radius: 8px;
+}
+
+/* Layouts do Banco de Dados */
+.generic-content-section .layout-texto-direita {
+  flex-direction: row; /* [Texto] [Imagem] */
+}
+
+.generic-content-section .layout-texto-esquerda {
+  flex-direction: row-reverse; /* [Imagem] [Texto] */
+}
+
+.generic-content-section .layout-texto-abaixo {
+  flex-direction: column; /* [Imagem] sobre [Texto] */
+}
+
+.generic-content-section .layout-texto-abaixo .text-content,
+.generic-content-section .layout-texto-abaixo .image-content {
+  flex: none; /* Reseta o flex: 1 */
+  width: 100%;
+}

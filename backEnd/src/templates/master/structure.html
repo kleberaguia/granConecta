@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+
+  <meta charset="UTF-8" />
+
+  <meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+  />
+
+  <title>{{NOME_MARCA}}</title>
+
+  <!-- Elementor -->
+  <link
+    rel="stylesheet"
+    href="https://canalaprendendosites.com.br/wp-content/plugins/elementor/assets/css/frontend.min.css"
+  />
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+
+  <link
+    rel="preconnect"
+    href="https://fonts.gstatic.com"
+    crossorigin
+  >
+
+  <link
+    href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+    rel="stylesheet"
+  >
+
+  <style>
+
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      margin: 0;
+      padding: 0;
+      overflow-x: hidden;
+    }
+
+    img {
+      max-width: 100%;
+      height: auto;
+      display: block;
+    }
+
+    .elementor {
+      width: 100%;
+    }
+
+    .elementor-container,
+    .e-con {
+      display: flex;
+      width: 100%;
+      position: relative;
+    }
+
+    .e-flex {
+      display: flex;
+    }
+
+    .elementor-widget {
+      width: 100%;
+      position: relative;
+    }
+
+    .elementor-widget-container {
+      width: 100%;
+    }
+
+    .elementor-heading-title {
+      margin: 0;
+      line-height: 1.2;
+    }
+
+    .elementor-button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      text-decoration: none;
+      transition: .3s;
+    }
+
+    iframe {
+      width: 100%;
+      border: 0;
+    }
+
+    @media (max-width: 767px) {
+
+      .elementor-container,
+      .e-con {
+        flex-direction: column !important;
+      }
+
+      [class*="element-"] {
+        width: 100% !important;
+      }
+
+    }
+
+  </style>
+
+  {{MASTER_CSS}}
+
+</head>
+
+<body>
+
+  {{DYNAMIC_CONTENT}}
+
+</body>
+
+</html>

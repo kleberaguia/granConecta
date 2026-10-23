@@ -1,0 +1,170 @@
+{
+  "id": "SERVICE_HEALTH_01",
+  "name": "Saúde, Bem-Estar & Atendimento Especializado",
+  "pageKind": "servico",
+  "segmentFamily": "health-care",
+  "objective": "Construir autoridade, acolhimento e facilitar agendamento presencial ou online.",
+  "selectionHints": {
+    "keywords": [
+      "psicopedagogia",
+      "psicopedagoga",
+      "psicopedagogo",
+      "psicologia",
+      "psicóloga",
+      "psicologo",
+      "psicólogo",
+      "terapia",
+      "terapeuta",
+      "fonoaudiologia",
+      "fonoaudióloga",
+      "fonoaudiologo",
+      "fonoaudiólogo",
+      "saúde",
+      "saude",
+      "bem-estar",
+      "atendimento clínico",
+      "atendimento especializado",
+      "crianças",
+      "adolescentes",
+      "jovens",
+      "famílias",
+      "familias"
+    ],
+    "businessTypes": [
+      "PRESTADOR"
+    ]
+  },
+  "layout": {
+    "maxWidth": 1200,
+    "sectionRhythm": "balanced",
+    "density": "comfortable",
+    "radius": "soft",
+    "visualTone": "warm-professional"
+  },
+  "header": {
+    "layout": "brand-nav-appointment",
+    "menu": [
+      "Sobre",
+      "Especialidades",
+      "Como Funciona",
+      "Agendamento"
+    ],
+    "primaryCta": {
+      "label": "Agendar Consulta",
+      "action": "schedule-service"
+    }
+  },
+  "hero": {
+    "layout": "split-professional",
+    "contentWidth": "44%",
+    "mediaWidth": "56%",
+    "imageRole": "professional-or-care",
+    "headlineScale": "medium",
+    "imageTreatment": "warm-natural",
+    "primaryCta": "Agende sua Sessão",
+    "secondaryCta": "Tirar Dúvidas no WhatsApp",
+    "showTrustStrip": true
+  },
+  "sections": [
+    {
+      "id": "modalities",
+      "type": "service-modes",
+      "layout": "three-cards",
+      "items": [
+        "Presencial",
+        "Online",
+        "Domiciliar / Escolar"
+      ]
+    },
+    {
+      "id": "specialties",
+      "type": "services",
+      "layout": "professional-cards",
+      "columns": 4,
+      "cardStyle": "soft-professional",
+      "showImage": false,
+      "showDuration": true,
+      "showModality": true,
+      "showPrice": "when-real"
+    },
+    {
+      "id": "about",
+      "type": "professional-profile",
+      "layout": "media-story-proof",
+      "imageRole": "professional-portrait",
+      "showCredentials": true,
+      "onlyIfRealCredentials": true
+    },
+    {
+      "id": "process",
+      "type": "steps",
+      "layout": "three-step",
+      "steps": [
+        "Primeiro Contato",
+        "Triagem Inicial",
+        "Início do Acompanhamento"
+      ]
+    },
+    {
+      "id": "testimonials",
+      "type": "testimonials",
+      "layout": "soft-cards",
+      "columns": 3,
+      "onlyIfReal": true
+    },
+    {
+      "id": "final-cta",
+      "type": "brand-band",
+      "primaryCta": "Agendar atendimento",
+      "secondaryCta": "Tirar dúvidas"
+    },
+    {
+      "id": "footer",
+      "type": "professional-footer",
+      "show": [
+        "address",
+        "hours",
+        "privacy",
+        "ethics",
+        "social"
+      ]
+    }
+  ],
+  "visualRules": {
+    "paletteDirection": [
+      "soft-lavender",
+      "cream",
+      "white",
+      "warm-peach",
+      "brand-purple"
+    ],
+    "headingStyle": "elegant-serif",
+    "bodyStyle": "clean-sans",
+    "imageTreatment": "human-warm-professional",
+    "avoid": [
+      "giant-headlines",
+      "ecommerce-product-cards",
+      "aggressive-dark-layout",
+      "fake-testimonials",
+      "fake-metrics",
+      "fake-credentials"
+    ]
+  },
+  "variationPolicy": {
+    "count": 5,
+    "allowedAxes": [
+      "hero-proportion",
+      "card-shape",
+      "about-composition",
+      "palette",
+      "typography",
+      "section-surfaces",
+      "cta-treatment"
+    ],
+    "mustPreserve": [
+      "human-tone",
+      "professional-authority",
+      "appointment-focus"
+    ]
+  }
+}

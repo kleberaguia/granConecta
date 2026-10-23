@@ -1,0 +1,148 @@
+{
+  "id": "SERVICE_BEAUTY_01",
+  "name": "Beleza, Estética & Cuidados Pessoais",
+  "pageKind": "servico",
+  "segmentFamily": "beauty-care",
+  "objective": "Valorizar transformações, serviços, preços e agendamento rápido no espaço ou a domicílio.",
+  "selectionHints": {
+    "keywords": [
+      "cabeleireiro",
+      "cabelo",
+      "manicure",
+      "pedicure",
+      "unhas",
+      "estética",
+      "beleza",
+      "designer",
+      "sobrancelha",
+      "maquiagem",
+      "home care"
+    ],
+    "businessTypes": [
+      "PRESTADOR"
+    ]
+  },
+  "layout": {
+    "maxWidth": 1220,
+    "sectionRhythm": "visual",
+    "density": "medium",
+    "radius": "refined",
+    "visualTone": "beauty-premium"
+  },
+  "header": {
+    "layout": "brand-nav-booking",
+    "menu": [
+      "Serviços",
+      "Galeria",
+      "Home Care",
+      "Valores",
+      "Agendar"
+    ],
+    "primaryCta": {
+      "label": "Reservar Horário",
+      "action": "schedule-service"
+    }
+  },
+  "hero": {
+    "layout": "visual-showcase",
+    "contentWidth": "40%",
+    "mediaWidth": "60%",
+    "imageRole": "finished-result",
+    "headlineScale": "medium-large",
+    "primaryCta": "Agendar pelo WhatsApp",
+    "showTrustStrip": false
+  },
+  "sections": [
+    {
+      "id": "service-location",
+      "type": "location-toggle",
+      "layout": "two-option-switch",
+      "options": [
+        "No nosso espaço",
+        "VIP / Home Care"
+      ]
+    },
+    {
+      "id": "services",
+      "type": "service-menu",
+      "layout": "beauty-menu-cards",
+      "groups": [
+        "Cabelos",
+        "Mãos e Pés",
+        "Combos e Pacotes"
+      ],
+      "showPrice": "when-real",
+      "showDuration": true
+    },
+    {
+      "id": "gallery",
+      "type": "instagram-grid",
+      "layout": "visual-feed",
+      "media": [
+        "image",
+        "video"
+      ],
+      "onlyIfReal": true
+    },
+    {
+      "id": "differentials",
+      "type": "trust-icons",
+      "layout": "three-points",
+      "items": [
+        "Biossegurança e Materiais Esterilizados",
+        "Produtos de Linha Profissional",
+        "Pontualidade nos Horários"
+      ]
+    },
+    {
+      "id": "final-cta",
+      "type": "booking-bar",
+      "primaryCta": "Agendar Agora"
+    },
+    {
+      "id": "footer",
+      "type": "action-footer",
+      "show": [
+        "address",
+        "home-care-regions",
+        "payment-methods",
+        "social"
+      ]
+    }
+  ],
+  "visualRules": {
+    "paletteDirection": [
+      "warm-nude",
+      "black",
+      "ivory",
+      "rose",
+      "brand-accent"
+    ],
+    "headingStyle": "fashion-serif",
+    "bodyStyle": "modern-sans",
+    "imageTreatment": "high-end-beauty-editorial",
+    "avoid": [
+      "clinical-look",
+      "construction-look",
+      "generic-marketplace-cards",
+      "fake-prices"
+    ]
+  },
+  "variationPolicy": {
+    "count": 5,
+    "allowedAxes": [
+      "hero-crop",
+      "gallery-density",
+      "service-menu-style",
+      "palette",
+      "typography",
+      "card-radius",
+      "cta-treatment"
+    ],
+    "mustPreserve": [
+      "visual-results-focus",
+      "booking-focus",
+      "service-menu-clarity"
+    ]
+  }
+}

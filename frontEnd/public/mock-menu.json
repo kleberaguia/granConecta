@@ -1,0 +1,46 @@
+[
+  {
+    "name": "Início",
+    "path": "/"
+  },
+  {
+    "name": "Serviços",
+    "submenu": [
+      { "name": "Todos os serviços", "path": "/servicos" },
+      { "name": "Serviços do dia a dia", "path": "/servicos/dia-a-dia" },
+      { "name": "Serviços Pet", "path": "/servicos/pet" },
+      { "name": "Saúde & bem-estar", "path": "/servicos/saude-bem-estar" }
+    ]
+  },
+  {
+    "name": "Moradores",
+    "submenu": [
+      { "name": "Serviços de moradores", "path": "/moradores/servicos" },
+      { "name": "Quero divulgar meu serviço", "path": "/sou-prestador" }
+    ]
+  },
+  {
+    "name": "Comércio & Delivery",
+    "submenu": [
+      { "name": "Mercados e minimercados", "path": "/comercio/mercados" },
+      { "name": "Restaurantes e lanches", "path": "/comercio/restaurantes" },
+      { "name": "Farmácias", "path": "/comercio/farmacias" }
+    ]
+  },
+  {
+    "name": "Ajuda",
+    "submenu": [
+      { "name": "Como funciona o GranConecta", "path": "/como-funciona" },
+      { "name": "Perguntas frequentes (FAQ)", "path": "/faq" },
+      { "name": "Fale conosco", "path": "/contato" }
+    ]
+  },
+  {
+    "name": "Entrar",
+    "submenu": [
+      { "name": "Sou morador", "path": "/login/morador" },
+      { "name": "Sou prestador", "path": "/login/prestador" },
+      { "name": "Cadastre-se", "path": "/cadastro" }
+    ]
+  }
+]
