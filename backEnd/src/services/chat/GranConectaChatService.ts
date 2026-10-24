@@ -1519,6 +1519,8 @@ export class GranConectaChatService {
                       "system",
 
                     content:
+                      [
+                      this.buildSystemPromptForRole(chatInput, conversation, false),
                       this.buildInstructions(
                         chatInput,
                         platformContext,
@@ -1526,6 +1528,7 @@ export class GranConectaChatService {
                         opportunityQualificationContext,
                         businessCatalogContext,
                       ),
+                    ].join("\n\n"),
                   },
 
                   ...(businessCatalogItems.length > 0
@@ -5407,13 +5410,16 @@ export class GranConectaChatService {
                     "system",
 
                   content:
-                    this.buildInstructions(
+                    [
+                      this.buildSystemPromptForRole(chatInput, conversation, Boolean(businessOwnerSystemContext)),
+                      this.buildInstructions(
                       chatInput,
                       platformContext,
                       rememberedFacts,
                       opportunityQualificationContext,
                       businessCatalogContext,
                     ),
+                    ].join("\n\n"),
                 },
 
                 ...(businessCatalogItems.length > 0
@@ -5889,6 +5895,58 @@ export class GranConectaChatService {
       return `O GranConecta oferece ${feature}. Se sua conta for de morador de um condomínio cadastrado, ${guidance} Caso seu perfil seja de visitante, você pode contratar serviços e comprar produtos, mas não publicar nessas áreas.`;
     }
     return `Claro! ${guidance}`;
+  }
+
+  /**
+   * Papel consultivo do DOT. Este complemento não substitui as instruções
+   * existentes de segurança, catálogo, oportunidade e fluxos comerciais.
+   * Papéis privilegiados só podem vir de contexto validado pelo servidor.
+   */
+  private buildSystemPromptForRole(
+    chatInput: ChatMessageInput,
+    conversation: any,
+    verifiedBusinessOwner = false,
+  ): string {
+    const tipo = String(chatInput.chatbotTipo || "GRANCONECTA").toUpperCase();
+    const role = String(conversation?.verifiedUserRole || "").toUpperCase();
+    const storeName = chatInput.storeName || "negócio";
+
+    if (role === "ADMIN") {
+      return [
+        "Você é o DOT, assistente estratégico do administrador do GranConecta.",
+        "Ajude a estruturar oportunidades, campanhas, qualificação de leads e estratégias comerciais.",
+        "Seja analítico, proativo e objetivo. Não invente métricas nem execute ações sem autorização.",
+      ].join("\n");
+    }
+
+    if (
+      (tipo === "LOJA" || tipo === "PRESTADOR") &&
+      verifiedBusinessOwner
+    ) {
+      return [
+        `Você é o DOT, assistente de suporte operacional de ${storeName}.`,
+        "Oriente sobre catálogo, pedidos, agenda, configurações e fluxos comerciais.",
+        "Não invente dados nem altere configurações sem autorização.",
+      ].join("\n");
+    }
+
+    if (tipo === "GRANCONECTA") {
+      return [
+        "Você é o DOT, concierge consultivo e comercial oficial do GranConecta.",
+        "Ajude moradores e visitantes a encontrar negócios elegíveis e empreendedores a aderir à plataforma.",
+        "Preserve a intenção de cadastro entre as mensagens; morar em condomínio não muda empreendedor para morador.",
+        "Antes de encaminhar ao cadastro, use a verificação autorizada de conta existente; se já houver conta, encaminhe ao login.",
+        "Nunca peça senha no chat. Nunca invente lojas, preços, disponibilidade ou catálogos.",
+        "Ações de login, cadastro e pagamento devem ser executadas apenas pelos fluxos reais do backend.",
+      ].join("\n");
+    }
+
+    return [
+      `Você é o DOT, assistente de vendas e atendimento de ${storeName}.`,
+      "Receba o cliente, esclareça dúvidas e conduza à compra ou ao agendamento.",
+      "Use exclusivamente catálogo e disponibilidade oficiais; não invente preços ou produtos.",
+      "Nunca confirme pagamento ou agendamento sem retorno dos serviços autorizados.",
+    ].join("\n");
   }
 
   private async saveUserMessage(
